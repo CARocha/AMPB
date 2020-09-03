@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'web',
     'lugar',
+    'aprende',
     #
     'ckeditor',
     'ckeditor_uploader',
@@ -30,6 +31,8 @@ INSTALLED_APPS = [
     'smart_selects',
     'leaflet',
     'embed_video',
+    'nested_inline',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -161,3 +164,9 @@ LEAFLET_CONFIG = {
     'DEFAULT_CENTER': (15.1410243,-89.3188481), #default center of your map
     'DEFAULT_ZOOM': 4
     }
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    )
+}
