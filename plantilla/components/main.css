@@ -1,0 +1,312 @@
+/* -------------------------------------------------------------------------- */
+/*                                   Colores                                  */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                                   Mixins                                   */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                                   Fuente                                   */
+/* -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "SourceSansPro";
+  src: url("../font/SourceSansPro.woff2");
+}
+p {
+  font-family: 'SourceSansPro', sans-serif;
+  font-size: 18px;
+}
+/* -------------------------------------------------------------------------- */
+/*                                    Menu                                    */
+/* -------------------------------------------------------------------------- */
+.rd-navbar-fullwidth .navbar-navigation-root-item {
+  padding: 0 25px !important;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   Social                                   */
+/* -------------------------------------------------------------------------- */
+/* Wrapper */
+.icon-button {
+  background-color: #fff;
+  -webkit-border-radius: 3.125rem;
+  -moz-border-radius: 3.125rem;
+  -o-border-radius: 3.125rem;
+  border-radius: 3.125rem;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.5rem;
+  height: 3.125rem;
+  line-height: 3rem;
+  margin: 0 5px;
+  position: relative;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 3.125rem;
+  border: 1px solid #04d2c8;
+}
+/* Circle */
+.icon-button span {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  display: block;
+  height: 0;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 0;
+}
+.icon-button:hover span {
+  width: 3.125rem;
+  height: 3.125rem;
+  -webkit-border-radius: 3.125rem;
+  -moz-border-radius: 3.125rem;
+  -o-border-radius: 3.125rem;
+  border-radius: 3.125rem;
+  margin: -1.56rem;
+}
+.twitter span {
+  background-color: #4099ff;
+}
+.facebook span {
+  background-color: #3b5998;
+}
+.instagram span {
+  background-color: #833ab4;
+}
+/* Icons */
+.icon-button i {
+  background: none;
+  color: #04d2c8;
+  height: 3.125rem;
+  left: 0;
+  line-height: 3.125rem;
+  position: absolute;
+  top: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  width: 3.125rem;
+  z-index: 10;
+}
+.icon-button .icon-twitter {
+  color: #1da1f2;
+  border-color: #1da1f2;
+}
+.icon-button .icon-facebook {
+  color: #3b5998;
+  border-color: #3b5998;
+}
+.icon-button .icon-instagram {
+  color: #833ab4;
+  border-color: #833ab4;
+}
+.icon-button:hover i {
+  color: #fff;
+}
+/* -------------------------------------------------------------------------- */
+/*                                  Noticias                                  */
+/* -------------------------------------------------------------------------- */
+.post-meta-icon.fa {
+  font-size: 1rem;
+}
+.post-title.h6 {
+  line-height: 1.6rem;
+  font-size: 1.1rem;
+}
+.noticias .post-img {
+  height: 244px;
+}
+.text-limit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+/* -------------------------------------------------------------------------- */
+/*                                  Paginado                                  */
+/* -------------------------------------------------------------------------- */
+.pagination {
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  margin-top: 20px;
+}
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.page-item {
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background: #42495b;
+}
+.page-item.active {
+  background: #04d2c8;
+  border-color: #04d2c8;
+}
+.page-item .page-link {
+  position: relative;
+  display: block;
+  height: 40px;
+  width: 40px;
+  margin-left: -2px;
+  line-height: 38px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.page-item .page-link i {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   Sponsor                                  */
+/* -------------------------------------------------------------------------- */
+.sponsor .logo-c {
+  margin: 15px 0;
+}
+.sponsor .logo-c img {
+  height: 50px;
+  width: auto;
+}
+.sponsor .logo-c span {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.sponsor .logo-h {
+  margin: 15px 0;
+}
+.sponsor .logo-h img {
+  width: 300px;
+  height: auto;
+}
+.main-logo img {
+  width: 300px;
+}
+/* -------------------------------------------------------------------------- */
+/*                                Share Social                                */
+/* -------------------------------------------------------------------------- */
+.si-sticky {
+  position: fixed;
+  top: 33%;
+  left: 0px;
+  z-index: 100;
+}
+.social-share {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: 0 1px 0 #e9e9e9 inset;
+  -webkit-box-shadow: 0 1px 0 #e9e9e9 inset;
+  box-shadow: 0 1px 0 #e9e9e9 inset;
+  background: #e9eff4;
+  border-color: #04d2c8 #e7e7e7 #e4e4e4;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  -moz-box-shadow: 0 1px 0 #e9e9e9 inset;
+  -webkit-box-shadow: 0 1px 0 #e9e9e9 inset;
+  box-shadow: 0 1px 0 #e9e9e9 inset;
+  float: left;
+  list-style: none;
+  padding: 15px 10px;
+  position: relative;
+  text-align: center;
+  margin: 20px;
+}
+.social-share li:first-child {
+  margin-top: 0;
+}
+.social-share li {
+  margin-top: 10px;
+}
+.social-share li a {
+  display: block;
+  background: #42495b;
+  color: #efefef;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -o-border-radius: 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  line-height: 40px;
+  width: 40px;
+  font-size: 20px;
+}
+.social-share a.tw:hover {
+  background: #1da1f2;
+}
+.social-share a.fb:hover {
+  background: #3b5998;
+}
+.social-share a.wt:hover {
+  background: #075e54;
+}
+.social-share a.gp:hover {
+  background: #dd4b39;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   Filter                                   */
+/* -------------------------------------------------------------------------- */
+.filter li {
+  display: inline;
+  margin: 5px;
+}
+.filter .btn-primary {
+  background-color: #42495b;
+  padding: 0.5125rem 1.575rem;
+}
+.filter li.active .btn-primary {
+  background: #04d2c8;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   Noticia                                  */
+/* -------------------------------------------------------------------------- */
+.post-text figcaption {
+  background: #e9eff4;
+  padding: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   Galeria                                  */
+/* -------------------------------------------------------------------------- */
+.album .thumbnail-gallery {
+  margin: 10px;
+}
+.aprende .person-boxed {
+  max-width: 100%;
+}
