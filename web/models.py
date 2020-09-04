@@ -53,7 +53,7 @@ class Actualidad(models.Model):
 	video = EmbedVideoField(null=True,blank=True)
 	escuela = models.ForeignKey(Escuela,on_delete=models.CASCADE)
 	usuario = models.ForeignKey(User,on_delete=models.CASCADE)
-
+	
 	class Meta:
 		verbose_name_plural = "Actualidad"
 
