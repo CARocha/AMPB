@@ -14,6 +14,7 @@
     <script src="/static/components/base/core.min.js"></script>
 	<script src="/static/components/base/script.js"></script>
 	<link rel="stylesheet" href="/static/components/main.css">
+    {% block extra_css %}{% endblock extra_css %}
   </head>
   <body>
       <style>
@@ -184,5 +185,6 @@
         <div class="preloader-dot"></div>
       </div>
     </div>
+    {% block extra_js %}{% endblock extra_js %}
   </body>
 </html>

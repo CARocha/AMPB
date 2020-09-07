@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 {% load embed_video_tags %}
+{% load leaflet_tags %}
+
+{% block extra_css %}
+{% leaflet_js %}
+{% leaflet_css %}
+<style>
+    #mapid { height: 400px; }
+</style>
+{% endblock extra_css %}
 
 {% block content %}
 <section class="swiper-container swiper-1 context-dark text-center" data-swiper>
@@ -239,8 +248,6 @@
 <!-- Post event-->
 <section class="section-md bg-white text-center eventos">
     <div class="container">
-        
-    
         <div class="row row-30 justify-content-center">
             <div class="col-xs-8 col-sm-6 col-md-4">
                     <div class="text-block text-block-1 text-left" data-animate='{"class":"fadeIn"}'>
@@ -249,18 +256,21 @@
                         <!-- <p class="big">Every week, we organize a variety of events for our students and undergraduates. From webinars to creative events, there are activities that are always worth your attention.</p> -->
                     </div>
                     <!-- Post event-->
+                    {% for obj in eventos %}
                     <div class="post post-event" data-animate='{"class":"fadeInUp"}'>
-                        <a class="post-media" href="single-post.html">
-                            <img class="post-img" src="img/noticia/3.jpg" alt="" height="240px"/>
+                        <a class="post-media" href="">
+                            {% thumbnail obj.foto "600x400" crop="center" as im %}
+                            <img class="post-img" src="{{im.url}}" alt="" height="240px"/>
+                            {% endthumbnail %}
                             <div class="post-date">
-                            <div class="post-day">31</div>
-                            <div class="post-month">Ago</div>
+                            <div class="post-day">{{obj.inicio|date:'d'}}</div>
+                            <div class="post-month">{{obj.inicio|date:'M'}}</div>
                             </div>
                         </a>
                         <div class="post-heading h5">
                             <div class="post-title">
-                                <a href="single-post.html">
-                                    VII Congreso Territorial Mesoamericano 
+                                <a href="">
+                                    {{obj.titulo|truncatechars:80}}
                                 </a>
                             </div>
                             
@@ -276,6 +286,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
             </div>
             <div class="col-xs-8 col-sm-6 col-md-8">
                 <div class="text-block text-block-1 text-left" data-animate='{"class":"fadeIn"}'>
@@ -284,15 +295,9 @@
                     <!-- <p class="big">Every week, we organize a variety of events for our students and undergraduates. From webinars to creative events, there are activities that are always worth your attention.</p> -->
                 </div>
                 <div class="post">
-                    <iframe class="" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7910820.895424874!2d-92.73651578857562!3d14.501587326061514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sni!4v1598212347535!5m2!1ses!2sni" 
-                width="100%" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    {% leaflet_map "mapid" %}
                 </div>
-                    
-                
-                
-            </div>
-
-                        
+            </div>       
         </div>
     </div>
 </section>
@@ -306,51 +311,24 @@
     </div>
     <div class="slick-person-container">
         <div class="slick-slider slick-person-img slider-nav" data-slick='{"slidesToShow":3,"arrows":false,"asNavFor":".slider-for","focusOnSelect":true,"centerMode":true,"centerPadding":"0px"}'>
-        <div class="slick-content"><img src="img/avatar/2.jpg" alt="" width="150" height="150"/>
-        </div>
-        <div class="slick-content"><img src="img/avatar/1.jpg" alt="" width="150" height="150"/>
-        </div>
-        
-        <div class="slick-content"><img src="img/avatar/3.jpg" alt="" width="150" height="150"/>
-        </div>
-        <div class="slick-content"><img src="img/avatar/4.jpg" alt="" width="150" height="150"/>
-        </div>
-        
+            {% for obj in liderazgos %}
+            {% thumbnail obj.foto "150x150" crop="center" as im %}
+            <div class="slick-content"><img src="{{im.url}}" alt="" width="150" height="150"/>
+            </div>
+            {% endthumbnail %}
+            {% endfor %}
         </div>
         <div class="slick-slider slick-person-content slider-for" data-slick='{"arrows":true,"asNavFor":".slider-nav","autoplay":true,"autoplaySpeed":5000,"fade":true}'>
+            {% for obj in liderazgos %}
             <div class="slick-content">
                 <!-- Quote-->
                 <blockquote class="quote quote-simple">
-                    <q class="quote-text">Los contenidos nos ayudan a reforzar aquellos temas que desconocemos y nos va a permitir empoderarnos de nuestra cultura</q>
-                    <cite class="quote-cite h6">Marvin Solis</cite>
-                    <div class="quote-meta">Guatemala</div>
+                    <q class="quote-text">{{obj.texto}}</q>
+                    <cite class="quote-cite h6">{{obj.nombre}}</cite>
+                    <div class="quote-meta">{{obj.escuela.pais}}</div>
                 </blockquote>
             </div>
-            <div class="slick-content">
-                <!-- Quote-->
-                <blockquote class="quote quote-simple">
-                    <q class="quote-text">Con la escuela de formación, me ayuda a entender más mi cultura y mis derechos....los jovenes tenemos igual derecho que cualquiera</q>
-                    <cite class="quote-cite h6">Reyna Perez</cite>
-                    <div class="quote-meta">Costa Rica</div>
-                </blockquote>
-            </div>
-            <div class="slick-content">
-                <!-- Quote-->
-                <blockquote class="quote quote-simple">
-                    <q class="quote-text">La educación es una inversión para salir de la ignorancia porque mucha cosas que no dominamos, las dejamos en el misterio sin saber que la ciencia ya encontró una explicación</q>
-                    <cite class="quote-cite h6">Alonso Galvez</cite>
-                    <div class="quote-meta">Honduras</div>
-                </blockquote>
-            </div>
-            <div class="slick-content">
-                <!-- Quote-->
-                <blockquote class="quote quote-simple">
-                    <q class="quote-text">Con la escuela de formación, me ayuda a entender más mi cultura y mis derechos....los jovenes tenemos igual derecho que cualquiera</q>
-                    <cite class="quote-cite h6">Reyna Perez</cite>
-                    <div class="quote-meta">Costa Rica</div>
-                </blockquote>
-            </div>
-
+            {% endfor %}
         </div>
     </div>
     </div>
@@ -436,4 +414,17 @@
         </div>
     </div>
 </section>
+
 {% endblock content %}
+
+{% block extra_js %}
+<script>
+    var map = L.map('mapid').setView([12.8654156, -85.2072296], 7);
+    mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+    L.tileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; ' + mapLink + ' Contributors',
+        maxZoom: 18,
+        }).addTo(map);
+</script>
+{% endblock extra_js %}
