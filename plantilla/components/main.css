@@ -301,6 +301,11 @@ p {
   font-size: 0.8rem;
   font-weight: 700;
 }
+@media (min-width: 992px) {
+  * + .post-text {
+    margin-top: 1rem !important;
+  }
+}
 /* -------------------------------------------------------------------------- */
 /*                                   Galeria                                  */
 /* -------------------------------------------------------------------------- */
@@ -309,4 +314,125 @@ p {
 }
 .aprende .person-boxed {
   max-width: 100%;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   Cursos                                   */
+/* -------------------------------------------------------------------------- */
+.panel {
+  margin: 10px 0;
+  -moz-box-shadow: 0 3px 5px -1px rgba(39,44,51,0.1), 0 5px 8px 0 rgba(39,44,51,0.04), 0 1px 14px 0 rgba(39,44,51,0.02);
+  -webkit-box-shadow: 0 3px 5px -1px rgba(39,44,51,0.1), 0 5px 8px 0 rgba(39,44,51,0.04), 0 1px 14px 0 rgba(39,44,51,0.02);
+  box-shadow: 0 3px 5px -1px rgba(39,44,51,0.1), 0 5px 8px 0 rgba(39,44,51,0.04), 0 1px 14px 0 rgba(39,44,51,0.02);
+}
+.panel .panel-title {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  background-color: #fff;
+  background: #42495b;
+  font-weight: 600;
+  display: block;
+}
+.panel .panel-title a {
+  color: #fff;
+}
+.panel .panel-title a[aria-expanded="true"] .badge {
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+  -webkit-transition: transform 200ms ease;
+  -moz-transition: transform 200ms ease;
+  -o-transition: transform 200ms ease;
+  transition: transform 200ms ease;
+}
+.panel .panel-title a[aria-expanded="false"] .badge {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: transform 200ms ease;
+  -moz-transition: transform 200ms ease;
+  -o-transition: transform 200ms ease;
+  transition: transform 200ms ease;
+}
+.curso .page-item,
+.curso .page-link {
+  width: auto;
+  height: auto;
+}
+.curso .page-item .page-link,
+.curso .page-link .page-link {
+  padding: 5px 15px;
+}
+.curso .page-item .page-link .fa,
+.curso .page-link .page-link .fa {
+  padding: 0 5px;
+}
+/* -------------------------------------------------------------------------- */
+/*                                 list group                                 */
+/* -------------------------------------------------------------------------- */
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  background-color: #fff;
+  font-weight: 600;
+  border: 1px solid rgba(0,0,0,0.125);
+}
+.list-group-item {
+  color: #42495b;
+}
+.list-group-item:first-child {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.list-group-item:last-child {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.list-group-item.disabled,
+.list-group-item:disabled {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+}
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: #04d2c8;
+  border-color: #04d2c8;
+}
+.list-group-item + .list-group-item {
+  border-top-width: 0;
+}
+.list-group-item + .list-group-item.active {
+  margin-top: -1px;
+  border-top-width: 1px;
+}
+/* -------------------------------------------------------------------------- */
+/*                                    Badge                                   */
+/* -------------------------------------------------------------------------- */
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  border-radius: 0.25rem;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -moz-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  -o-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
 }
