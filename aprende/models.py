@@ -12,7 +12,7 @@ class Cursos(models.Model):
     titulo = models.CharField('Nombre del curso', max_length=250)
     slug = models.SlugField(max_length=250, unique=True, editable=False)
     imagen = models.FileField(upload_to='images', null=True, blank=True)
-    imagen_banner = models.FileField(upload_to='banner', null=True, blank=True)
+    #imagen_banner = models.FileField(upload_to='banner', null=True, blank=True)
     descripcion = RichTextUploadingField('Descripción del curso')
     fecha = models.DateTimeField(auto_now_add=True)
     activo = models.BooleanField(default=False)
