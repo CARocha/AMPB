@@ -10,7 +10,7 @@ class ImagenesInline(admin.TabularInline):
 class GaleriaAdmin(admin.ModelAdmin):
 	inlines = [ImagenesInline,]
 
-admin.site.register(Escuela,LeafletGeoAdmin)
+admin.site.register(Escuela)
 admin.site.register(Banner)
 admin.site.register(Actualidad)
 admin.site.register(Evento)

@@ -4,9 +4,10 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 from smart_selects.db_fields import ChainedForeignKey
 from lugar.models import *
-from django.contrib.gis.db import models as geo_models
+# from django.contrib.gis.db import models as geo_models
 from django.template.defaultfilters import slugify
 from embed_video.fields import EmbedVideoField
+from location_field.models.plain import PlainLocationField
 
 # Create your models here.
 class Escuela(models.Model):
@@ -20,7 +21,8 @@ class Escuela(models.Model):
 	municipio = ChainedForeignKey(Municipio,
 					chained_field="departamento",
 					chained_model_field="departamento")
-	ubicacion = geo_models.PointField()
+	lugar = models.CharField(max_length=250)
+	location = PlainLocationField(based_fields=['lugar'], zoom=7)
 	slug = models.SlugField(max_length=300,editable=False)
 
 	def __str__(self):
@@ -53,6 +55,11 @@ class Actualidad(models.Model):
 	video = EmbedVideoField(null=True,blank=True)
 	escuela = models.ForeignKey(Escuela,on_delete=models.CASCADE)
 	usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+	slug = models.SlugField(max_length=300,editable=False)
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.titulo)
+		return super(Actualidad, self).save(*args, **kwargs)
 	
 	class Meta:
 		verbose_name_plural = "Actualidad"
@@ -69,6 +76,7 @@ class Evento(models.Model):
 	hora_inicio = models.TimeField('Hora inicio')
 	hora_fin = models.TimeField('Hora fin')
 	lugar = models.CharField(max_length=250)
+	location = PlainLocationField(based_fields=['lugar'], zoom=7)
 	escuela = models.ForeignKey(Escuela,on_delete=models.CASCADE)
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING)
 	slug = models.SlugField(max_length=300,editable=False)

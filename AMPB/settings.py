@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'embed_video',
     'nested_inline',
     'rest_framework',
+    'el_pagination',
+    'location_field.apps.DefaultConfig',
 ]
 
 SITE_ID = 1
@@ -177,3 +179,8 @@ REST_FRAMEWORK = {
 }
 
 FILE_UPLOAD_PERMISSIONS = 0o644
+
+LOCATION_FIELD = {
+    'map.provider': 'openstreetmap',
+    'search.provider': 'nominatim',
+}
