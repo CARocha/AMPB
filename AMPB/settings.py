@@ -175,3 +175,5 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     )
 }
+
+FILE_UPLOAD_PERMISSIONS = 0o644
