@@ -54,3 +54,12 @@ def filtro_eventos(request,slug=None,template='eventos/lista.html'):
 def detalle_evento(request,slug=None,template='eventos/detalle.html'):
 	object = Evento.objects.get(slug = slug)
 	return render(request, template, locals())
+
+def lista_biblioteca(request,template='biblioteca/lista.html'):
+	objects_list = Biblioteca.objects.order_by('-id')
+	return render(request, template, locals())
+
+# def filtro_biblioteca(request,slug=None,template='biblioteca/lista.html'):
+# 	objects_list = Biblioteca.objects.filter(escuela__pais__slug = slug).order_by('-id')
+# 	paises = Biblioteca.objects.values_list('escuela__pais__slug','escuela__pais__nombre').distinct('escuela__pais')
+# 	return render(request, template, locals())
