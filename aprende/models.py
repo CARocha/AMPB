@@ -58,4 +58,4 @@ class Contenidos(models.Model):
         verbose_name_plural = 'Lecciones'
 
     def __str__(self):
-        return self.modulo.titulo
+        return self.titulo

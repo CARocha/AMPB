@@ -12,5 +12,6 @@ urlpatterns = [
 	path('api/modulos/filtro/<id>', ModulosFiltrado.as_view()),
 	path('api/contenidos/filtro/<id>', ContenidosFiltrado.as_view()),
 	path('', lista_cursos, name='lista-cursos'),
-	path('<slug>/', detalle_curso, name='detalle-curso')
+	path('<slug>/', detalle_curso, name='detalle-curso'),
+	path('<slug>/<id>/', detalle_contenido, name='detalle-contenido')
 ]

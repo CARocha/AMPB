@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets,generics
 from .serializers import *
 from .models import *
+from next_prev import next_in_order, prev_in_order
 
 # Create your views here.
 class CursosViewSet(viewsets.ModelViewSet):
@@ -36,4 +37,23 @@ def lista_cursos(request,template='aprende/lista.html'):
 
 def detalle_curso(request,slug=None,template='aprende/detalle.html'):
     object = Cursos.objects.get(slug = slug)
+    primer_contenido = Contenidos.objects.filter(modulo__curso = object).first()
+    return render(request, template, locals())
+
+def detalle_contenido(request,slug=None,id=None,template='aprende/detalle.html'):
+    object = Cursos.objects.get(slug = slug)
+    #contenidos
+    contenido = Contenidos.objects.get(id = id)
+    todos_contenidos = Contenidos.objects.filter(modulo__curso = object).order_by('modulo','id')
+    siguiente = next_in_order(contenido, qs = todos_contenidos)
+    anterior = prev_in_order(contenido, qs = todos_contenidos)
+    
+    #modulos
+    modulo_actual = Modulos.objects.get(curso = object, contenidos = contenido)
+    todos_modulos = Modulos.objects.filter(curso = object).order_by('curso','id')
+    modulo_siguiente = next_in_order(modulo_actual, qs = todos_modulos)
+    modulo_anterior = prev_in_order(modulo_actual, qs = todos_modulos)
+    primer_modulo = Modulos.objects.filter(curso = object).first()
+    ultimo = prev_in_order(primer_modulo, loop=True)
+    
     return render(request, template, locals())

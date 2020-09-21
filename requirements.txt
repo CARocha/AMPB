@@ -16,6 +16,7 @@ django-js-asset==1.2.2
 django-leaflet==0.27.1
 django-location-field==2.1.0
 django-nested-inline==0.4.2
+django-next-prev==1.0.1
 django-smart-selects==1.5.9
 djangorestframework==3.11.1
 html5lib==1.0.1
