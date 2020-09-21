@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets,generics
 from .serializers import *
 from .models import *
 
@@ -15,6 +15,20 @@ class ContenidoViewSet(viewsets.ModelViewSet):
 class ModuloViewSet(viewsets.ModelViewSet):
     queryset = Modulos.objects.all()
     serializer_class = ModulosSerializer
+
+class ContenidosFiltrado(generics.ListAPIView):
+    serializer_class = ContenidoSerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return Contenidos.objects.filter(modulo__curso = id)
+
+class ModulosFiltrado(generics.ListAPIView):
+    serializer_class = ModulosSerializer
+
+    def get_queryset(self):
+        id = self.kwargs['id']
+        return Modulos.objects.filter(curso = id)
 
 def lista_cursos(request,template='aprende/lista.html'):
     objects_list = Cursos.objects.filter(activo = True).order_by('-id')

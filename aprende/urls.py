@@ -9,6 +9,8 @@ router.register(r'modulos', ModuloViewSet)
 
 urlpatterns = [
 	path('api/',include(router.urls)),
+	path('api/modulos/filtro/<id>', ModulosFiltrado.as_view()),
+	path('api/contenidos/filtro/<id>', ContenidosFiltrado.as_view()),
 	path('', lista_cursos, name='lista-cursos'),
 	path('<slug>/', detalle_curso, name='detalle-curso')
 ]
