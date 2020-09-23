@@ -15,7 +15,7 @@ class Cursos(models.Model):
     #imagen_banner = models.FileField(upload_to='banner', null=True, blank=True)
     descripcion = RichTextUploadingField('Descripción del curso')
     fecha = models.DateTimeField(auto_now_add=True)
-    activo = models.BooleanField(default=False)
+    activo = models.BooleanField(default=True)
 
     class Meta:
         ordering = ('-fecha',)

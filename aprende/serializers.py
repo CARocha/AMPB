@@ -5,7 +5,7 @@ class CursoSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Cursos
-		fields = ('id','titulo','imagen','descripcion','fecha')#,'imagen_banner'
+		fields = ('id','titulo','imagen','descripcion','fecha','activo')#,'imagen_banner'
 
 class ModulosSerializer(serializers.ModelSerializer):
 	# curso = CursoSerializer()
