@@ -121,7 +121,6 @@ STATICFILES_DIRS = (
 
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
-
 CKEDITOR_CONFIGS = {
     'default': {
         'extraPlugins': ','.join([
@@ -165,6 +164,7 @@ CKEDITOR_CONFIGS = {
     },
 
 }
+CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 USE_DJANGO_JQUERY = True
 
