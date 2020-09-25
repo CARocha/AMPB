@@ -15,7 +15,7 @@ class Cursos(models.Model):
 	imagen = ImageField(upload_to='images', null=True, blank=True)
 	#imagen_banner = models.FileField(upload_to='banner', null=True, blank=True)
 	descripcion = RichTextUploadingField('Descripción del curso')
-	fecha = models.DateTimeField(auto_now_add=True)
+	fecha = models.DateTimeField(auto_now=True)
 	activo = models.BooleanField(default=True)
 
 	class Meta:
