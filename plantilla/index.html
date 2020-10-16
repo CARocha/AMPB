@@ -21,7 +21,7 @@
           .eventos .post-img{
               height: 250px;
           }
-          h1.prueba {
+        div.sombra {
             background: rgb(0, 0, 0, 0.4);
             padding: 20px;
         }
@@ -33,11 +33,41 @@
         .big{
             font-size: 1.5rem;
         }
+        .topbar{
+            padding: 10px ;
+            position: absolute;
+            top: 0;
+            right: 110px;
+            z-index: 99;
+        }
+        .topbar .btn-primary{
+            padding: 0.5125rem 1.5375rem;
+            font-size: 0.875rem;
+        }
+        .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap{
+            top: 30px;
+        }
+        .prueba .btn-primary{
+            padding: 0.5125rem 1.5375rem;
+            font-size: 0.875rem;
+        }
+        .navbar-navigation-root-item .btn-primary{
+            padding: 0.5125rem 1.5375rem;
+            font-size: 0.875rem;
+        }
+        .prueba{
+            position: relative;
+            top: -17px;
+            right: -620px;
+            display: none;
+        }
       </style>
 
     <div class="page">
       <!--RD Navbar-->
-        
+        <!--<div class="bg-transparent topbar">
+            <a class="btn btn-primary" href="contact-us.html">Contáctenos</a>
+        </div>-->
       	<header class="section rd-navbar-absolute-wrap" data-preset='{"title":"Navbar Default","category":"header","reload":true,"id":"navbar-default"}'>
 			<nav class="rd-navbar" data-rd-navbar='{"responsive":{"1200":{"stickUpOffset":"50px"}}}'>
 				<div class="navbar-container">
@@ -49,6 +79,9 @@
 					</div>
 					<div class="navbar-spacer"></div>
 					<div class="navbar-cell navbar-sidebar">
+                        <ul class="prueba">
+                            <li class="navbar-navigation-root-item"><a class="btn btn-primary" href="contact-us.html">Contáctenos</a>
+                        </ul>
 						<ul class="navbar-navigation rd-navbar-nav">
 
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Quiénes somos?</a>
@@ -56,30 +89,33 @@
 										<li class="navbar-navigation-back">
 										<button class="navbar-navigation-back-btn">Atras</button>
 										</li>
-										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="gallery.html">Escuelas</a>
+										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="gallery.html">Subsecion1</a>
 										</li>
 									</ul>
                                 </li>
                                
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="history.html">Noticias</a>
-                                </li>
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Multimedia</a>
-									<ul class="navbar-navigation-dropdown rd-navbar-dropdown">
+                                    <ul class="navbar-navigation-dropdown rd-navbar-dropdown">
 										<li class="navbar-navigation-back">
 										<button class="navbar-navigation-back-btn">Atras</button>
 										</li>
-										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="gallery.html">Biblioteca</a>
+										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="gallery.html">Acontecimientos</a>
 										</li>
-										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="404.html">Galería</a>
+										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="404.html">Eventos</a>
 									</ul>
+                                </li>
+                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Biblioteca</a>
+									
                                 </li>
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="contact-us.html">Aprende</a>
                                 </li>
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="contact-us.html">Monitoreo</a>
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="tutors.html">Eventos</a>
-								</li>
-								<li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="contact-us.html">Contáctenos</a>
                                 </li>
+                                <li class="navbar-navigation-root-item"><a class="btn btn-primary" href="contact-us.html">Contáctenos</a>
+								</li>
+                                <!--<li class="navbar-navigation-root-item"><a class="btn btn-primary" href="contact-us.html">Monitoreo</a>
+								</li>-->
+								
                                 
 								</li>
 						</ul>
@@ -113,9 +149,11 @@
 			<div class="swiper-slide section-md" style="background-image: url( img/fotos/12.jpg )">
 				<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-md-9 col-lg-8">
-					<h1 class="prueba">Educación para todos</h1>
-                    <p class="big">Trabajar por la plena inclusión de los pueblos indígenas en la educación </p>
+					<div class="col-md-9 col-lg-9">
+                    <div class="sombra">
+                        <h1 class=>Experiencias de Liderazgo</h1>
+                        <p class="big">Una tarea en la que hay que invertir recursos y redoblar esfuerzos</p>
+                    </div>
                     <a class="btn btn-primary" href="academics.html">Leer más</a>
 					</div>
 				</div>
@@ -124,9 +162,9 @@
 			<div class="swiper-slide section-md" style="background-image: url( img/fotos/13.jpg )">
 				<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-md-9 col-lg-8">
-					<h1 class="prueba">Tecnología para el aprendizaje</h1>
-                    <p class="big">No reinventa a la pedagogía, sólo amplía sus posibilidades para todos</p>
+					<div class="col-md-9 col-lg-9">
+                        <h1 class="sombra">Educación para todos</h1>
+                        <p class="big">Trabajar por la plena inclusión de los pueblos indígenas en la educación </p>
                     <a class="btn btn-primary" href="academics.html">Leer más</a>
 					</div>
 				</div>
@@ -135,8 +173,8 @@
 			<div class="swiper-slide section-md" style="background-image: url( img/fotos/14.jpg )">
 				<div class="container">
 				<div class="row justify-content-center">
-					<div class="col-md-9 col-lg-8">
-					<h1 class="prueba">Liderazgo juvenil</h1>
+					<div class="col-md-9 col-lg-9">
+					<h1 class="sombra">Liderazgo juvenil</h1>
                     <p class="big">Una tarea en la que hay que invertir recursos y redoblar esfuerzos</p>
                     <a class="btn btn-primary" href="academics.html">Leer más</a>
 					</div>
@@ -146,107 +184,147 @@
 			</div>
 			<!-- Pagination-->
 			<div class="swiper-pagination"></div>
-		</section>
+        </section>
+        
 		<!-- Blurb default-->
 		<section class="section-md bg-transparent text-center">
 			<div class="container">
-			<div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
-				
-				<h3>Escuela Mesoamericana de Liderazgo</h3>
-				<h5 class="text-primary">"Aprendiendo y Transformando"</h5>
-				<!-- <p class="big">Teachzy offers students the best of education and entertainment opportunities available in the area. We are glad to take care of every student and university entrant.</p> -->
-			</div>
-			<div class="row row-30 justify-content-center mb-4">
-				<div class="col-xs-10 col-sm-6">
-					<!-- Post-->
-					<div class="post" data-animate='{"class":"fadeIn"}'>
-						<a class="post-media" href="single-post.html">
-							<img class="post-img" src="img/fotos/info3.jpg" alt="" width="570" height="380"/>
-						</a>
-											
-					</div>
-				</div>
-				<div class="col-xs-10 col-sm-6">
-					<!-- <h5 class="text-primary">Popular</h5> -->
-					<!-- Post-->
-					<div class="post" data-animate='{"class":"fadeInUp"}'>
-						<div class="post-title h6"><a href="single-post.html">
-							¿Qué es la Escuela Mesoamericana de Liderazgo de la AMPB?
-						</a></div>
-						<div class="post-text mb-2">
-							<p>
-                                Es un programa de formación de jóvenes líderes que apunte a superar los conocimientos deficitarios del ámbito 
-                                político-organizativo, preparar un relevo, construir escenarios futuros y desarrollar capacidades técnicas
-							</p>
-						</div>
-						<div class="row">
-							<div class="col-5 ">
-								<a class="btn btn-primary" href="academics.html">Conócenos</a>
-							</div>
-							<div class="col-7">
-								<div class="social-div text-right">
-									<a href="https://facebook.com" class="icon-button facebook"><i class="fa fa-facebook-f"></i><span></span></a>
-									<a href="https://twitter.com" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>
-									<a href="https://www.instagram.com/" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>
-								</div>
-							</div>
-						</div>
-						
-						
-					</div>
+                <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
+                    
+                    <h3>Escuela Mesoamericana de Liderazgo</h3>
+                    <h5 class="text-primary">"Aprendiendo y Transformando"</h5>
+                    <!-- <p class="big">Teachzy offers students the best of education and entertainment opportunities available in the area. We are glad to take care of every student and university entrant.</p> -->
+                </div>
+                <div class="row row-30 justify-content-center mb-4">
+                    <div class="col-xs-10 col-sm-6">
+                        <!-- Post-->
+                        <iframe width="100%" height="300" src="https://www.youtube.com/embed/Cfqzj8wAbek" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="col-xs-10 col-sm-6">
+                        <!-- <h5 class="text-primary">Popular</h5> -->
+                        <!-- Post-->
+                        <div class="post" data-animate='{"class":"fadeInUp"}'>
+                            <div class="post-title h6"><a href="single-post.html">
+                                ¿Qué es la Escuela Mesoamericana de Liderazgo de la AMPB?
+                            </a></div>
+                            <div class="post-text mb-2">
+                                <p>
+                                    Es un programa de formación de jóvenes líderes que apunte a superar los conocimientos deficitarios del ámbito 
+                                    político-organizativo, preparar un relevo, construir escenarios futuros y desarrollar capacidades técnicas
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-5 ">
+                                    <a class="btn btn-primary" href="academics.html">Conócenos</a>
+                                </div>
+                                <div class="col-7">
+                                    <div class="social-div text-right">
+                                        <a href="https://facebook.com" class="icon-button facebook"><i class="fa fa-facebook-f"></i><span></span></a>
+                                        <a href="https://twitter.com" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>
+                                        <a href="https://www.instagram.com/" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
 
-				</div>
+                    </div>
+                </div>
+			
 			</div>
-			<div class="row row-30 justify-content-center">
-				<div class="col-sm-6 col-md-4">
-					<!-- Blurb-->
-					<article class="blurb blurb-2" data-animate='{"class":"fadeInUp","delay":".3s"}'>
-                    <!-- <div class="icon blurb-icon custom-font-school"></div> -->
-                    <img src="editados/Currícula op.3.png" alt="" width="100px">
-					<div class="blurb-title h4">Currícula </div>
-					<div class="blurb-text big">
-						<p>
-							Formar una nueva generación de líderes con conocimientos y dominio de competencias
-						</p>
-					</div>
-					</article>
-				</div>
-				
-				<div class="col-sm-6 col-md-4">
-						<!-- Blurb-->
-						<article class="blurb blurb-2" data-animate='{"class":"fadeInUp","delay":".15s"}'>
-                        <!-- <div class="icon blurb-icon custom-font-degree"></div> -->
-                        <img src="editados/Método op.1.png" alt="" width="100px">
-						<div class="blurb-title h4">Método</div>
-						<div class="blurb-text big">
-							<p>
-								Educación Popular y Pedagogía de la Alternancia, enfatizando en la evaluación e investigación.
-							</p>
-						</div>
-						</article>
-				</div>
-				<div class="col-sm-6 col-md-4">
-					<!-- Blurb-->
-					<article class="blurb blurb-2" data-animate='{"class":"fadeInUp"}'>
-                    <!-- <div class="icon blurb-icon custom-font-online-course"></div> -->
-                    <img src="editados/Formación op.1.png" alt="" width="120px">
-					<div class="blurb-title h4">Formación</div>
-					<div class="blurb-text big">
-						<p>
-							Pesencial y semipresencial, con temas de interés y específicos para el liderazgo juvenil.
-						</p>
-					</div>
-					</article>
-				</div>
-				
-			</div>
-			</div>
-		</section>
-		<!-- Price box-->
-		<section class="section-md bg-300 text-center">
+        </section>
+        
+		
+        
+        <!-- Counters-->
+        <section class="section-sm bg-transparent text-center">
+            <div class="container">
+                <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
+                    <h3>Presencia Territorial</h3>
+                </div>
+            </div>
+        </section>
+        <section class="section-lg bg-primary bg-image-wrap context-dark text-center text-md-left">
+            
+            <iframe class="bg-image-wrap-item bg-image" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7916743.786498476!2d-86.901886!3d14.334794000000002!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sni!4v1601412901212!5m2!1ses!2sni" 
+                        width="40%" height="543" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+            </iframe>
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                <div class="pr-xxl-5">
+                    <h2>Su educación, el futuro</h2>
+                    <p class="big">Así avanzamos en la construcción del nuevo liderazgo</p>
+                    <div class="row row-30 row-lg-55">
+                    <div class="col-6 col-sm-3 col-md-6">
+                            <!-- Blurb side-->
+                            <article class="blurb blurb-side">
+                                <div class="blurb-item">
+                                <!-- <div class="icon blurb-icon custom-font-graduated"></div> -->
+                                <img src="editados/Estudiantes op.1.png" alt="" width="80px">
+                                </div>
+                                <div class="blurb-body">
+                                <div class="blurb-counter-value h2"><span data-counter="">697</span>
+                                </div>
+                                <div class="blurb-title h4">Estudiantes </div>
+                                </div>
+                            </article>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-6">
+                            <!-- Blurb side-->
+                            <article class="blurb blurb-side">
+                                <div class="blurb-item">
+                                <!-- <div class="icon blurb-icon custom-font-male-teacher"></div> -->
+                                <img src="editados/Docentes op.1.png" alt="" width="80px">
+                                </div>
+                                <div class="blurb-body">
+                                <div class="blurb-counter-value h2"><span data-counter="">50</span>
+                                </div>
+                                <div class="blurb-title h4">Docentes</div>
+                                </div>
+                            </article>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-6">
+                            <!-- Blurb side-->
+                            <article class="blurb blurb-side">
+                                <div class="blurb-item">
+                                <!-- <div class="icon blurb-icon custom-font-student-at-desk"></div> -->
+                                <img src="editados/Mujeres jóvenes op.1.png" alt="" width="80px">
+                                </div>
+                                <div class="blurb-body">
+                                <div class="blurb-counter-value h2"><span data-counter="">260</span>
+                                </div>
+                                <div class="blurb-title h4">Mujeres jóvenes</div>
+                                </div>
+                            </article>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-6">
+                            <!-- Blurb side-->
+                            <article class="blurb blurb-side">
+                                <div class="blurb-item">
+                                <!-- <div class="icon blurb-icon custom-font-university"></div> -->
+                                <img src="editados/iniciativas territoriales op.3.png" alt="" width="130px">
+                                </div>
+                                <div class="blurb-body">
+                                <div class="blurb-counter-value h2"><span data-counter="">10</span><span class="counter-postfix">+</span>
+                                </div>
+                                <div class="blurb-title h4">Iniciativas en territorio</div>
+                                </div>
+                            </article>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Price box-->
+		<section class="section-md bg-white text-center">
 			<div class="container">
 				<div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
-					<h3>Actualidad</h3>
+					<h3>Acontecimientos</h3>
 					<h5 class="text-primary">Informáte de las últimas acciones de la Escuela Mesoamericana</h5>
 				</div>
 				<div class="owl-carousel owl-content-1 noticias" data-owl="{&quot;dots&quot;:true}" data-loop="false" data-items="1" data-sm-items="2" data-md-items="3" data-lg-items="3">
@@ -381,84 +459,10 @@
                     <a class="btn btn-primary" href="academics.html">Todas las noticias</a>
                 </div>
 			</div>
-		</section>
-        <!-- Counters-->
-        <section class="section-lg bg-primary bg-image-wrap context-dark text-center text-md-left">
-            
-            <iframe class="bg-image-wrap-item bg-image" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7916743.786498476!2d-86.901886!3d14.334794000000002!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sni!4v1601412901212!5m2!1ses!2sni" 
-                        width="45%" height="543" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
-            </iframe>
-            <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                <div class="pr-xxl-5">
-                    <h2>Su educación, el futuro</h2>
-                    <p class="big">Así avanzamos en la construcción del nuevo liderazgo</p>
-                    <div class="row row-30 row-lg-55">
-                    <div class="col-6 col-sm-3 col-md-6">
-                            <!-- Blurb side-->
-                            <article class="blurb blurb-side">
-                                <div class="blurb-item">
-                                <!-- <div class="icon blurb-icon custom-font-graduated"></div> -->
-                                <img src="editados/Estudiantes op.1.png" alt="" width="80px">
-                                </div>
-                                <div class="blurb-body">
-                                <div class="blurb-counter-value h2"><span data-counter="">697</span>
-                                </div>
-                                <div class="blurb-title h4">Estudiantes </div>
-                                </div>
-                            </article>
-                    </div>
-                    <div class="col-6 col-sm-3 col-md-6">
-                            <!-- Blurb side-->
-                            <article class="blurb blurb-side">
-                                <div class="blurb-item">
-                                <!-- <div class="icon blurb-icon custom-font-male-teacher"></div> -->
-                                <img src="editados/Docentes op.1.png" alt="" width="80px">
-                                </div>
-                                <div class="blurb-body">
-                                <div class="blurb-counter-value h2"><span data-counter="">50</span>
-                                </div>
-                                <div class="blurb-title h4">Docentes</div>
-                                </div>
-                            </article>
-                    </div>
-                    <div class="col-6 col-sm-3 col-md-6">
-                            <!-- Blurb side-->
-                            <article class="blurb blurb-side">
-                                <div class="blurb-item">
-                                <!-- <div class="icon blurb-icon custom-font-student-at-desk"></div> -->
-                                <img src="editados/Mujeres jóvenes op.1.png" alt="" width="80px">
-                                </div>
-                                <div class="blurb-body">
-                                <div class="blurb-counter-value h2"><span data-counter="">260</span>
-                                </div>
-                                <div class="blurb-title h4">Mujeres jóvenes</div>
-                                </div>
-                            </article>
-                    </div>
-                    <div class="col-6 col-sm-3 col-md-6">
-                            <!-- Blurb side-->
-                            <article class="blurb blurb-side">
-                                <div class="blurb-item">
-                                <!-- <div class="icon blurb-icon custom-font-university"></div> -->
-                                <img src="editados/iniciativas territoriales op.3.png" alt="" width="130px">
-                                </div>
-                                <div class="blurb-body">
-                                <div class="blurb-counter-value h2"><span data-counter="">10</span><span class="counter-postfix">+</span>
-                                </div>
-                                <div class="blurb-title h4">Iniciativas en territorio</div>
-                                </div>
-                            </article>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
         </section>
+        
         <!-- Post event-->
-        <section class="section-md bg-white text-center eventos">
+        <section class="section-md bg-300 text-center eventos">
             <div class="container">
                 
             
@@ -566,7 +570,7 @@
         </section>
 
         <!-- Testimonials-->
-        <section class="section-md bg-300 text-center">
+        <section class="section-md bg-white text-center">
             <div class="container">
             <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
                 <h2>Liderazgo</h2>
@@ -621,87 +625,6 @@
 
                 </div>
             </div>
-            </div>
-        </section>
-
-
-        <!-- Gallery-->
-        <section class="section-md context-dark bg-layer text-center">
-            <div class="bg-layer-item bg-primary" style="bottom: 62%"></div>
-            <div class="container">
-                <h2>Galería de imágenes</h2>
-                <div class="row no-gutters justify-content-center" data-lightgallery>
-                    <div class="col-6 col-xs-5 col-md-4">
-                        <!-- Thumbnail gallery-->
-                        <div class="thumbnail thumbnail-gallery">
-                            <a class="thumbnail-media lightgallery-item" href="img/galeria/1.jpg">
-                                <img class="thumbnail-img" src="img/galeria/10.jpg" alt="" width="390" height="390"/>
-                                <div class="thumbnail-media-caption">
-                                    <div class="thumbnail-media-icon custom-font-maximize"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xs-5 col-md-4">
-                        <!-- Thumbnail gallery-->
-                        <div class="thumbnail thumbnail-gallery">
-                            <a class="thumbnail-media lightgallery-item" href="img/galeria/2.jpg">
-                                <img class="thumbnail-img" src="img/galeria/11.jpg" alt="" width="390" height="390"/>
-                                <div class="thumbnail-media-caption">
-                                    <div class="thumbnail-media-icon custom-font-maximize"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xs-5 col-md-4">
-                        <!-- Thumbnail gallery-->
-                        <div class="thumbnail thumbnail-gallery">
-                            <a class="thumbnail-media lightgallery-item" href="img/galeria/3.jpg">
-                                <img class="thumbnail-img" src="img/galeria/12.jpg" alt="" width="390" height="390"/>
-                                <div class="thumbnail-media-caption">
-                                    <div class="thumbnail-media-icon custom-font-maximize"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xs-5 col-md-4">
-                        <!-- Thumbnail gallery-->
-                        <div class="thumbnail thumbnail-gallery">
-                            <a class="thumbnail-media lightgallery-item" href="img/galeria/4.jpg">
-                                <img class="thumbnail-img" src="img/galeria/13.jpg" alt="" width="390" height="390"/>
-                                <div class="thumbnail-media-caption">
-                                    <div class="thumbnail-media-icon custom-font-maximize"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xs-5 col-md-4">
-                        <!-- Thumbnail gallery-->
-                        <div class="thumbnail thumbnail-gallery">
-                            <a class="thumbnail-media lightgallery-item" href="img/galeria/5.jpg">
-                                <img class="thumbnail-img" src="img/galeria/14.jpg" alt="" width="390" height="390"/>
-                                <div class="thumbnail-media-caption">
-                                    <div class="thumbnail-media-icon custom-font-maximize"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-6 col-xs-5 col-md-4">
-                        <!-- Thumbnail gallery-->
-                        <div class="thumbnail thumbnail-gallery">
-                            <a class="thumbnail-media lightgallery-item" href="img/galeria/6.jpg">
-                                <img class="thumbnail-img" src="img/galeria/15.jpg" alt="" width="390" height="390"/>
-                                <div class="thumbnail-media-caption">
-                                    <div class="thumbnail-media-icon custom-font-maximize"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-
-                    
-
-                </div>
             </div>
         </section>
 
