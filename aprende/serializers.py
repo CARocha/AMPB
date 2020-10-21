@@ -9,14 +9,16 @@ class CursoSerializer(serializers.ModelSerializer):
 
 class ModulosSerializer(serializers.ModelSerializer):
 	# curso = CursoSerializer()
+	orden = serializers.IntegerField(source='order')
 
 	class Meta:
 		model = Modulos
-		fields = ('id', 'curso', 'titulo', 'order')
+		fields = ('id', 'curso', 'titulo', 'orden')
 
 class ContenidoSerializer(serializers.ModelSerializer):
 	# modulo = ModulosSerializer()
+	orden = serializers.IntegerField(source='order')
 
 	class Meta:
 		model = Contenidos
-		fields = ('id','modulo','titulo','contenido','order','url_video','nombre_video')
+		fields = ('id','modulo','titulo','contenido','orden','url_video','nombre_video')
