@@ -9,11 +9,35 @@ class InlineContenidos(NestedStackedInline):
     fk_name = 'modulo'
     can_delete = True
 
+from datetime import datetime
 class TemasModulos(NestedModelAdmin):
     inlines = [InlineContenidos]
     list_display = ('titulo', 'curso')
     search_fields = ('titulo',)
     list_filter = ('curso',)
+
+    def save_model(self, request, obj, form, change):
+        id_curso = obj.curso.id
+        obj.save()
+        #save fecha curso
+        now = datetime.now()
+        curso = Cursos.objects.get(id = id_curso)
+        curso.fecha = now
+        curso.save()
+
+    def save_formset(self, request, form, formset, change):
+        if change == True:
+            instances = formset.save(commit=False)
+            for instance in instances:
+                instance.save()
+
+            #save fecha curso
+            id_modulo = form.instance.id
+            now = datetime.now()
+            curso = Cursos.objects.get(modulos = id_modulo)
+            curso.fecha = now
+            curso.save()
+
 
 class CursosAdmin(NestedModelAdmin):
     list_display = ('titulo','fecha',)

@@ -36,7 +36,7 @@
     <div class="page">
       <!--RD Navbar-->
         
-      	<header class="section rd-navbar-absolute-wrap" data-preset='{"title":"Navbar Default","category":"header","reload":true,"id":"navbar-default"}'>
+      	<header class="section {% if request.path == '/' %} rd-navbar-absolute-wrap{% else %}rd-navbar-wrap{% endif %}" data-preset='{"title":"Navbar Default","category":"header","reload":true,"id":"navbar-default"}'>
 			<nav class="rd-navbar" data-rd-navbar='{"responsive":{"1200":{"stickUpOffset":"50px"}}}'>
 				<div class="navbar-container">
 					<div class="navbar-cell">
@@ -59,22 +59,22 @@
 									</ul>
                                 </li>
                                
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="history.html">Noticias</a>
+                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'lista-noticias' %}">Noticias</a>
                                 </li>
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Multimedia</a>
 									<ul class="navbar-navigation-dropdown rd-navbar-dropdown">
 										<li class="navbar-navigation-back">
 										<button class="navbar-navigation-back-btn">Atras</button>
 										</li>
-										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="gallery.html">Biblioteca</a>
+										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'lista-biblioteca' %}">Biblioteca</a>
 										</li>
-										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="404.html">Galería</a>
+										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'lista-galerias' %}">Galería</a>
 									</ul>
                                 </li>
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="contact-us.html">Aprende</a>
+                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'lista-cursos' %}">Aprende</a>
                                 </li>
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="contact-us.html">Monitoreo</a>
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="tutors.html">Eventos</a>
+                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'lista-eventos' %}">Eventos</a>
 								</li>
 								<li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="contact-us.html">Contáctenos</a>
                                 </li>

@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block content %}
+<section class="section breadcrumb-section">
+    <div class="container">
+        <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="{% url 'lista-cursos' %}">Aprende</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Curso</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Curso-->
+<section class="section-md bg-transparent curso" >
+    <div class="container">
+        <div class="text-block">
+            <h3>{{object.titulo}}</h3>
+        </div>
+        <div class="row row-30">
+            <div class="col-md-9"> 
+                <div class="post">
+                    {% if not contenido %}
+                    <div class="post-title h4 mb-2 text-primary">Introducción del curso</div>
+                    {% else %}
+                    <div class="post-title h4 mb-2 text-primary">{{contenido.titulo}}</div>
+                    {% endif %}
+                    <hr>
+                    <div class="post-text">
+                        {% if not contenido %}
+                        {{object.descripcion|safe}}
+                        {% else %}
+                        {{contenido.contenido|safe}}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget-title h4">Tabla de Contenido</div>
+            
+                <div class="panel-group">
+                    <div class="panel intro">
+                        <div class="panel-collapse">
+                            <div class="panel-content p-0">
+                                <div class="list-group mb-0 ">
+                                    <a class="list-group-item active" href="{% url 'detalle-curso' object.slug %}">Introducción</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% for modulo in object.modulos_set.all|dictsort:'order' %}
+                    <div class="panel mi-movil-1">
+                        <div class="panel-title "> 
+                            <a data-parent="#accordion1" data-toggle="collapse" href="#accordion{{forloop.counter}}" class="collapsed d-flex" aria-expanded="false"> 
+                                {{modulo.titulo}}<span class="fa fa-chevron-up badge ml-auto"></span>
+                            </a>
+                        </div>
+                        <div id="accordion{{forloop.counter}}" class="panel-collapse collapse " role="tablist" aria-expanded="false" style="height: 0px;">
+                            <div class="panel-content p-0">
+                                <div class="list-group mb-0">
+                                    {% for cont in modulo.contenidos_set.all %}
+                                    <a href="{% url 'detalle-contenido' object.slug cont.id %}" class="list-group-item scroll-to {% if contenido.id == cont.id %}active{% endif %}">
+                                        {{cont.titulo}}
+                                    </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="container">
+                <nav aria-label="Page navigation" class="text-center">
+                    <ul class="pagination text-center d-flex justify-content-center">
+                        {% if not contenido %}
+                        <li class="page-item ">
+                            <a class="page-link" href="{% url 'detalle-contenido' object.slug primer_contenido.id %}">
+                                Empezar Curso <i class="fa fa-play"></i>
+                            </a>
+                        </li>
+                        {% else %}
+                        {% if not ultimo.contenidos_set.last == contenido and modulo_anterior %}
+                            <li class="page-item">
+                                <a class="page-link" href="{% url 'detalle-contenido' object.slug modulo_anterior.contenidos_set.last.id %}"><i class="fa fa-angle-left"></i> Módulo anterior</a>
+                            </li>
+                        {% elif not modulo_anterior.contenidos_set.first.id == anterior.id %}
+                            <li class="page-item">
+                                <a class="page-link" href="{% url 'detalle-contenido' object.slug anterior.id %}"><i class="fa fa-angle-left"></i></a>
+                            </li>
+                        {% endif %}
+                        {% if ultimo.contenidos_set.last == contenido %}
+                            <li class="page-item">
+                                <a class="page-link" href="{% url 'lista-cursos' %}">Otro curso</a>
+                            </li>
+                        {% endif %}
+
+
+                        {% if not modulo_siguiente.contenidos_set.first.id == siguiente.id %}
+                            <li class="page-item">
+                                <a class="page-link" href="{% url 'detalle-contenido' object.slug siguiente.id %}"><i class="fa fa-angle-right"></i></a>
+                            </li>
+                        {% elif modulo_siguiente %}
+                            <li class="page-item">
+                                <a class="page-link" href="{% url 'detalle-contenido' object.slug modulo_siguiente.contenidos_set.first.id %}">Siguiente módulo <i class="fa fa-angle-right"></i></a>   
+                            </li>
+                        {% endif %}
+                        {% endif %}
+                        
+                        
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% endblock extra_js %}

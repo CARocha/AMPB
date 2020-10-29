@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load el_pagination_tags %}
+
+{% block content %}
+<section class="section breadcrumb-section">
+    <div class="container">
+        <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Biblioteca</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery-->
+<section class="section-md bg-transparent text-center biblioteca">
+    <div class="container">
+        <h2>Biblioteca de documentos</h2>
+        {% comment %} <div class="row row-30 justify-content-center">
+            <ul class="list filter">
+                <li class="active"><a class="btn btn-primary" href="{% url 'lista-biblioteca' %}">Todos</a></li>
+                {% for obj in paises %}
+                <li><a class="btn btn-primary" href="{% url 'filtro-biblioteca' obj.0 %}">{{obj.1}}</a></li>
+                {% endfor %}
+            </ul>
+        </div> {% endcomment %}
+        <div class="row no-gutters justify-content-center" data-lightgallery>
+            {% paginate 12 objects_list %}
+            {% for obj in objects_list %}
+            <div class="col-6 col-xs-5 col-md-3">
+                <!-- Thumbnail gallery-->
+                <div class="person person-boxed mb-4 ">
+                    <div class="person-media">
+                        {% thumbnail obj.foto "595x842" crop="center" as im %}
+                        <img class="person-img" src="{{im.url}}" alt=""/>
+                        {% endthumbnail %}
+                    </div>
+                    <div class="person-body">
+                        <div class="person-title h6"><a href="team-member.html">Guía Mantenimiento de los Sistemas de Agua</a></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="container">
+                <nav aria-label="Page navigation" class="text-center">
+                    <ul class="pagination text-center d-flex justify-content-center">
+                        {% show_pages %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block extra_css %}
+<style>
+.endless_page_current, .endless_page_link {
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background: #42495b;
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 40px;
+    margin-left: -2px;
+    line-height: 38px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.endless_page_current {
+    background: #04d2c8;
+    border-color: #04d2c8;
+}
+</style>
+{% endblock extra_css %}

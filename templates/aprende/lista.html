@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load el_pagination_tags %}
+
+{% block content %}
+<section class="section breadcrumb-section">
+    <div class="container">
+        <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Aprende</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery-->
+<section class="section-md bg-transparent text-center aprende">
+    <div class="container">
+        {% comment %} <h3>Titilo de aprende</h3> {% endcomment %}
+
+        <div class="row justify-content-center" data-lightgallery>
+            {% paginate 9 objects_list %}
+            {% for obj in objects_list %}
+            <div class="col-6 col-xs-5 col-md-4">
+                <!-- Thumbnail gallery-->
+                <div class="person person-boxed mb-4 ">
+                    <div class="person-media">
+                        {% thumbnail obj.imagen "600x400" crop="center" as im %}
+                        <img class="person-img" src="{{im.url}}" alt="" />
+                        {% empty %}
+                        <img class="person-img" src="http://placehold.it/600x400" alt=""/>
+                        {% endthumbnail %}
+                    </div>
+                    <div class="person-body">
+                        <div class="person-title h6"><a href="{% url 'detalle-curso' obj.slug %}">{{obj.titulo}}</a></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+        <div class="row">
+            <div class="container">
+                <nav aria-label="Page navigation" class="text-center">
+                    <ul class="pagination text-center d-flex justify-content-center">
+                        {% show_pages %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block extra_css %}
+<style>
+.endless_page_current, .endless_page_link {
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background: #42495b;
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 40px;
+    margin-left: -2px;
+    line-height: 38px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.endless_page_current {
+    background: #04d2c8;
+    border-color: #04d2c8;
+}
+</style>
+{% endblock extra_css %}

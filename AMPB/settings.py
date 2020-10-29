@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'haystack',
     'web',
     'lugar',
     'aprende',
@@ -35,6 +36,8 @@ INSTALLED_APPS = [
     'embed_video',
     'nested_inline',
     'rest_framework',
+    'el_pagination',
+    'location_field.apps.DefaultConfig',
 ]
 
 SITE_ID = 1
@@ -118,7 +121,6 @@ STATICFILES_DIRS = (
 
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
-
 CKEDITOR_CONFIGS = {
     'default': {
         'extraPlugins': ','.join([
@@ -162,6 +164,7 @@ CKEDITOR_CONFIGS = {
     },
 
 }
+CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 USE_DJANGO_JQUERY = True
 
@@ -174,4 +177,24 @@ REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     )
+}
+
+FILE_UPLOAD_PERMISSIONS = 0o644
+
+LOCATION_FIELD = {
+    'map.provider': 'openstreetmap',
+    'search.provider': 'nominatim',
+}
+
+HAYSTACK_SEARCH_RESULTS_PER_PAGE = 12
+
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+WHOOSH_INDEX = BASE_DIR / 'whoosh/'
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': WHOOSH_INDEX,
+    },
 }

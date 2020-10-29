@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load leaflet_tags %}
+
+{% block extra_css %}
+{% leaflet_js %}
+{% leaflet_css %}
+<style>
+    #map { height: 250px; }
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<section class="section breadcrumb-section">
+    <div class="container">
+        <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="{% url 'lista-eventos' %}">Eventos</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Evento</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Team member-->
+<section class="section-md bg-transparent">
+    <div class="container">
+        <h3>
+            {{object.titulo}}
+        </h3>
+        <div class="row row-30">
+            <div class="col-md-6 col-xl-8 d-flex">
+                {% thumbnail object.foto "600x400" crop="center" as im %}
+                <img src="{{im.url}}" alt="" width="100%" />
+                {% endthumbnail %}
+            </div>
+            <div class="col-md-6 col-xl-4">
+                <div class="box box-info">
+                    <div class="box-title h5">{{object.lugar}}</div>
+                    <div class="box-list">
+                        <div class="box-list-item">
+                            <div class="box-list-term">Inicio:</div>
+                            <div class="box-list-desc">
+                                {{object.inicio|date:'d M Y'}} <br>
+                                {{object.hora_inicio|time:'h:i a'}}
+                            </div>
+                        </div>
+                        <div class="box-list-item">
+                            <div class="box-list-term">Final:</div>
+                            <div class="box-list-desc">
+                                {% if object.fin %}{{object.fin|date:'d M Y'}} <br>{% endif %}
+                                {{object.hora_fin|time:'h:i a'}}
+                            </div>
+                        </div>
+                        
+                        {% leaflet_map "map" %}
+                        {% comment %} <div class="box-list-item">
+                            {% leaflet_map "map" %}
+                        </div> {% endcomment %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-12">
+                {{object.descripcion|safe}}
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+    var map = L.map('map').setView([{{object.location}}], 12);
+    mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+    L.tileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; ' + mapLink + ' Contributors',
+        maxZoom: 18,
+        }).addTo(map);
+    var marker = L.marker([{{object.location}}]).addTo(map);
+</script>
+
+{% endblock extra_js %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block content %}
+<section class="section breadcrumb-section">
+    <div class="container">
+        <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="{% url 'lista-galerias' %}">Galeria de imágenes</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Galería</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery-->
+<section class="section-md bg-transparent text-center">
+    <div class="container">
+        <h2>{{object.titulo}}</h2>
+        <div class="row no-gutters justify-content-center" data-lightgallery>
+            {% for obj in object.imagenes_set.all %}
+            <div class="col-6 col-xs-5 col-md-4">
+                <!-- Thumbnail gallery-->
+                <div class="thumbnail thumbnail-gallery">
+                    {% thumbnail obj.foto "600x400" crop="center" as im %}
+                    <a class="thumbnail-media lightgallery-item" href="{{im.url}}">
+                        <img class="thumbnail-img" src="{{im.url}}" alt=""/>
+                        <div class="thumbnail-media-caption">
+                            <div class="thumbnail-media-icon custom-font-maximize"></div>                                   
+                        </div>
+                    </a>
+                    {% endthumbnail %}
+                    
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+{% endblock content %}
