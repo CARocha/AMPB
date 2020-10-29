@@ -129,7 +129,7 @@
 	font-weight: 700;
 	text-transform: capitalize;
 	color: #fff;
-	background: #04d2c8;
+	background: #4F002B;
 	transition: all 0.2s ease-in-out;
 	padding: 0.8125rem 1.875rem;
 	font-size: 0.875rem;
@@ -140,7 +140,7 @@
 .btn:hover, .btn.hover, .btn:active, .btn.active {
 	text-decoration: none;
 	color: #fff;
-	background: #03a098;
+	background:  #ed1c24;
 }
 
 .btn:focus, .btn.focus {
@@ -235,7 +235,7 @@
 }
 
 .context-dark .btn-outline:hover {
-	color: #04d2c8;
+	color: #4F002B;
 	background-color: #fff;
 }
 

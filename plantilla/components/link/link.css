@@ -1,3 +1,15 @@
 /**
  * Link
- */.link {	position: relative;	display: inline-block;}.link-inherit {	color: inherit;}.link-inherit:hover {	color: #04d2c8;}
+ */
+.link {
+	position: relative;
+	display: inline-block;
+}
+
+.link-inherit {
+	color: inherit;
+}
+
+.link-inherit:hover {
+	color: #4f002b;
+}
