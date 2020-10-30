@@ -126,7 +126,7 @@ sup {
 }
 
 a {
-	color: #04d2c8;
+	color: #4F002B;
 	text-decoration: none;
 	background-color: transparent;
 }
@@ -408,7 +408,7 @@ small,
 mark,
 .mark {
 	padding: 0.2em 0.2em;
-	background-color: #04d2c8;
+	background-color: #4F002B;
 }
 
 .list-unstyled {
@@ -631,7 +631,7 @@ mark,
 }
 
 .text-primary {
-	color: #04d2c8 !important;
+	color: #4F002B !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -639,7 +639,7 @@ a.text-primary:hover, a.text-primary:focus {
 }
 
 .text-secondary {
-	color: #ff9900 !important;
+	color:  #f7941d !important;
 }
 
 a.text-secondary:hover, a.text-secondary:focus {
@@ -4482,11 +4482,11 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .border-primary {
-	border-color: #04d2c8 !important;
+	border-color: #4F002B !important;
 }
 
 .border-secondary {
-	border-color: #ff9900 !important;
+	border-color:  #f7941d !important;
 }
 
 .border-success {
@@ -4811,7 +4811,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a {
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, .h1 a:hover, .h2 a:hover, .h3 a:hover, .h4 a:hover, .h5 a:hover, .h6 a:hover {
-	color: #04d2c8;
+	color: #4F002B;
 }
 
 h1, .h1 {
@@ -5200,17 +5200,17 @@ html.components-ready .page {
 
 /** @section Backgrounds*/
 .bg-primary {
-	background-color: #04d2c8;
+	background-color: #4F002B;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-	background-color: #03a098;
+	background-color:  #ed1c24;
 }
 
 .bg-secondary {
-	background-color: #ff9900;
+	background-color:  #f7941d;
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,

@@ -19,10 +19,10 @@
   <body>
       <style>
           
-          .eventos .post-img{
+        .eventos .post-img{
               height: 250px;
           }
-          h1.prueba {
+        div.sombra {
             background: rgb(0, 0, 0, 0.4);
             padding: 20px;
         }
@@ -30,6 +30,50 @@
         .top-bar{
             background: #81c784;
             height: 50px;
+        }
+        .big{
+            font-size: 1.5rem;
+        }
+        .topbar{
+            padding: 10px ;
+            position: absolute;
+            top: 0;
+            right: 110px;
+            z-index: 99;
+        }
+        .topbar .btn-primary{
+            padding: 0.5125rem 1.5375rem;
+            font-size: 0.875rem;
+        }
+        .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap{
+            top: 20px;
+        }
+        .prueba .btn-primary{
+            padding: 0.5125rem 1.5375rem;
+            font-size: 0.875rem;
+        }
+        .navbar-navigation-root-item .btn-primary{
+            padding: 0.5125rem 1.5375rem;
+            font-size: 0.875rem;
+        }
+        .prueba{
+            position: relative;
+            top: -17px;
+            right: -620px;
+            {% comment %} display: none; {% endcomment %}
+        }
+        .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap .rd-navbar-fullwidth{
+            height: 85px;
+        }
+        .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap .rd-navbar-fullwidth.rd-navbar--is-stuck{
+            height:120px;
+        }
+        .rd-navbar-fullwidth.rd-navbar--is-stuck .prueba{
+            top: 0;
+        }
+        .rd-navbar-fullwidth.rd-navbar--is-stuck .prueba .btn{
+            background: #fff;
+            color:#4F002B;
         }
       </style>
 
@@ -42,11 +86,15 @@
 					<div class="navbar-cell">
 						<div class="navbar-panel">
 							<button class="navbar-switch novi-icon custom-font-menu" data-multi-switch='{"targets":".rd-navbar","scope":".rd-navbar","isolate":"[data-multi-switch]"}'></button>
-							<div class="navbar-logo"><a class="navbar-logo-link" href="/"><img class="navbar-logo-inverse" src="/static/img/logo/ampb-blanco.png" alt="Teachzy" width="198" height="50"/></a></div>
+							<div class="navbar-logo"><a class="navbar-logo-link" href="/"><img class="navbar-logo-inverse" src="/static/img/logo/logo-blanco.png" alt="Teachzy" width="140" /></a></div>
 						</div>
 					</div>
 					<div class="navbar-spacer"></div>
-					<div class="navbar-cell navbar-sidebar">
+
+                    <div class="navbar-cell navbar-sidebar">
+                        <ul class="prueba">
+                            <li class="navbar-navigation-root-item"><a class="btn btn-primary" href="contact-us.html">Contáctenos</a>
+                        </ul>
 						<ul class="navbar-navigation rd-navbar-nav">
 
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Quiénes somos?</a>
@@ -54,30 +102,33 @@
 										<li class="navbar-navigation-back">
 										<button class="navbar-navigation-back-btn">Atras</button>
 										</li>
-										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="gallery.html">Escuelas</a>
+										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="#">Subsecion1</a>
 										</li>
 									</ul>
                                 </li>
                                
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'lista-noticias' %}">Noticias</a>
-                                </li>
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Multimedia</a>
-									<ul class="navbar-navigation-dropdown rd-navbar-dropdown">
+                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Noticias</a>
+                                    <ul class="navbar-navigation-dropdown rd-navbar-dropdown">
 										<li class="navbar-navigation-back">
 										<button class="navbar-navigation-back-btn">Atras</button>
 										</li>
-										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'lista-biblioteca' %}">Biblioteca</a>
+										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'lista-noticias' %}">Acontecimientos</a>
 										</li>
-										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'lista-galerias' %}">Galería</a>
+										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'lista-eventos' %}">Eventos</a>
 									</ul>
+                                </li>
+                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'lista-biblioteca' %}">Biblioteca</a>
+									
                                 </li>
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'lista-cursos' %}">Aprende</a>
                                 </li>
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="contact-us.html">Monitoreo</a>
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'lista-eventos' %}">Eventos</a>
-								</li>
-								<li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="contact-us.html">Contáctenos</a>
+                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Monitoreo</a>
                                 </li>
+                                {% comment %} <li class="navbar-navigation-root-item"><a class="btn btn-primary" href="#">Contáctenos</a>
+								</li> {% endcomment %}
+                                <!--<li class="navbar-navigation-root-item"><a class="btn btn-primary" href="contact-us.html">Monitoreo</a>
+								</li>-->
+								
                                 
 								</li>
 						</ul>
@@ -113,14 +164,14 @@
                 <div class="row row-30">
                     <div class="col-6 col-md-4 main-logo">
                         <h5 class="footer-title">Iniciativa de</h5>
-                        <img src="/static/logos/logo-ampb2.png" alt="">
+                        <img src="/static/img/logo/logo2.png" alt="">
                     </div>
                     
                     
                     <div class="col-6 col-md-4 main-logo ">
                         <h5 class="footer-title">Programa  de</h5>
                         <div class="">
-                            <img src="/static/logos/logo-alianza.png" alt="" height="90px">
+                            <img src="/static/img/logo/logo-alianza.png" alt="" height="90px">
                             
                         </div>
                         
