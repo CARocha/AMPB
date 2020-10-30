@@ -84,7 +84,7 @@ media/
 *.styl
 *.scss
 *.pug
-/whoosh
+whoosh/
 
 #temporales
 plantilla/img/
