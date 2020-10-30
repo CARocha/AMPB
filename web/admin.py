@@ -15,7 +15,7 @@ admin.site.register(Banner)
 admin.site.register(Actualidad)
 admin.site.register(Evento)
 admin.site.register(Liderazgo)
-admin.site.register(Galeria,GaleriaAdmin)
+#admin.site.register(Galeria,GaleriaAdmin)
 admin.site.register(Biblioteca)
 
 #flatpages
