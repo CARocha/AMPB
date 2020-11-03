@@ -7,7 +7,7 @@ def index(request,template='index.html'):
 	banner = Banner.objects.order_by('-id')[:3]
 	actualidad = Actualidad.objects.order_by('-id')[:6]
 	hoy = datetime.date.today()
-	eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:1]
+	eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	liderazgos = Liderazgo.objects.order_by('-id')[:4]
 	galerias = Galeria.objects.order_by('-id')[:6]
 	return render(request, template, locals())

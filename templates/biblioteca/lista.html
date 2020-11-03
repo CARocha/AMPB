@@ -3,6 +3,16 @@
 {% load el_pagination_tags %}
 
 {% block content %}
+<style>
+.person-boxed .person-title a{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+</style>
+
 <section class="section breadcrumb-section">
     <div class="container">
         <!-- Breadcrumb-->
@@ -40,7 +50,7 @@
                         {% endthumbnail %}
                     </div>
                     <div class="person-body">
-                        <div class="person-title h6"><a href="team-member.html">Guía Mantenimiento de los Sistemas de Agua</a></div>
+                        <div class="person-title h6"><a href="#">{{obj.nombre}}</a></div>
                     </div>
                 </div>
             </div>

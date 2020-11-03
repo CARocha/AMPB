@@ -22,14 +22,9 @@
         .eventos .post-img{
               height: 250px;
           }
-        div.sombra {
+        .sombra {
             background: rgb(0, 0, 0, 0.4);
             padding: 20px;
-        }
-        
-        .top-bar{
-            background: #81c784;
-            height: 50px;
         }
         .big{
             font-size: 1.5rem;
@@ -41,41 +36,62 @@
             right: 110px;
             z-index: 99;
         }
-        .topbar .btn-primary{
-            padding: 0.5125rem 1.5375rem;
-            font-size: 0.875rem;
+        .rd-navbar-fullwidth{
+            z-index: 9999;
         }
         .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap{
             top: 20px;
         }
-        .prueba .btn-primary{
-            padding: 0.5125rem 1.5375rem;
-            font-size: 0.875rem;
-        }
+
         .navbar-navigation-root-item .btn-primary{
             padding: 0.5125rem 1.5375rem;
             font-size: 0.875rem;
         }
         .prueba{
             position: relative;
-            top: -17px;
+            top: 5px;
             right: -620px;
             {% comment %} display: none; {% endcomment %}
         }
+        .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap{
+            top : 0;
+        }
         .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap .rd-navbar-fullwidth{
-            height: 85px;
+            height: 90px;
         }
         .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap .rd-navbar-fullwidth.rd-navbar--is-stuck{
+            height:110px;
+        }
+        .rd-navbar-fullwidth.rd-navbar--is-stuck{
             height:120px;
         }
-        .rd-navbar-fullwidth.rd-navbar--is-stuck .prueba{
-            top: 0;
-        }
+
         .rd-navbar-fullwidth.rd-navbar--is-stuck .prueba .btn{
             background: #fff;
             color:#4F002B;
             margin-top: 5px;
         }
+        {% if request.path != '/' %}
+        .rd-navbar-fullwidth .prueba .btn{
+            background-color: white;
+            color:#4F002B;
+        }
+        {% endif %}
+        @media (min-width: 1600px){
+
+            .rd-navbar-fullwidth {
+                height: 100px;
+            }
+            
+        }
+        @media (min-width: 1600px){
+            .rd-navbar-fullwidth .navbar-navigation {
+                margin: 40px 0px 0 -35px;
+            }
+
+        }
+
+
       </style>
 
     <div class="page">
@@ -87,7 +103,7 @@
 					<div class="navbar-cell">
 						<div class="navbar-panel">
 							<button class="navbar-switch novi-icon custom-font-menu" data-multi-switch='{"targets":".rd-navbar","scope":".rd-navbar","isolate":"[data-multi-switch]"}'></button>
-							<div class="navbar-logo"><a class="navbar-logo-link" href="/"><img class="navbar-logo-inverse" src="/static/img/logo/logo-blanco.png" alt="Teachzy" width="140" /></a></div>
+							<div class="navbar-logo"><a class="navbar-logo-link" href="/"><img class="navbar-logo-inverse" src="/static/img/logo/logo-blanco.png" alt="Teachzy" width="160" /></a></div>
 						</div>
 					</div>
 					<div class="navbar-spacer"></div>
@@ -99,13 +115,13 @@
 						<ul class="navbar-navigation rd-navbar-nav">
 
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Quiénes somos?</a>
-									<ul class="navbar-navigation-dropdown rd-navbar-dropdown">
+									{% comment %} <ul class="navbar-navigation-dropdown rd-navbar-dropdown">
 										<li class="navbar-navigation-back">
 										<button class="navbar-navigation-back-btn">Atras</button>
 										</li>
 										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="#">Subsecion1</a>
 										</li>
-									</ul>
+									</ul> {% endcomment %}
                                 </li>
                                
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Noticias</a>

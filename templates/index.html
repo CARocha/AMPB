@@ -20,7 +20,7 @@
 	<div class="swiper-slide section-md" style="{% thumbnail obj.foto "1920x998" crop="center" as im %}background-image: url({{im.url}}){% endthumbnail %}">
 		<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-9 col-lg-8">
+			<div class="col-md-9 col-lg-9">
 			<h1 class="sombra">{{obj.titulo}}</h1>
             <p class="big">{{obj.texto}}</p>
             <a class="btn btn-primary" href="{{obj.link}}">Leer más</a>
@@ -209,7 +209,7 @@
             {% endfor %}
 			
         </div>
-        <div class="mt-4">
+        <div class="mt-5">
             <a class="btn btn-primary" href="{% url 'lista-noticias' %}">Todas las noticias</a>
         </div>
 	</div>
@@ -263,7 +263,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                <div class="mt-4">
+                <div class="mt-5">
                     <a class="btn btn-primary" href="/eventos/">Todos los eventos</a>
                 </div>
             </div>                               

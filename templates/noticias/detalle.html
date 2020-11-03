@@ -22,7 +22,7 @@
         <div class="post">
             <div class="post-media">
                 {% if object.foto %}
-                    {% thumbnail object.foto "1170x500" crop="center" as im %}
+                    {% thumbnail object.foto "1000x670" crop="center" as im %}
                         <img class="post-img" src="{{im.url}}" alt="" />
                     {% endthumbnail %}
                 {% elif object.video %}
