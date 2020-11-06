@@ -60,9 +60,9 @@ class Actualidad(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = slugify(self.titulo)
 		return super(Actualidad, self).save(*args, **kwargs)
-	
+
 	class Meta:
-		verbose_name_plural = "Actualidad"
+		verbose_name_plural = "Acontecimientos"
 
 	def __str__(self):
 		return self.titulo

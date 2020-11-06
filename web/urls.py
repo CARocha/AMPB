@@ -12,5 +12,6 @@ urlpatterns = [
     path('eventos/por-pais/<slug>', filtro_eventos, name='filtro-eventos'),
     path('eventos/<slug>', detalle_evento, name='detalle-evento'),
     path('biblioteca/', lista_biblioteca, name='lista-biblioteca'),
+    path('quienes-somos/', quienes_somos, name='quienes-somos'),
     # path('biblioteca/por-pais/<slug>', filtro_biblioteca, name='filtro-biblioteca'),
 ]

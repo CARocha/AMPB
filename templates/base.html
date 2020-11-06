@@ -18,7 +18,7 @@
   </head>
   <body>
       <style>
-          
+
         .eventos .post-img{
               height: 250px;
           }
@@ -82,7 +82,7 @@
             .rd-navbar-fullwidth {
                 height: 100px;
             }
-            
+
         }
         @media (min-width: 1600px){
             .rd-navbar-fullwidth .navbar-navigation {
@@ -96,7 +96,7 @@
 
     <div class="page">
       <!--RD Navbar-->
-        
+
       	<header class="section {% if request.path == '/' %} rd-navbar-absolute-wrap{% else %}rd-navbar-wrap{% endif %}" data-preset='{"title":"Navbar Default","category":"header","reload":true,"id":"navbar-default"}'>
 			<nav class="rd-navbar" data-rd-navbar='{"responsive":{"1200":{"stickUpOffset":"50px"}}}'>
 				<div class="navbar-container">
@@ -114,7 +114,7 @@
                         </ul>
 						<ul class="navbar-navigation rd-navbar-nav">
 
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Quiénes somos?</a>
+                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'quienes-somos' %}">Quiénes somos?</a>
 									{% comment %} <ul class="navbar-navigation-dropdown rd-navbar-dropdown">
 										<li class="navbar-navigation-back">
 										<button class="navbar-navigation-back-btn">Atras</button>
@@ -123,7 +123,7 @@
 										</li>
 									</ul> {% endcomment %}
                                 </li>
-                               
+
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Noticias</a>
                                     <ul class="navbar-navigation-dropdown rd-navbar-dropdown">
 										<li class="navbar-navigation-back">
@@ -135,7 +135,7 @@
 									</ul>
                                 </li>
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'lista-biblioteca' %}">Biblioteca</a>
-									
+
                                 </li>
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'lista-cursos' %}">Aprende</a>
                                 </li>
@@ -145,13 +145,13 @@
 								</li> {% endcomment %}
                                 <!--<li class="navbar-navigation-root-item"><a class="btn btn-primary" href="contact-us.html">Monitoreo</a>
 								</li>-->
-								
-                                
+
+
 								</li>
 						</ul>
 					</div>
 					<div class="navbar-spacer"></div>
-					<div class="navbar-cell">
+					<!-- <div class="navbar-cell">
 						<div class="navbar-subpanel">
 							<div class="navbar-subpanel-item">
 							<div class="navbar-search">
@@ -167,7 +167,7 @@
 							<button class="navbar-button search-switch custom-font-search" data-multi-switch='{"targets":".rd-navbar","scope":".rd-navbar","class":"navbar-search-active","isolate":"[data-multi-switch]:not(.search-switch)"}'></button>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</nav>
       	</header>
@@ -183,17 +183,17 @@
                         <h5 class="footer-title">Iniciativa de</h5>
                         <img src="/static/img/logo/logo2.png" alt="">
                     </div>
-                    
-                    
+
+
                     <div class="col-6 col-md-4 main-logo ">
                         <h5 class="footer-title">Programa  de</h5>
                         <div class="">
                             <img src="/static/img/logo/logo-alianza.png" alt="" height="90px">
-                            
+
                         </div>
-                        
+
                     </div>
-                    
+
                     <div class="col-xs-6 col-md-4">
                         <h5 class="footer-title">Mantener contacto</h5>
                         <ul class="list list-icons">
@@ -203,7 +203,7 @@
                             </a>
                         </li>
                         <br>
-                        
+
                         <li class="list-item">
                             <div class="list-icon custom-font-email"></div><a class="link link-inherit" href="mailto:alianza@alianzamesoamericana.org">
                                 alianza@alianzamesoamericana.org
@@ -211,7 +211,7 @@
                             </a>
                         </li>
                         <li class="list-item">
-                            <div class="list-icon custom-font-phone"></div><span><span>Llámanos : 
+                            <div class="list-icon custom-font-phone"></div><span><span>Llámanos :
 
                             </span>
                                 <a class="link link-inherit" href="tel:#">+505 2293 6339</a>
@@ -239,7 +239,7 @@
                         </div>
                     </div>
                 </div>
-                    
+
             </div>
             </div>
         </footer>

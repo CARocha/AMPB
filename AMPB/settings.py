@@ -21,12 +21,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'django.contrib.sites',
-    'django.contrib.flatpages',
+    # 'django.contrib.sites',
+    # 'django.contrib.flatpages',
     'haystack',
     'web',
     'lugar',
     'aprende',
+    'configuracion',
     #
     'ckeditor',
     'ckeditor_uploader',
@@ -38,9 +39,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'el_pagination',
     'location_field.apps.DefaultConfig',
+    'solo',
 ]
 
-SITE_ID = 1
+# SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,7 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    # 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'AMPB.urls'
@@ -131,7 +133,7 @@ CKEDITOR_CONFIGS = {
             'autolink',
             'embed',
             'autoembed',
-            
+
             'autogrow',
             # 'devtools',
             'widget',

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import *
 import datetime
+from configuracion.models import *
 
 # Create your views here.
 def index(request,template='index.html'):
@@ -63,3 +64,8 @@ def lista_biblioteca(request,template='biblioteca/lista.html'):
 # 	objects_list = Biblioteca.objects.filter(escuela__pais__slug = slug).order_by('-id')
 # 	paises = Biblioteca.objects.values_list('escuela__pais__slug','escuela__pais__nombre').distinct('escuela__pais')
 # 	return render(request, template, locals())
+
+def quienes_somos(request,template='quienes_somos.html'):
+	object_list = QuienesSomos.objects.order_by('-id')
+	
+	return render(request, template, locals())
