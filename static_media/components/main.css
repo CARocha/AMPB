@@ -129,9 +129,7 @@ p {
   line-height: 1.6rem;
   font-size: 1.1rem;
 }
-.noticias .post-img {
-  height: 244px;
-}
+
 .text-limit {
   overflow: hidden;
   text-overflow: ellipsis;

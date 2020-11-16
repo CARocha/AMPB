@@ -17,7 +17,7 @@
     {% block extra_css %}{% endblock extra_css %}
   </head>
   <body>
-      <style>
+    <style>
 
         .eventos .post-img{
               height: 250px;
@@ -29,13 +29,7 @@
         .big{
             font-size: 1.5rem;
         }
-        .topbar{
-            padding: 10px ;
-            position: absolute;
-            top: 0;
-            right: 110px;
-            z-index: 99;
-        }
+        
         .rd-navbar-fullwidth{
             z-index: 9999;
         }
@@ -47,32 +41,24 @@
             padding: 0.5125rem 1.5375rem;
             font-size: 0.875rem;
         }
-        .prueba{
-            position: relative;
-            top: 5px;
-            right: -620px;
-            {% comment %} display: none; {% endcomment %}
-        }
-        .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap{
-            top : 0;
-        }
-        .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap .rd-navbar-fullwidth{
-            height: 90px;
-        }
+    
+        
+
         .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap .rd-navbar-fullwidth.rd-navbar--is-stuck{
-            height:110px;
+            height:90px;
         }
         .rd-navbar-fullwidth.rd-navbar--is-stuck{
-            height:120px;
+            height:100px;
         }
 
-        .rd-navbar-fullwidth.rd-navbar--is-stuck .prueba .btn{
+        
+
+        .rd-navbar-fullwidth.rd-navbar--is-stuck .btn{
             background: #fff;
             color:#4F002B;
-            margin-top: 5px;
         }
         {% if request.path != '/' %}
-        .rd-navbar-fullwidth .prueba .btn{
+        .rd-navbar-fullwidth .btn-primary{
             background-color: white;
             color:#4F002B;
         }
@@ -92,7 +78,7 @@
         }
 
 
-      </style>
+    </style>
 
     <div class="page">
       <!--RD Navbar-->
@@ -109,9 +95,9 @@
 					<div class="navbar-spacer"></div>
 
                     <div class="navbar-cell navbar-sidebar">
-                        <ul class="prueba">
+                        <!-- <ul class="prueba">
                             <li class="navbar-navigation-root-item"><a class="btn btn-primary" href="contact-us.html">Contáctenos</a>
-                        </ul>
+                        </ul> -->
 						<ul class="navbar-navigation rd-navbar-nav">
 
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'quienes-somos' %}">Quiénes somos?</a>
@@ -141,10 +127,9 @@
                                 </li>
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Monitoreo</a>
                                 </li>
-                                {% comment %} <li class="navbar-navigation-root-item"><a class="btn btn-primary" href="#">Contáctenos</a>
-								</li> {% endcomment %}
-                                <!--<li class="navbar-navigation-root-item"><a class="btn btn-primary" href="contact-us.html">Monitoreo</a>
-								</li>-->
+                                <li class="navbar-navigation-root-item"><a class="btn btn-primary" href="/contactenos">Contáctenos</a>
+								</li> 
+                               
 
 
 								</li>
@@ -214,7 +199,7 @@
                             <div class="list-icon custom-font-phone"></div><span><span>Llámanos :
 
                             </span>
-                                <a class="link link-inherit" href="tel:#">+505 2293 6339</a>
+                                <a class="link link-inherit" href="tel:50522936339">+505 2293 6339</a>
                             </span>
                         </li>
                         </ul>

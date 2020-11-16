@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block content %}
+<style>
+    #global-error{
+        display: none;
+    }
+</style>
+
+<section class="section breadcrumb-section">
+    <div class="container">
+      <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Contáctenos</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section-md bg-transparent">
+    <div class="container">
+        <div class="text-block text-block-1 text-center">
+            <h5 class="text-primary">Ponerse en contacto</h5>
+            <h2>Escríbenos</h2>
+        </div>
+        <div class="row row-30">
+            <div class="col-md-8">
+                <form class="rd-form rd-mailform" >
+                    <div class="row row-20">
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="name" placeholder="Nombre*" data-constraints="@Required">
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="email" name="email" placeholder="Correo*" data-constraints="@Email @Required">
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="phone" placeholder="Teléfono*" data-constraints="@Numeric @Required">
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="subject" placeholder="Asunto">
+                        </div>
+                        </div>
+                        <div class="col-12">
+                        <div class="form-group">
+                            <textarea class="form-control" name="textarea" placeholder="Mensaje"></textarea>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="rd-form-btn text-left">
+                        <button class="btn btn-primary" type="submit">Enviar Correo</button>
+                    </div>
+                </form>
+               
+            </div>
+            <div class="col-md-4">
+                <h5 class="text-primary">Antes de contactarnos</h5>
+                <p>Algun tipo de informacion importante como decir de donde son</p>
+                <h5 class="text-primary">Información del contacto</h5>
+                <ul class="list list-icons">
+                <li class="list-item">
+                    <div class="list-icon custom-font-pin"></div><a class="link link-inherit" href="#">
+                        Reparto El Mirador Santo Domingo, del tanque de agua INAA 1C Norte, 1C Oeste, 19 vrs. Sur. Managua, Nicaragua.
+                    </a>
+                </li>
+                <li class="list-item">
+                    <div class="list-icon custom-font-email"></div><a class="link link-inherit"href="mailto:alianza@alianzamesoamericana.org">
+                        alianza@alianzamesoamericana.org
+                    </a>
+                </li>
+                <li class="list-item">
+                    <div class="list-icon custom-font-phone"></div><span><span>Llámanos : </span><a class="link link-inherit" href="tel:50522936339">+505 2293 6339</a></span>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+
+
+{% block extra_js %}
+<script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
+<script>
+    $('#global-error').hide();
+</script>
+{% endblock extra_js %}

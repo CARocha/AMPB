@@ -8,30 +8,44 @@
 {% leaflet_js %}
 {% leaflet_css %}
 <style>
-    #mapid { height: 400px; }
+    
+    #mapid, .map-container{height: 100%;}
+    .pr-xxl-5{padding-left:80px;}
+    .map-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    }
+    
 </style>
 {% endblock extra_css %}
 
 {% block content %}
+
 <section class="swiper-container swiper-1 context-dark text-center" data-swiper>
-	<!-- Additional required wrapper-->
-	<div class="swiper-wrapper">
-	<!-- Slides-->
-	{% for obj in banner %}
-	<div class="swiper-slide section-md" style="{% thumbnail obj.foto "1920x998" crop="center" as im %}background-image: url({{im.url}}){% endthumbnail %}">
-		<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-9 col-lg-9">
-			<h1 class="sombra">{{obj.titulo}}</h1>
-            <p class="big">{{obj.texto}}</p>
-            <a class="btn btn-primary" href="{{obj.link}}">Leer más</a>
-			</div>
-		</div>
-		</div>
-	</div>
-    {% endfor %}
-	<!-- Pagination-->
-	<div class="swiper-pagination"></div>
+    <!-- Additional required wrapper-->
+    <div class="swiper-wrapper">
+    <!-- Slides-->
+    
+        {% for obj in banner %}
+            <div class="swiper-slide section-md" {% thumbnail obj.foto "1920x998" crop="center" as im %} style="background-image: url({{im.url}})"{% endthumbnail %}>
+                <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-9 col-lg-9">
+                    <div class="sombra">
+                        <h1 class=>Experiencias de Liderazgo</h1>
+                        <p class="big">{{obj.texto}}</p>
+                    </div>
+                    <a class="btn btn-primary" href="{{obj.link}}">Leer más</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+    <!-- Pagination-->
+    <div class="swiper-pagination"></div>
 </section>
 <!--Introduccion-->
 <section class="section-md bg-transparent text-center">
@@ -89,7 +103,7 @@
 </section>
 
 <!-- Monitoreo-->
-<section class="section-sm bg-transparent text-center">
+{% comment %} <section class="section-sm bg-transparent text-center map-container">
     <div class="container">
         <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
             <h3>Presencia Territorial</h3>
@@ -169,6 +183,85 @@
         </div>
     </div>
     </div>
+</section> {% endcomment %}
+
+<section class="bg-primary bg-image-wrap context-dark text-center text-md-left ">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="section-lg col-lg-7 " id="prueid">
+                <div class="pr-xxl-5">
+                    <h2>Su educación, el futuro</h2>
+                    <p class="big">Así avanzamos en la construcción del nuevo liderazgo</p>
+                    <div class="row row-30 row-lg-55">
+                    <div class="col-6 col-sm-3 col-md-6">
+                            <!-- Blurb side-->
+                            <article class="blurb blurb-side">
+                                <div class="blurb-item">
+                                <!-- <div class="icon blurb-icon custom-font-graduated"></div> -->
+                                <img src="/static/img/editados/Estudiantes op.1.png" alt="" width="80px">
+                                </div>
+                                <div class="blurb-body">
+                                <div class="blurb-counter-value h2"><span data-counter="">697</span>
+                                </div>
+                                <div class="blurb-title h4">Estudiantes </div>
+                                </div>
+                            </article>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-6">
+                            <!-- Blurb side-->
+                            <article class="blurb blurb-side">
+                                <div class="blurb-item">
+                                <!-- <div class="icon blurb-icon custom-font-male-teacher"></div> -->
+                                <img src="/static/img/editados/Docentes op.1.png" alt="" width="80px">
+                                </div>
+                                <div class="blurb-body">
+                                <div class="blurb-counter-value h2"><span data-counter="">50</span>
+                                </div>
+                                <div class="blurb-title h4">Docentes</div>
+                                </div>
+                            </article>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-6">
+                            <!-- Blurb side-->
+                            <article class="blurb blurb-side">
+                                <div class="blurb-item">
+                                <!-- <div class="icon blurb-icon custom-font-student-at-desk"></div> -->
+                                <img src="/static/img/editados/Mujeres jóvenes op.1.png" alt="" width="80px">
+                                </div>
+                                <div class="blurb-body">
+                                <div class="blurb-counter-value h2"><span data-counter="">260</span>
+                                </div>
+                                <div class="blurb-title h4">Mujeres jóvenes</div>
+                                </div>
+                            </article>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-6">
+                            <!-- Blurb side-->
+                            <article class="blurb blurb-side">
+                                <div class="blurb-item">
+                                <!-- <div class="icon blurb-icon custom-font-university"></div> -->
+                                <img src="/static/img/editados/iniciativas territoriales op.3.png" alt="" width="130px">
+                                </div>
+                                <div class="blurb-body">
+                                <div class="blurb-counter-value h2"><span data-counter="">10</span><span class="counter-postfix">+</span>
+                                </div>
+                                <div class="blurb-title h4">Iniciativas en territorio</div>
+                                </div>
+                            </article>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 p-0">
+                <div class="map-container" >
+                    {% leaflet_map "mapid" %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
 </section>
 
 <!--Noticias-->
@@ -178,7 +271,7 @@
 			<h3>Actualidad</h3>
 			<h5 class="text-primary">Informáte de las últimas acciones de la Escuela Mesoamericana</h5>
 		</div>
-		<div class="owl-carousel owl-content-1 noticias" data-owl="{&quot;dots&quot;:true}" data-loop="false" data-items="1" data-sm-items="2" data-md-items="3" data-lg-items="3">
+		<div class="owl-carousel owl-content-1 noticias" data-owl="{&quot;dots&quot;:true}" data-loop="false" data-items="1" data-sm-items="2" data-md-items="2" data-lg-items="3">
 			{% for obj in actualidad %}
             <!-- Post-->
 			<div class="post post-responsive post-responsive-1">
@@ -226,8 +319,6 @@
 <!-- Post event-->
 <section class="section-md bg-300 text-center eventos">
     <div class="container">
-
-
         <div class="row row-30 justify-content-center">
             <div class="col-xs-8 col-sm-6 col-md-12">
                 <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
@@ -330,7 +421,7 @@
                     <!-- <p class="big">Every week, we organize a variety of events for our students and undergraduates. From webinars to creative events, there are activities that are always worth your attention.</p> -->
                 </div>
                 <div class="post">
-                    {% leaflet_map "mapid" %}
+                    
                 </div>
             </div>
         </div>
@@ -374,7 +465,15 @@
 {% endblock content %}
 
 {% block extra_js %}
+<script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" ></script>
 <script>
+    //alert($("#mapid").innerHeight());
+    
+    //var result = $("#prueid").height();
+
+    //alert(result);
+    //$('#mapid').height(result);
+
     var map = L.map('mapid').setView([12.8654156, -85.2072296], 7);
     mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
     L.tileLayer(

@@ -3,7 +3,7 @@
  */
 .rd-navbar {
 	position: relative;
-	z-index: 14;
+	z-index: 1001;
 	color: #171724;
 }
 

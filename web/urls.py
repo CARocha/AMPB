@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import *
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('noticias/', lista_noticias, name='lista-noticias'),
@@ -14,4 +15,6 @@ urlpatterns = [
     path('biblioteca/', lista_biblioteca, name='lista-biblioteca'),
     path('quienes-somos/', quienes_somos, name='quienes-somos'),
     # path('biblioteca/por-pais/<slug>', filtro_biblioteca, name='filtro-biblioteca'),
+
+    path('contactenos/', TemplateView.as_view(template_name="contactenos/contactenos.html")),
 ]
