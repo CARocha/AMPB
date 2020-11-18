@@ -81,7 +81,7 @@ CACHE
 *.sql
 *.DS_Store
 media/
-*.styl
+#*.styl
 *.scss
 *.pug
 whoosh/

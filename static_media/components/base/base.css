@@ -4955,10 +4955,10 @@ p + h5 {
 	margin-top: 1.2375rem;
 }
 
-* + img,
+/* * + img,
 * + figure {
 	margin-top: 1.875rem;
-}
+} */
 
 * + form {
 	margin-top: 1.875rem;

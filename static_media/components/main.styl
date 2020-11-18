@@ -1,0 +1,515 @@
+// @import "base/basetwo.css"
+// @import "animate/animate.css"
+// @import "blurb/blurb.css"
+// @import "box/box.css"
+// @import "breadcrumb/breadcrumb.css"
+// @import "button/button.css"
+// @import "countdown/countdown.css"
+// @import "counter/counter.css"
+// @import "custom-font/custom-font.css"
+// @import "font-awesome/font-awesome.css"
+// @import "footer/footer.css"
+// @import "grid/grid.css"
+// @import "icon/icon.css"
+// @import "image/image.css"
+// @import "input/input.css"
+// @import "lightgallery/lightgallery.css"
+// @import "link/link.css"
+// @import "list/list.css"
+// @import "logo/logo.css"
+// @import "mdi/mdi.css"
+// @import "multiswitch/multiswitch.css"
+// @import "owl-carousel/owl.carousel.css"
+// @import "person/person.css"
+// @import "post/post.css"
+// @import "post-meta/post-meta.css"
+// @import "preloader/preloader.css"
+// @import "price-box/price-box.css"
+// @import "progress-circle/progress-circle.css"
+// @import "quote/quote.css"
+// @import "rd-form/rd-form.css"
+// @import "rd-navbar/rd-navbar.css"
+// @import "rd-search/rd-search.css"
+// @import "regula/regula.css"
+// @import "rights/rights.css"
+// @import "section/section.css"
+// @import "slick/slick.css"
+// @import "snackbar/snackbar.css"
+// @import "social/social.css"
+// @import "swiper/swiper.css"
+// @import "term-list/term-list.css"
+// @import "text-block/text-block.css"
+// @import "thumbnail/thumbnail.css"
+// @import "to-top/to-top.css"
+// @import "term-list/term-list.css"
+
+
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Colores                                  */
+/* -------------------------------------------------------------------------- */
+
+$amarillo = rgb(253,215,0)
+$verde = rgb(0,121,27)
+$cafe = rgb(157,89,24)
+$base = #04d2c8
+$black_base = #42495b
+$gris = #e9eff4
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Mixins                                   */
+/* -------------------------------------------------------------------------- */
+vendor(prop, args)
+  -webkit-{prop} args
+  -moz-{prop} args
+  -o-{prop} args
+  {prop} args
+
+animation()
+  vendor('animation', arguments)
+
+border-radius()
+  vendor('border-radius', arguments)
+
+border-top-radius() 
+  vendor('border-top-left-radius', arguments)
+  vendor('border-top-right-radius', arguments)
+
+border-top-radius() 
+  vendor('border-bottom-left-radius', arguments)
+  vendor('border-bottom-right-radius', arguments)
+
+linear-gradient(start_color, end_color, start = left top, end = left bottom)
+  mozstart = top if start = left top
+  background start_color
+  background -moz-linear-gradient(mozstart, start_color 0%, end_color 100%)
+  background -webkit-gradient(linear, start, end, color-stop(0%, start_color), color-stop(100%, end_color))
+  -webkit-background-origin padding-box
+
+background-clip()
+  vendor('background-clip', arguments)
+
+box-shadow() 
+  -moz-box-shadow arguments
+  -webkit-box-shadow arguments
+  box-shadow arguments
+
+box(orient, pack, align) 
+  display -webkit-box
+  display -moz-box
+  display box
+  vendor('box-orient', orient)
+  vendor('box-pack', pack)
+  vendor('box-align', align)
+  vendor('box-lines', multiple)
+
+box_flex()
+  vendor('box-flex', arguments)
+
+text-fill-color()
+  vendor('text-fill-color', arguments)
+
+transition()
+  vendor('transition', arguments)
+
+transform()
+  vendor('transform', arguments)
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Fuente                                   */
+/* -------------------------------------------------------------------------- */
+@font-face 
+  font-family: "SourceSansPro"
+  src: url("../font/SourceSansPro.woff2")
+
+p
+    font-family: 'SourceSansPro', sans-serif
+    font-size: 18px
+/* -------------------------------------------------------------------------- */
+/*                                    Menu                                    */
+/* -------------------------------------------------------------------------- */
+.rd-navbar-fullwidth 
+    .navbar-navigation-root-item
+        padding: 0 25px !important
+        
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Social                                   */
+/* -------------------------------------------------------------------------- */
+/* Wrapper */
+.icon-button {
+	background-color: white;
+	border-radius: 3.125rem;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1.5rem;
+	height: 3.125rem;
+	line-height: 3rem;
+	margin: 0 5px;
+	position: relative;
+	text-align: center;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	width: 3.125rem;
+    border 1px solid $base
+}
+
+/* Circle */
+.icon-button span {
+	border-radius: 0;
+	display: block;
+	height: 0;
+	left: 50%;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	width: 0;
+}
+.icon-button:hover span {
+	width: 3.125rem;
+	height: 3.125rem;
+	border-radius: 3.125rem;
+    
+	margin: -1.56rem;
+}
+.twitter span {
+	background-color: #4099ff;
+}
+.facebook span {
+	background-color: #3B5998;
+}
+.instagram span {
+	background-color: #833ab4;
+}
+
+/* Icons */
+.icon-button i {
+	background: none;
+	color: $base
+    
+	height: 3.125rem;
+	left: 0;
+	line-height: 3.125rem;
+	position: absolute;
+	top: 0;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+	     -o-transition: all 0.3s;
+	        transition: all 0.3s;
+	width: 3.125rem;
+	z-index: 10;
+}
+.icon-button .icon-twitter {
+	color: #1da1f2;
+    border-color:  #1da1f2;
+}
+.icon-button .icon-facebook {
+	color: #3b5998;
+    border-color:  #3b5998;
+
+}
+.icon-button .icon-instagram {
+	color: #833ab4;
+    border-color:  #833ab4;
+}
+.icon-button:hover i {
+	color: white;
+    
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Noticias                                  */
+/* -------------------------------------------------------------------------- */
+.post-meta-icon.fa{
+    font-size: 1rem
+}
+
+.post-title.h6{
+    line-height: 1.6rem
+    font-size: 1.1rem
+}
+
+.noticias .post-img{
+    height 244px
+}
+
+.text-limit
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+
+/* -------------------------------------------------------------------------- */
+/*                                  Paginado                                  */
+/* -------------------------------------------------------------------------- */
+
+.pagination 
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    margin-top: 20px
+
+.page-item:first-child .page-link
+    margin-left: 0;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+
+.page-item
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 2px solid transparent
+    background: #42495b
+    &.active
+        background: $base
+        border-color: $base
+    .page-link
+        position: relative
+        display: block
+        height: 40px
+        width: 40px
+        margin-left: -2px
+        line-height: 38px
+        color: white
+        
+
+        font-size: 1rem
+        font-weight: 700
+        i
+            font-size: 1.1rem
+            font-weight: 700
+
+/* -------------------------------------------------------------------------- */
+/*                                   Sponsor                                  */
+/* -------------------------------------------------------------------------- */
+.sponsor
+    .logo-c
+        margin 15px 0
+        img
+            height 50px
+            width: auto
+        span
+            font-size: 1.4rem;
+            font-weight: 700;
+    .logo-h
+        margin 15px 0
+        img
+            width: 300px
+            height auto
+.main-logo
+    img
+        width:  300px
+
+/* -------------------------------------------------------------------------- */
+/*                                Share Social                                */
+/* -------------------------------------------------------------------------- */
+.si-sticky{
+    position: fixed;
+    top: 33%;
+    left: 0px;
+    z-index: 100;
+}
+.social-share {
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #e9e9e9 inset;
+  background: $gris;
+  border-color: $base #e7e7e7 #e4e4e4;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 0 #e9e9e9 inset;
+  float: left;
+  list-style: none;
+  padding: 15px 10px;
+  position: relative;
+  text-align: center;
+  margin: 20px;
+}
+
+.social-share li:first-child {
+  margin-top: 0
+}
+
+.social-share li {
+  margin-top: 10px
+}
+
+.social-share li a {
+  display: block;
+  background: $black_base;
+  color: #efefef;
+  border-radius: 25px;
+  text-decoration: none;
+  line-height: 40px;
+  width: 40px;
+  font-size: 20px;
+}
+
+.social-share a.tw:hover {
+  background: #1da1f2
+}
+
+.social-share a.fb:hover {
+  background: #3b5998
+}
+.social-share a.wt:hover {
+  background: #075e54
+}
+
+.social-share a.gp:hover {
+  background: #dd4b39
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Filter                                   */
+/* -------------------------------------------------------------------------- */
+.filter
+    li
+        display inline
+        margin: 5px
+    .btn-primary
+        background-color: $black_base
+        padding: 0.5125rem 1.575rem
+    li.active .btn-primary
+        background: $base
+
+/* -------------------------------------------------------------------------- */
+/*                                   Noticia                                  */
+/* -------------------------------------------------------------------------- */
+.post-text 
+    figcaption
+        background: $gris
+        padding: 10px
+        font-size: 0.8rem
+        font-weight: 700
+
+@media (min-width: 992px)
+    * + .post-text
+        margin-top: 1rem  !important
+/* -------------------------------------------------------------------------- */
+/*                                   Galeria                                  */
+/* -------------------------------------------------------------------------- */
+.album 
+    .thumbnail-gallery
+        margin 10px
+.aprende 
+    .person-boxed
+        max-width: 100%
+
+/* -------------------------------------------------------------------------- */
+/*                                   Cursos                                   */
+/* -------------------------------------------------------------------------- */
+.panel
+    margin: 10px 0
+    box-shadow 0 3px 5px -1px rgba(39,44,51,.1), 0 5px 8px 0 rgba(39,44,51,.04), 0 1px 14px 0 rgba(39,44,51,.02)
+    .panel-title
+        position relative
+        padding 0.75rem 1.25rem
+        background-color #fff
+        background $black_base
+        font-weight 600
+        display block
+        a
+            color white
+            &[aria-expanded="true"] .badge
+                transform: rotate( -180deg );            
+                transition: transform 200ms ease;
+            &[aria-expanded="false"] .badge
+                transform: rotate( 0deg );            
+                transition: transform 200ms ease;
+
+.curso
+    //.post
+    .page-item
+    .page-link
+        width: auto
+        height: auto
+        .page-link
+            padding: 5px 15px
+            .fa
+                padding: 0 5px
+
+/* -------------------------------------------------------------------------- */
+/*                                 list group                                 */
+/* -------------------------------------------------------------------------- */
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  background-color: #fff;
+  font-weight: 600
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.list-group-item{
+    color: $black_base
+}
+
+.list-group-item:first-child {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+
+.list-group-item:last-child {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.list-group-item.disabled, .list-group-item:disabled {
+  color: #6c757d;
+  pointer-events: none;
+  background-color: #fff;
+}
+
+.list-group-item.active {
+  z-index: 2;
+  color: #fff;
+  background-color: $base;
+  border-color: $base;
+}
+
+.list-group-item + .list-group-item {
+  border-top-width: 0;
+}
+
+.list-group-item + .list-group-item.active {
+  margin-top: -1px;
+  border-top-width: 1px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    Badge                                   */
+/* -------------------------------------------------------------------------- */
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
