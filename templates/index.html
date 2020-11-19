@@ -317,146 +317,80 @@
 
 
 <!-- Post event-->
-<section class="section-md bg-300 text-center eventos">
+<section class="section-md bg-300 text-center">
     <div class="container">
+        <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
+            <h2>Próximos Eventos</h2>
+        </div>
         <div class="row row-30 justify-content-center">
-            <div class="col-xs-8 col-sm-6 col-md-12">
-                <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
-                    <h3>Próximos Eventos</h3>
-                    <!-- <h5 class="text-primary">Informáte de las últimas acciones de la Escuela Mesoamericana</h5> -->
-                </div>
-                <!-- Post event-->
-                <div class="row">
-                    {% for obj in eventos %}
-                    <div class="col-lg-4">
-                        <div class="post post-event" data-animate='{"class":"fadeInUp"}'>
-                            <a class="post-media" href="{% url 'detalle-evento' obj.slug %}">
-                                {% thumbnail obj.foto "600x400" crop="center" as im %}
-                                <img class="post-img" src="{{im.url}}" alt="" height="240px"/>
-                                {% endthumbnail %}
-                                <div class="post-date">
-                                    <div class="post-day">{{obj.inicio|date:'d'}}</div>
-                                    <div class="post-month">{{obj.inicio|date:'M'}}</div>
-                                </div>
-                            </a>
-                            <div class="post-heading h5">
-                                <div class="post-title">
-                                    <a href="{% url 'detalle-evento' obj.slug %}">
-                                        {{obj.titulo|truncatechars:80}}
-                                    </a>
-                                </div>
-
+            {% for obj in eventos %}
+            <div class="col-xs-8 col-sm-6 col-md-4">
+                    <!-- Post event-->
+                    <div class="post post-event" data-animate='{"class":"fadeInUp"}'>
+                        <a class="post-media" href="{% url 'detalle-evento' obj.slug %}">
+                            {% thumbnail obj.foto "600x400" crop="center" as im %}
+                                <img class="post-img" src="{{im.url}}" alt=""/>
+                            {% endthumbnail %}
+                            <div class="post-date">
+                                <div class="post-day">{{obj.inicio|date:'d'}}</div>
+                                <div class="post-month">{{obj.inicio|date:'M'}}</div>
                             </div>
-                            <div class="post-meta post-meta-vertical big">
-                                <div class="post-meta-item">
+                        </a>
+                        
+                        
+                        <div class="post-heading h5">
+                            <div class="post-title"><a href="{% url 'detalle-evento' obj.slug %}">{{obj.titulo|truncatechars:80}}</a></div>
+                        </div>
+                        <div class="post-meta post-meta-vertical big">
+                            <div class="post-meta-item">
                                 <div class="post-meta-icon custom-font-clock"></div>
                                 <div class="post-time">{{obj.hora_inicio|time:'h:i a'}} - {{obj.hora_fin|time:'h:i a'}}</div>
-                                </div>
-                                <div class="post-meta-item">
+                            </div>
+                            <br>
+                            <div class="post-meta-item">
                                 <div class="post-meta-icon custom-font-pin"></div>
                                 <div class="post-location">{{obj.lugar}}</div>
-                                </div>
                             </div>
                         </div>
+                        
                     </div>
-                    {% endfor %}
-                </div>
-                <div class="mt-5">
-                    <a class="btn btn-primary" href="/eventos/">Todos los eventos</a>
-                </div>
             </div>
+            {% endfor %}
+            
+        </div>
+        <div class="mt-5">
+            <a class="btn btn-primary" href="/eventos/">Todos los eventos</a>
         </div>
     </div>
 </section>
 
 
 
-<!-- Post event-->
-{% comment %} <section class="section-md bg-white text-center eventos">
-    <div class="container">
-        <div class="row row-30 justify-content-center">
-            <div class="col-xs-8 col-sm-6 col-md-4">
-                    <div class="text-block text-block-1 text-left" data-animate='{"class":"fadeIn"}'>
-                        <!-- <h5 class="text-primary">Don’t miss anything</h5> -->
-                        <h4>Próximos Eventos</h4>
-                        <!-- <p class="big">Every week, we organize a variety of events for our students and undergraduates. From webinars to creative events, there are activities that are always worth your attention.</p> -->
-                    </div>
-                    <!-- Post event-->
-                    {% for obj in eventos %}
-                    <div class="post post-event" data-animate='{"class":"fadeInUp"}'>
-                        <a class="post-media" href="">
-                            {% thumbnail obj.foto "600x400" crop="center" as im %}
-                            <img class="post-img" src="{{im.url}}" alt="" height="240px"/>
-                            {% endthumbnail %}
-                            <div class="post-date">
-                            <div class="post-day">{{obj.inicio|date:'d'}}</div>
-                            <div class="post-month">{{obj.inicio|date:'M'}}</div>
-                            </div>
-                        </a>
-                        <div class="post-heading h5">
-                            <div class="post-title">
-                                <a href="">
-                                    {{obj.titulo|truncatechars:80}}
-                                </a>
-                            </div>
-
-                        </div>
-                        <div class="post-meta post-meta-vertical big">
-                            <div class="post-meta-item">
-                            <div class="post-meta-icon custom-font-clock"></div>
-                            <div class="post-time">{{obj.hora_inicio|time:'h:i a'}} - {{obj.hora_fin|time:'h:i a'}}</div>
-                            </div>
-                            <div class="post-meta-item">
-                            <div class="post-meta-icon custom-font-pin"></div>
-                            <div class="post-location">{{obj.lugar}}</div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-            </div>
-            <div class="col-xs-8 col-sm-6 col-md-8">
-                <div class="text-block text-block-1 text-left" data-animate='{"class":"fadeIn"}'>
-                    <!-- <h5 class="text-primary">Don’t miss anything</h5> -->
-                    <h4>Nuestras Iniciativas</h4>
-                    <!-- <p class="big">Every week, we organize a variety of events for our students and undergraduates. From webinars to creative events, there are activities that are always worth your attention.</p> -->
-                </div>
-                <div class="post">
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section> {% endcomment %}
-
 <!-- Lideres-->
 <section class="section-md bg-white text-center">
     <div class="container">
-    <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
-        <h2>Liderazgo</h2>
-        <!-- <p class="big">Want to know more about our university? The feedback submitted by our students is an effective way to show how beneficial the studying at Teachzy university can be.</p> -->
-    </div>
-    <div class="slick-person-container">
-        <div class="slick-slider slick-person-img slider-nav" data-slick='{"slidesToShow":3,"arrows":false,"asNavFor":".slider-for","focusOnSelect":true,"centerMode":true,"centerPadding":"0px"}'>
-            {% for obj in liderazgos %}
-            {% thumbnail obj.foto "150x150" crop="center" as im %}
-            <div class="slick-content"><img src="{{im.url}}" alt="" width="150" height="150"/>
+        <div class="slick-person-container">
+            <div class="slick-slider slick-person-img slider-nav" data-slick='{"slidesToShow":3,"arrows":false,"asNavFor":".slider-for","focusOnSelect":true,"centerMode":true,"centerPadding":"0px"}'>
+                {% for obj in liderazgos %}
+                {% thumbnail obj.foto "150x150" crop="center" as im %}
+                <div class="slick-content"><img src="{{im.url}}" alt="" width="150" height="150"/>
+                </div>
+                {% endthumbnail %}
+                {% endfor %}
             </div>
-            {% endthumbnail %}
-            {% endfor %}
-        </div>
-        <div class="slick-slider slick-person-content slider-for" data-slick='{"arrows":true,"asNavFor":".slider-nav","autoplay":true,"autoplaySpeed":5000,"fade":true}'>
-            {% for obj in liderazgos %}
-            <div class="slick-content">
-                <!-- Quote-->
-                <blockquote class="quote quote-simple">
-                    <q class="quote-text">{{obj.texto}}</q>
-                    <cite class="quote-cite h6">{{obj.nombre}}</cite>
-                    <div class="quote-meta">{{obj.escuela.pais}}</div>
-                </blockquote>
+            <div class="slick-slider slick-person-content slider-for" data-slick='{"arrows":true,"asNavFor":".slider-nav","autoplay":true,"autoplaySpeed":5000,"fade":true}'>
+                {% for obj in liderazgos %}
+                <div class="slick-content">
+                    <!-- Quote-->
+                    <blockquote class="quote quote-simple">
+                        <q class="quote-text">{{obj.texto}}</q>
+                        <cite class="quote-cite h6">{{obj.nombre}}</cite>
+                        <div class="quote-meta">{{obj.escuela.pais}}</div>
+                    </blockquote>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-    </div>
     </div>
 </section>
 

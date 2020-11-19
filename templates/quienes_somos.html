@@ -1,8 +1,52 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% for obj in object_list %}
-    {{obj.titulo}}--{{obj.texto|safe}}
-{% endfor %}
+<section class="section breadcrumb-section">
+    <div class="container">
+        <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Quiénes somos?</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-md bg-transparent curso" >
+    <div class="container">
+        <div class="row row-30">
+        <div class="col-md-3">
+                <div class="panel-group">
+                    <div class="panel intro">
+                        <div class="panel-collapse">
+                            <div class="panel-content p-0">
+                                <div class="list-group mb-0 ">
+                                    {% for obj in object_list %}
+                                    <a class="list-group-item" href="#qs_{{obj.id}}">{{obj.titulo}}</a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+            <div class="col-md-9"> 
+                {% for obj in object_list %}
+                <div class="post" id="qs_{{obj.id}}">
+                    <div class="post-title h4 mb-2 text-primary">{{obj.titulo}}</div>
+                    <hr>
+                    <div class="post-text">
+                        {{obj.texto|safe}}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 {% endblock content %}

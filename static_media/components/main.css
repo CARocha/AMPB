@@ -410,6 +410,44 @@ p {
   border-top-width: 1px;
 }
 /* -------------------------------------------------------------------------- */
+/*                                   Eventos                                  */
+/* -------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                                 Biblioteca                                 */
+/* -------------------------------------------------------------------------- */
+.fancybox-content {
+  padding: 0 !important;
+}
+@media (min-width: 1600px) {
+  div.spacing-box {
+    padding: 4.25rem 2.375rem;
+  }
+}
+@media (min-width: 992px) {
+  div.spacing-box {
+    padding: 4.075rem 2.0625rem;
+  }
+}
+@media (min-width: 768px) {
+  div.spacing-box {
+    padding: 3.9875rem 2.40625rem;
+  }
+}
+.line-bottom {
+  position: relative;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+}
+.line-bottom:after {
+  bottom: -1px;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 50px;
+  background: #fff;
+}
+/* -------------------------------------------------------------------------- */
 /*                                    Badge                                   */
 /* -------------------------------------------------------------------------- */
 .badge {

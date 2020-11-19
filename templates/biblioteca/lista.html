@@ -2,6 +2,7 @@
 {% load thumbnail %}
 {% load el_pagination_tags %}
 
+
 {% block content %}
 <style>
 .person-boxed .person-title a{
@@ -19,7 +20,7 @@
         <div class="breadcrumb">
             <div class="breadcrumb-inner">
                 <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
-                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Biblioteca</span>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Recursos</span>
                 </div>
             </div>
         </div>
@@ -29,7 +30,7 @@
 <!-- Gallery-->
 <section class="section-md bg-transparent text-center biblioteca">
     <div class="container">
-        <h2>Biblioteca de documentos</h2>
+        <h2>Biblioteca de recursos</h2>
         {% comment %} <div class="row row-30 justify-content-center">
             <ul class="list filter">
                 <li class="active"><a class="btn btn-primary" href="{% url 'lista-biblioteca' %}">Todos</a></li>
@@ -50,9 +51,38 @@
                         {% endthumbnail %}
                     </div>
                     <div class="person-body">
-                        <div class="person-title h6"><a href="#">{{obj.nombre}}</a></div>
+                        <div class="person-title h6">
+                            <a data-fancybox data-src="#detalle_{{obj.id}}" href="javascript:;">
+                                {{obj.nombre}}
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
+            
+            <!--Descripcion-->
+            <div style="display: none;" id="detalle_{{obj.id}}">
+                <section class="bg-transparent text-center text-md-left">
+
+                    <div class="container">
+                        <div class="row">
+                            
+                            <div class="col-md-6 col-lg-8 bg-primary context-dark spacing-box">
+                                <h5 class="line-bottom">Documento de entendimiento / 2020</h5>
+                                <h4>{{obj.nombre}}</h4>
+                                <p class="big">{{obj.descripcion|safe}}</p>
+                    
+                                <a class="btn btn-outline" href="/media/{{obj.archivo}}" target="_blank">Descargar</a>
+                            </div>
+                            <div class="col-md-6 col-lg-4 bg-image p-0" >
+                                {% thumbnail obj.foto "595x842" crop="center" as im %}
+                                <img class="person-img" src="{{im.url}}" alt=""/ width="100%">
+                                {% endthumbnail %}
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section>
             </div>
             {% endfor %}
         </div>
@@ -67,9 +97,14 @@
         </div>
     </div>
 </section>
+
+
+
+
 {% endblock content %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" src>
 <style>
 .endless_page_current, .endless_page_link {
     height: 40px;
@@ -97,3 +132,7 @@
 }
 </style>
 {% endblock extra_css %}
+{% block extra_js %}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+{% endblock extra_js %}
