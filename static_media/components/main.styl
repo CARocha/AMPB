@@ -56,7 +56,7 @@
 $amarillo = rgb(253,215,0)
 $verde = rgb(0,121,27)
 $cafe = rgb(157,89,24)
-$base = #04d2c8
+$base = #4F002B
 $black_base = #42495b
 $gris = #e9eff4
 
@@ -139,7 +139,13 @@ p
     .navbar-navigation-root-item
         padding: 0 25px !important
         
-
+/* -------------------------------------------------------------------------- */
+/*                                Quienes somos                               */
+/* -------------------------------------------------------------------------- */
+.sticky
+    position: sticky
+    position: -webkit-sticky
+    top: 110px
 
 /* -------------------------------------------------------------------------- */
 /*                                   Social                                   */
@@ -245,7 +251,7 @@ p
 }
 
 .noticias .post-img{
-    height 244px
+    width: 100%
 }
 
 .text-limit
@@ -258,6 +264,32 @@ p
 /* -------------------------------------------------------------------------- */
 /*                                  Paginado                                  */
 /* -------------------------------------------------------------------------- */
+
+.endless_page_current, .endless_page_link {
+    height: 40px;
+    width: 40px;
+    margin: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background: #42495b;
+    position: relative;
+    display: block;
+    height: 40px;
+    width: 40px;
+    margin-left: -2px;
+    line-height: 38px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+}
+.endless_page_current {
+    background: #4F002B;
+    border-color: #4F002B;
+}
+
 
 .pagination 
     display: -ms-flexbox;
@@ -327,6 +359,12 @@ p
     top: 33%;
     left: 0px;
     z-index: 100;
+    transition: 0.5s;
+}
+.slideleft{
+    left: -1000px;
+    animation: slide 0.5s forwards;
+    animation-delay: 2s;
 }
 .social-share {
   border-radius: 3px;
@@ -544,7 +582,11 @@ div.spacing-box {
         width: 50px;
         background: white
 
-
+.fancybox-slide--html .fancybox-close-small
+    background: $base
+    color: white !important
+.person-boxed .person-title
+    min-height: 38px
 /* -------------------------------------------------------------------------- */
 /*                                    Badge                                   */
 /* -------------------------------------------------------------------------- */
@@ -562,3 +604,37 @@ div.spacing-box {
     -webkit-animation:spin 4s linear infinite;
     -moz-animation:spin 4s linear infinite;
     animation:spin 4s linear infinite;
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Responsive                                 */
+/* -------------------------------------------------------------------------- */
+.post-text
+    img
+        height auto !important
+
+@media (max-width: 1199px)
+    .navbar-navigation-root-item .btn-primary
+        margin-left: 18px !important
+
+
+/*SM*/
+@media (max-width: 768px)
+    .social-div
+        text-align: center !important
+    .pr-xxl-5
+        padding-left: 0 !important
+    .map-container
+        display none
+    .si-sticky
+        width: 100% 
+        bottom: 0 !important
+        top: auto
+        .social-share
+            margin: 0
+            width: 100%
+            padding: 5px
+            li
+                display: inline-block !important
+                padding:5px 10px
+        

@@ -30,7 +30,27 @@
 <!-- Gallery-->
 <section class="section-md bg-transparent text-center biblioteca">
     <div class="container">
-        <h2>Biblioteca de recursos</h2>
+        <div class="row row-30 justify-content-center">
+            <div class="col-md-6 col-lg-8">
+
+                <h2 class="mt-0">Biblioteca de recursos</h2>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="widget">
+                    <div class="widget-body">
+                        <form class="rd-form rd-form-boxed rd-form-boxed-1" action="search-results.html"
+                            method="GET" data-rd-search>
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Buscar" autocomplete="off"
+                                    name="s">
+                            </div>
+                            <button class="rd-form-boxed-btn custom-font-search"></button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
         {% comment %} <div class="row row-30 justify-content-center">
             <ul class="list filter">
                 <li class="active"><a class="btn btn-primary" href="{% url 'lista-biblioteca' %}">Todos</a></li>
@@ -104,35 +124,8 @@
 {% endblock content %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" src>
-<style>
-.endless_page_current, .endless_page_link {
-    height: 40px;
-    width: 40px;
-    margin: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    border: 2px solid transparent;
-    background: #42495b;
-    position: relative;
-    display: block;
-    height: 40px;
-    width: 40px;
-    margin-left: -2px;
-    line-height: 38px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 700;
-}
-.endless_page_current {
-    background: #4F002B;
-    border-color: #4F002B;
-}
-</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
 {% endblock extra_css %}
 {% block extra_js %}
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 {% endblock extra_js %}

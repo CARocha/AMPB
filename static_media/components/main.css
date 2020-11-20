@@ -22,6 +22,14 @@ p {
   padding: 0 25px !important;
 }
 /* -------------------------------------------------------------------------- */
+/*                                Quienes somos                               */
+/* -------------------------------------------------------------------------- */
+.sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 110px;
+}
+/* -------------------------------------------------------------------------- */
 /*                                   Social                                   */
 /* -------------------------------------------------------------------------- */
 /* Wrapper */
@@ -44,7 +52,7 @@ p {
   -ms-user-select: none;
   user-select: none;
   width: 3.125rem;
-  border: 1px solid #04d2c8;
+  border: 1px solid #4f002b;
 }
 /* Circle */
 .icon-button span {
@@ -88,7 +96,7 @@ p {
 /* Icons */
 .icon-button i {
   background: none;
-  color: #04d2c8;
+  color: #4f002b;
   height: 3.125rem;
   left: 0;
   line-height: 3.125rem;
@@ -130,7 +138,7 @@ p {
   font-size: 1.1rem;
 }
 .noticias .post-img {
-  height: 244px;
+  width: 100%;
 }
 .text-limit {
   overflow: hidden;
@@ -142,6 +150,34 @@ p {
 /* -------------------------------------------------------------------------- */
 /*                                  Paginado                                  */
 /* -------------------------------------------------------------------------- */
+.endless_page_current,
+.endless_page_link {
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background: #42495b;
+  position: relative;
+  display: block;
+  height: 40px;
+  width: 40px;
+  margin-left: -2px;
+  line-height: 38px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.endless_page_current {
+  background: #4f002b;
+  border-color: #4f002b;
+}
 .pagination {
   display: -ms-flexbox;
   display: flex;
@@ -170,8 +206,8 @@ p {
   background: #42495b;
 }
 .page-item.active {
-  background: #04d2c8;
-  border-color: #04d2c8;
+  background: #4f002b;
+  border-color: #4f002b;
 }
 .page-item .page-link {
   position: relative;
@@ -220,6 +256,18 @@ p {
   top: 33%;
   left: 0px;
   z-index: 100;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+.slideleft {
+  left: -1000px;
+  -webkit-animation: slide 0.5s forwards;
+  -moz-animation: slide 0.5s forwards;
+  -o-animation: slide 0.5s forwards;
+  animation: slide 0.5s forwards;
+  animation-delay: 2s;
 }
 .social-share {
   -webkit-border-radius: 3px;
@@ -230,7 +278,7 @@ p {
   -webkit-box-shadow: 0 1px 0 #e9e9e9 inset;
   box-shadow: 0 1px 0 #e9e9e9 inset;
   background: #e9eff4;
-  border-color: #04d2c8 #e7e7e7 #e4e4e4;
+  border-color: #4f002b #e7e7e7 #e4e4e4;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -o-border-radius: 3px;
@@ -290,7 +338,7 @@ p {
   padding: 0.5125rem 1.575rem;
 }
 .filter li.active .btn-primary {
-  background: #04d2c8;
+  background: #4f002b;
 }
 /* -------------------------------------------------------------------------- */
 /*                                   Noticia                                  */
@@ -399,8 +447,8 @@ p {
 .list-group-item.active {
   z-index: 2;
   color: #fff;
-  background-color: #04d2c8;
-  border-color: #04d2c8;
+  background-color: #4f002b;
+  border-color: #4f002b;
 }
 .list-group-item + .list-group-item {
   border-top-width: 0;
@@ -447,6 +495,13 @@ p {
   width: 50px;
   background: #fff;
 }
+.fancybox-slide--html .fancybox-close-small {
+  background: #4f002b;
+  color: #fff !important;
+}
+.person-boxed .person-title {
+  min-height: 38px;
+}
 /* -------------------------------------------------------------------------- */
 /*                                    Badge                                   */
 /* -------------------------------------------------------------------------- */
@@ -473,4 +528,41 @@ p {
   -moz-animation: spin 4s linear infinite;
   -o-animation: spin 4s linear infinite;
   animation: spin 4s linear infinite;
+}
+/* -------------------------------------------------------------------------- */
+/*                                 Responsive                                 */
+/* -------------------------------------------------------------------------- */
+.post-text img {
+  height: auto !important;
+}
+@media (max-width: 1199px) {
+  .navbar-navigation-root-item .btn-primary {
+    margin-left: 18px !important;
+  }
+}
+/*SM*/
+@media (max-width: 768px) {
+  .social-div {
+    text-align: center !important;
+  }
+  .pr-xxl-5 {
+    padding-left: 0 !important;
+  }
+  .map-container {
+    display: none;
+  }
+  .si-sticky {
+    width: 100%;
+    bottom: 0 !important;
+    top: auto;
+  }
+  .si-sticky .social-share {
+    margin: 0;
+    width: 100%;
+    padding: 5px;
+  }
+  .si-sticky .social-share li {
+    display: inline-block !important;
+    padding: 5px 10px;
+  }
 }

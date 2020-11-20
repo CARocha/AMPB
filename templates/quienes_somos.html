@@ -15,21 +15,15 @@
 </section>
 
 <section class="section-md bg-transparent curso" >
-    <div class="container">
+    <div class="container"  >
         <div class="row row-30">
-        <div class="col-md-3">
-                <div class="panel-group">
-                    <div class="panel intro">
-                        <div class="panel-collapse">
-                            <div class="panel-content p-0">
-                                <div class="list-group mb-0 ">
-                                    {% for obj in object_list %}
-                                    <a class="list-group-item" href="#qs_{{obj.id}}">{{obj.titulo}}</a>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                    </div>                  
+            <div class="col-md-3">
+                <div class="panel-group sticky">
+                    <div class="list-group mb-0 ">
+                        {% for obj in object_list %}
+                        <a class="list-group-item scroll-to" href="#qs_{{obj.id}}">{{obj.titulo}}</a>
+                        {% endfor %}
+                    </div>                 
                 </div>
             </div>
             <div class="col-md-9"> 
@@ -45,8 +39,26 @@
             </div>
         </div>
     </div>
-</section>
+</section> 
 
 
 
 {% endblock content %}
+{% block extra_js %}
+    
+<script>
+    $(document).ready(function () {
+        $('.scroll-to').click(function() {
+            var addressValue = $(this).attr("href");
+            $('.scroll-to').removeClass('active');
+            $(this).addClass('active');
+            $('html, body').animate({
+                scrollTop: $(addressValue).offset().top-130
+            }, 800)
+
+
+        })
+    });
+</script>
+
+{% endblock extra_js %}

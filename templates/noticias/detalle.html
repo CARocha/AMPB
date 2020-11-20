@@ -128,3 +128,19 @@
     </ul>
 </div>
 {% endblock content %}
+{% block extra_js %}
+<script>
+    var tamano = $('.noticias').offset().top;
+    //alert(tamano);
+    $(document).scroll(function() {
+        if($('.si-sticky').offset().top >= tamano){
+            $('.si-sticky').addClass('slideleft');
+        }else{
+
+            $('.si-sticky').removeClass('slideleft');
+        }
+    });
+    
+</script>
+{% endblock extra_js %}
+

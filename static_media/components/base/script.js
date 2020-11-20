@@ -320,6 +320,7 @@ components.multiswitch = {
 	}
 };
 
+
 components.owlCarousel = {
 	selector: '.owl-carousel',
 	styles: [
