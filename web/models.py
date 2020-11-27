@@ -39,7 +39,7 @@ class Banner(models.Model):
 	titulo = models.CharField(max_length=250)
 	texto = models.TextField()
 	foto = ImageField(upload_to='banner/')
-	link = models.URLField()
+	link = models.URLField(blank=True,null=True)
 
 	class Meta:
 		verbose_name_plural = "Banners"
@@ -63,6 +63,7 @@ class Actualidad(models.Model):
 
 	class Meta:
 		verbose_name_plural = "Acontecimientos"
+		verbose_name = "acontecimiento"
 
 	def __str__(self):
 		return self.titulo

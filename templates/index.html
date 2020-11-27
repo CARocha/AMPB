@@ -8,7 +8,7 @@
 {% leaflet_js %}
 {% leaflet_css %}
 <style>
-    
+
     #mapid, .map-container{height: 100%;}
     .pr-xxl-5{padding-left:80px;}
     .map-container {
@@ -16,7 +16,7 @@
     position: relative;
     width: 100%;
     }
-    
+
 </style>
 {% endblock extra_css %}
 
@@ -26,7 +26,7 @@
     <!-- Additional required wrapper-->
     <div class="swiper-wrapper">
     <!-- Slides-->
-    
+
         {% for obj in banner %}
             <div class="swiper-slide section-md" {% thumbnail obj.foto "1920x998" crop="center" as im %} style="background-image: url({{im.url}})"{% endthumbnail %}>
                 <div class="container">
@@ -36,7 +36,9 @@
                         <h1 class=>Experiencias de Liderazgo</h1>
                         <p class="big">{{obj.texto}}</p>
                     </div>
-                    <a class="btn btn-primary" href="{{obj.link}}">Leer más</a>
+                    {% if obj.link %}
+                        <a class="btn btn-primary" href="{{obj.link}}">Leer más</a>
+                    {% endif %}
                     </div>
                 </div>
                 </div>
@@ -262,7 +264,7 @@
             </div>
         </div>
     </div>
-    
+
 
 </section>
 
@@ -338,8 +340,8 @@
                                 <div class="post-month">{{obj.inicio|date:'M'}}</div>
                             </div>
                         </a>
-                        
-                        
+
+
                         <div class="post-heading h5">
                             <div class="post-title"><a href="{% url 'detalle-evento' obj.slug %}">{{obj.titulo|truncatechars:80}}</a></div>
                         </div>
@@ -354,11 +356,11 @@
                                 <div class="post-location">{{obj.lugar}}</div>
                             </div>
                         </div>
-                        
+
                     </div>
             </div>
             {% endfor %}
-            
+
         </div>
         <div class="mt-5">
             <a class="btn btn-primary" href="/eventos/">Todos los eventos</a>
@@ -404,7 +406,7 @@
 
 <script>
     //alert($("#mapid").innerHeight());
-    
+
     //var result = $("#prueid").height();
 
     //alert(result);
