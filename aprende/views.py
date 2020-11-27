@@ -33,6 +33,7 @@ class ModulosFiltrado(generics.ListAPIView):
 
 def lista_cursos(request,template='aprende/lista.html'):
     objects_list = Cursos.objects.filter(activo = True).order_by('-id')
+    reflexiones = Reflexion.objects.filter(activo = True).order_by('-fecha_creacion')[:3]
     return render(request, template, locals())
 
 def detalle_curso(request,slug=None,template='aprende/detalle.html'):
@@ -47,7 +48,7 @@ def detalle_contenido(request,slug=None,id=None,template='aprende/detalle.html')
     todos_contenidos = Contenidos.objects.filter(modulo__curso = object).order_by('modulo','id')
     siguiente = next_in_order(contenido, qs = todos_contenidos)
     anterior = prev_in_order(contenido, qs = todos_contenidos)
-    
+
     #modulos
     modulo_actual = Modulos.objects.get(curso = object, contenidos = contenido)
     todos_modulos = Modulos.objects.filter(curso = object).order_by('curso','id')
@@ -55,5 +56,9 @@ def detalle_contenido(request,slug=None,id=None,template='aprende/detalle.html')
     modulo_anterior = prev_in_order(modulo_actual, qs = todos_modulos)
     primer_modulo = Modulos.objects.filter(curso = object).first()
     ultimo = prev_in_order(primer_modulo, loop=True)
-    
+
+    ######
+    last_path_id = int(request.path.split("/")[-2])
+
+
     return render(request, template, locals())

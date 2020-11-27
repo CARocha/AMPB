@@ -3,6 +3,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from embed_video.fields import EmbedVideoField
 from sorl.thumbnail import ImageField
 from solo.models import SingletonModel
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 class Introduccion(SingletonModel):
@@ -21,6 +22,12 @@ class Introduccion(SingletonModel):
 class QuienesSomos(models.Model):
 	titulo = models.CharField(max_length = 250)
 	texto = RichTextUploadingField()
+	slug = models.SlugField(max_length=250,editable=False)
+	orden = models.IntegerField(unique=True)
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.titulo)
+		return super(QuienesSomos, self).save(*args, **kwargs)
 
 	def __str__(self):
 		return self.titulo

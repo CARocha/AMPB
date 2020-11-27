@@ -10,13 +10,23 @@ class ImagenesInline(admin.TabularInline):
 class GaleriaAdmin(admin.ModelAdmin):
 	inlines = [ImagenesInline,]
 
-admin.site.register(Escuela)
+class Emprendimientos_Inline(admin.TabularInline):
+	model = Emprendimientos
+	extra = 1
+
+class EscuelaAdmin(admin.ModelAdmin):
+	inlines = [Emprendimientos_Inline,]
+
+admin.site.register(Escuela,EscuelaAdmin)
 admin.site.register(Banner)
 admin.site.register(Actualidad)
 admin.site.register(Evento)
 admin.site.register(Liderazgo)
 #admin.site.register(Galeria,GaleriaAdmin)
 admin.site.register(Biblioteca)
+admin.site.register(TipoRecurso)
+admin.site.register(Fases)
+admin.site.register(ExperienciaLiderazgo)
 
 #flatpages
 # from django.contrib.flatpages.admin import FlatPageAdmin

@@ -79,19 +79,19 @@
                     </div>
                 </div>
             </div>
-            
+
             <!--Descripcion-->
             <div style="display: none;" id="detalle_{{obj.id}}">
                 <section class="bg-transparent text-center text-md-left">
 
                     <div class="container">
                         <div class="row">
-                            
+
                             <div class="col-md-6 col-lg-8 bg-primary context-dark spacing-box">
-                                <h5 class="line-bottom">Documento de entendimiento / 2020</h5>
+                                <h5 class="line-bottom">{{obj.tipo}} / {{obj.fecha|date:'Y'}}</h5>
                                 <h4>{{obj.nombre}}</h4>
                                 <p class="big">{{obj.descripcion|safe}}</p>
-                    
+
                                 <a class="btn btn-outline" href="/media/{{obj.archivo}}" target="_blank">Descargar</a>
                             </div>
                             <div class="col-md-6 col-lg-4 bg-image p-0" >
@@ -99,7 +99,7 @@
                                 <img class="person-img" src="{{im.url}}" alt=""/ width="100%">
                                 {% endthumbnail %}
                             </div>
-                            
+
                         </div>
                     </div>
                 </section>

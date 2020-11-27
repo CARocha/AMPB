@@ -10,6 +10,17 @@ from embed_video.fields import EmbedVideoField
 from location_field.models.plain import PlainLocationField
 
 # Create your models here.
+class Fases(models.Model):
+	nombre = models.CharField(max_length=300)
+	descripcion = RichTextUploadingField()
+
+	def __str__(self):
+		return self.nombre
+
+	class Meta:
+		verbose_name_plural = "Fases"
+		verbose_name = "Fase"
+
 class Escuela(models.Model):
 	nombre = models.CharField(max_length=300)
 	foto = ImageField(upload_to='escuelas/')
@@ -23,6 +34,9 @@ class Escuela(models.Model):
 					chained_model_field="departamento")
 	lugar = models.CharField(max_length=250)
 	location = PlainLocationField(based_fields=['lugar'], zoom=7)
+	hombres = models.IntegerField(default=0)
+	mujeres = models.IntegerField(default=0)
+	fase = models.ForeignKey(Fases,on_delete=models.CASCADE,blank=True,null=True)
 	slug = models.SlugField(max_length=300,editable=False)
 
 	def __str__(self):
@@ -34,6 +48,14 @@ class Escuela(models.Model):
 
 	class Meta:
 		verbose_name_plural = "Escuelas"
+
+class Emprendimientos(models.Model):
+	escuela = models.ForeignKey(Escuela,on_delete=models.CASCADE)
+	titulo = models.CharField(max_length=300)
+	descripcion = models.TextField()
+
+	class Meta:
+		verbose_name_plural = "Emprendimientos"
 
 class Banner(models.Model):
 	titulo = models.CharField(max_length=250)
@@ -121,11 +143,19 @@ class Imagenes(models.Model):
 	class Meta:
 		verbose_name_plural = "Imagenes"
 
+class TipoRecurso(models.Model):
+	nombre = models.CharField(max_length=300)
+
+	def __str__(self):
+		return self.nombre
+
 class Biblioteca(models.Model):
 	nombre = models.CharField(max_length=300)
 	descripcion = RichTextUploadingField()
 	foto = ImageField(upload_to='biblioteca/')
 	archivo = models.FileField(upload_to='documentos-biblioteca/')
+	fecha = models.DateField()
+	tipo = models.ForeignKey(TipoRecurso,on_delete=models.CASCADE,null=True,blank=True)
 	usuario = models.ForeignKey(User,on_delete=models.DO_NOTHING)
 	slug = models.SlugField(max_length=300,editable=False)
 
@@ -137,4 +167,25 @@ class Biblioteca(models.Model):
 		return self.nombre
 
 	class Meta:
-		verbose_name_plural = "Biblioteca"
+		verbose_name_plural = "Recursos"
+		verbose_name = "recurso"
+
+class ExperienciaLiderazgo(models.Model):
+	titulo = models.CharField(max_length=250)
+	fecha = models.DateField()
+	contenido = RichTextUploadingField()
+	foto = ImageField(upload_to='actualidad/',null=True,blank=True)
+	video = EmbedVideoField(null=True,blank=True)
+	usuario = models.ForeignKey(User,on_delete=models.CASCADE)
+	slug = models.SlugField(max_length=300,editable=False)
+
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.titulo)
+		return super(ExperienciaLiderazgo, self).save(*args, **kwargs)
+
+	class Meta:
+		verbose_name_plural = "Experiencias de Liderazgo"
+		verbose_name = "experiencia de liderazgo"
+
+	def __str__(self):
+		return self.titulo

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
 from nested_inline.admin import NestedStackedInline, NestedTabularInline, NestedModelAdmin
-from .models import Cursos, Modulos, Contenidos
+from .models import *
 
 class InlineContenidos(NestedStackedInline):
     model = Contenidos
@@ -46,3 +46,9 @@ class CursosAdmin(NestedModelAdmin):
 # Register your models here.
 admin.site.register(Cursos, CursosAdmin)
 admin.site.register(Modulos, TemasModulos)
+
+
+class ReflexionAdmin(admin.ModelAdmin):
+    list_display = ('texto','fecha_creacion')
+
+admin.site.register(Reflexion, ReflexionAdmin)

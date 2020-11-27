@@ -4,4 +4,8 @@ from .models import *
 
 # Register your models here.
 admin.site.register(Introduccion, SingletonModelAdmin)
-admin.site.register(QuienesSomos)
+
+class QuienesSomosAdmin(admin.ModelAdmin):
+    list_display = ('titulo','orden')
+
+admin.site.register(QuienesSomos,QuienesSomosAdmin)

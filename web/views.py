@@ -66,6 +66,6 @@ def lista_biblioteca(request,template='biblioteca/lista.html'):
 # 	return render(request, template, locals())
 
 def quienes_somos(request,template='quienes_somos.html'):
-	object_list = QuienesSomos.objects.order_by('-id')
-	
+	object_list = QuienesSomos.objects.order_by('orden')
+
 	return render(request, template, locals())

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load extras %}
 
 {% block content %}
 <section class="section breadcrumb-section">
@@ -22,7 +23,7 @@
             <h3>{{object.titulo}}</h3>
         </div>
         <div class="row row-30">
-            <div class="col-md-9"> 
+            <div class="col-md-9">
                 <div class="post">
                     {% if not contenido %}
                     <div class="post-title h4 mb-2 text-primary">Introducción del curso</div>
@@ -41,30 +42,40 @@
             </div>
             <div class="col-md-3">
                 <div class="widget-title h4">Tabla de Contenido</div>
-            
+
                 <div class="panel-group">
                     <div class="panel intro">
                         <div class="panel-collapse">
                             <div class="panel-content p-0">
                                 <div class="list-group mb-0 ">
-                                    <a class="list-group-item active" href="{% url 'detalle-curso' object.slug %}">Introducción</a>
+                                    <a class="list-group-item {% if request.path == '/aprende/'|add:object.slug|add:'/' %}active{% endif %}
+                                    " href="{% url 'detalle-curso' object.slug %}">Introducción</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     {% for modulo in object.modulos_set.all|dictsort:'order' %}
+
                     <div class="panel mi-movil-1">
-                        <div class="panel-title "> 
-                            <a data-parent="#accordion1" data-toggle="collapse" href="#accordion{{forloop.counter}}" class="collapsed d-flex" aria-expanded="false"> 
+                        <div class="panel-title ">
+                            <a data-parent="#accordion1" data-toggle="collapse" href="#accordion{{forloop.counter}}"
+                            {% if last_path_id in modulo.id|ids %}
+                            class="d-flex" aria-expanded="true"
+                            {% else %}
+                            class="collapsed d-flex" aria-expanded="false"
+                            {% endif %}
+                            >
                                 {{modulo.titulo}}<span class="fa fa-chevron-up badge ml-auto"></span>
                             </a>
                         </div>
-                        <div id="accordion{{forloop.counter}}" class="panel-collapse collapse " role="tablist" aria-expanded="false" style="height: 0px;">
+                        <div id="accordion{{forloop.counter}}" class="panel-collapse collapse {% if last_path_id in modulo.id|ids %}show{% endif %}
+                        " role="tablist" aria-expanded="false" {% if last_path_id in modulo.id|ids %}style="height: auto;"{% else %}style="height: 0px;"{% endif %}>
                             <div class="panel-content p-0">
                                 <div class="list-group mb-0">
                                     {% for cont in modulo.contenidos_set.all %}
-                                    <a href="{% url 'detalle-contenido' object.slug cont.id %}" class="list-group-item scroll-to {% if contenido.id == cont.id %}active{% endif %}">
+                                    <a href="{% url 'detalle-contenido' object.slug cont.id %}" class="
+                                    list-group-item scroll-to {% if contenido.id == cont.id %}active{% endif %}">
                                         {{cont.titulo}}
                                     </a>
                                     {% endfor %}
@@ -72,11 +83,11 @@
                             </div>
                         </div>
                     </div>
-                    {% endfor %}                    
+                    {% endfor %}
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="container">
                 <nav aria-label="Page navigation" class="text-center">
@@ -110,12 +121,12 @@
                             </li>
                         {% elif modulo_siguiente %}
                             <li class="page-item">
-                                <a class="page-link" href="{% url 'detalle-contenido' object.slug modulo_siguiente.contenidos_set.first.id %}">Siguiente módulo <i class="fa fa-angle-right"></i></a>   
+                                <a class="page-link" href="{% url 'detalle-contenido' object.slug modulo_siguiente.contenidos_set.first.id %}">Siguiente módulo <i class="fa fa-angle-right"></i></a>
                             </li>
                         {% endif %}
                         {% endif %}
-                        
-                        
+
+
                     </ul>
                 </nav>
             </div>

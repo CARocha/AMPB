@@ -40,7 +40,14 @@
                 </div>
             </div>
             {% endfor %}
-            
+
+            {# reflexciones #}
+            {% for obj in reflexiones %}
+              {{obj.texto}}-{% if obj.link %}{{obj.link}}{% endif %}
+
+            {% endfor %}
+
+
         </div>
         <div class="row">
             <div class="container">

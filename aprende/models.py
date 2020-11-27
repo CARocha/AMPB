@@ -29,7 +29,7 @@ class Cursos(models.Model):
 	def save(self, *args, **kwargs):
 		self.slug = (slugify(self.titulo))
 		super(Cursos, self).save(*args, **kwargs)
-	
+
 	@property
 	def cached_img(self):
 		im = get_thumbnail(self.imagen, '1000', crop='center', quality=99)
@@ -65,3 +65,16 @@ class Contenidos(models.Model):
 
 	def __str__(self):
 		return self.titulo
+
+class Reflexion(models.Model):
+	texto = models.CharField(max_length=300)
+	link = models.URLField(blank=True,null=True)
+	activo = models.BooleanField()
+	fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+	def __str__(self):
+		return self.texto
+
+	class Meta:
+		verbose_name = 'Reflexión'
+		verbose_name_plural = 'Reflexiones'

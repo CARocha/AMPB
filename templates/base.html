@@ -9,19 +9,19 @@
     <meta property="og:description" content="brevis, barbatus clabulares aliquando convertam de dexter, peritus capio. devatio clemens habitio est.">
     <meta property="og:image" content="http://digipunk.netii.net/images/radar.gif">
     <meta property="og:url" content="http://digipunk.netii.net"> -->
- 
+
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="/static/components/base/base.css">
     <script src="/static/components/base/core.min.js"></script>
 	<script src="/static/components/base/script.js"></script>
     <link rel="stylesheet" href="/static/components/main.css">
-	
+
     {% block extra_css %}{% endblock extra_css %}
   </head>
   <body>
     <style>
 
-       
+
         .sombra {
             background: rgb(0, 0, 0, 0.4);
             padding: 20px;
@@ -29,17 +29,17 @@
         .big{
             font-size: 1.5rem;
         }
-        
+
         .rd-navbar-fullwidth{
             z-index: 9999;
         }
-      
+
         .navbar-navigation-root-item .btn-primary{
             padding: 0.5125rem 1.5375rem;
             font-size: 0.875rem;
         }
-    
-        
+
+
 
         .rd-navbar-fullwidth-linked .rd-navbar-absolute-wrap .rd-navbar-fullwidth.rd-navbar--is-stuck{
             height:90px;
@@ -48,7 +48,7 @@
             height:100px;
         }
 
-        
+
 
         .rd-navbar-fullwidth.rd-navbar--is-stuck .btn{
             background: #fff;
@@ -91,15 +91,17 @@
                         </ul> -->
 						<ul class="navbar-navigation rd-navbar-nav">
 
-                                <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'quienes-somos' %}">Quiénes somos?</a>
-									{% comment %} <ul class="navbar-navigation-dropdown rd-navbar-dropdown">
-										<li class="navbar-navigation-back">
-										<button class="navbar-navigation-back-btn">Atras</button>
-										</li>
-										<li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="#">Subsecion1</a>
-										</li>
-									</ul> {% endcomment %}
-                                </li>
+                  <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'quienes-somos' %}">Quiénes somos?</a>
+  									<ul class="navbar-navigation-dropdown rd-navbar-dropdown">
+  										<li class="navbar-navigation-back">
+  										<button class="navbar-navigation-back-btn">Atras</button>
+  										</li>
+                      {% for obj in quienes_somos %}
+                      <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'quienes-somos' %}#qs_{{obj.slug}}">{{obj.titulo}}</a>
+                      </li>
+                      {% endfor %}
+  									</ul>
+                  </li>
 
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Noticias</a>
                                     <ul class="navbar-navigation-dropdown rd-navbar-dropdown">
@@ -119,8 +121,8 @@
                                 <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Monitoreo</a>
                                 </li>
                                 <li class="navbar-navigation-root-item"><a class="btn btn-primary" href="/contactenos">Contáctenos</a>
-								</li> 
-                               
+								</li>
+
 
 
 								</li>
@@ -245,7 +247,7 @@
     <script  type="text/javascript" src="/static/components/util/util.min.js" ></script>
     <script  type="text/javascript" src="/static/components/progress-circle/progress-circle.min.js" ></script> -->
 
-   
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     {% block extra_js %}{% endblock extra_js %}
   </body>

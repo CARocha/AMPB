@@ -21,14 +21,14 @@
                 <div class="panel-group sticky">
                     <div class="list-group mb-0 ">
                         {% for obj in object_list %}
-                        <a class="list-group-item scroll-to" href="#qs_{{obj.id}}">{{obj.titulo}}</a>
+                        <a class="list-group-item scroll-to" href="#qs_{{obj.slug}}">{{obj.titulo}}</a>
                         {% endfor %}
-                    </div>                 
+                    </div>
                 </div>
             </div>
-            <div class="col-md-9"> 
+            <div class="col-md-9">
                 {% for obj in object_list %}
-                <div class="post" id="qs_{{obj.id}}">
+                <div class="post" id="qs_{{obj.slug}}">
                     <div class="post-title h4 mb-2 text-primary">{{obj.titulo}}</div>
                     <hr>
                     <div class="post-text">
@@ -39,13 +39,13 @@
             </div>
         </div>
     </div>
-</section> 
+</section>
 
 
 
 {% endblock content %}
 {% block extra_js %}
-    
+
 <script>
     $(document).ready(function () {
         $('.scroll-to').click(function() {
