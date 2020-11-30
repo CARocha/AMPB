@@ -158,8 +158,6 @@ CKEDITOR_CONFIGS = {
             { 'name': 'styles', 'items': [ 'Styles', 'Format', 'Font', 'FontSize' ] },
             { 'name': 'colors', 'items': [ 'TextColor', 'BGColor' ] },
             { 'name': 'tools', 'items': [ 'Maximize', 'ShowBlocks', ] },
-             {
-    }
 
         ],
         'height': '300px',
