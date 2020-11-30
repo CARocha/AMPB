@@ -29,9 +29,9 @@
                         <form class="rd-form rd-form-boxed rd-form-boxed-1" action="{% url 'search-actualidad' %}"
                             method="GET" data-rd-search>
                             <div class="form-group">
-                                <!--<input class="form-control" type="text" placeholder="Buscar" autocomplete="off"
-                                    name="qs">-->
-                                {{form.q}}
+                              <!--<input class="form-control" type="text" placeholder="Buscar" autocomplete="off"
+                                  name="qs">-->
+                              {{form.q}}
                             </div>
                             <button class="rd-form-boxed-btn custom-font-search"></button>
                         </form>
@@ -41,28 +41,18 @@
             </div>
         </div>
         <div class="row row-30 justify-content-center">
-            <ul class="list filter">
-                <li class="active"><a class="btn btn-primary" href="{% url 'lista-noticias' %}">Todos</a></li>
-                {% for obj in paises %}
-                <li><a class="btn btn-primary" href="{% url 'filtro-noticias' obj.0 %}">{{obj.1}}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-
-
-        <div class="row row-30 justify-content-center">
-            {% paginate 9 objects_list %}
-            {% for obj in objects_list %}
+            {# {% paginate 9 page.objects_list %} #}
+            {% for result in page.object_list %}
             <div class="col-xs-9 col-sm-6 col-md-4">
                 <!-- Post-->
                 <div class="post post-responsive post-responsive-1">
-                    <a class="post-media" href="{% url 'detalle-noticia' obj.slug %}">
-                        {% if obj.foto %}
-                            {% thumbnail obj.foto "600x400" crop="center" as im %}
+                    <a class="post-media" href="{% url 'detalle-noticia' result.object.slug %}">
+                        {% if result.object.foto %}
+                            {% thumbnail result.object.foto "600x400" crop="center" as im %}
                                 <img class="post-img" src="{{im.url}}" alt="" />
                             {% endthumbnail %}
-                        {% elif obj.video %}
-                        {% video obj.video as my_video %}
+                        {% elif result.object.video %}
+                        {% video result.object.video as my_video %}
                             {% thumbnail my_video.thumbnail "600x400" crop="center" as im %}
                                 <img class="post-img" src="{{im.url}}" alt="" />
                             {% endthumbnail %}
@@ -74,20 +64,22 @@
                     <div class="post-meta">
                         <div class="post-meta-item">
                             <div class="post-meta-icon fa fa-calendar"></div>
-                            <div class="post-date">{{obj.fecha|date:'d F Y'}}</div>
+                            <div class="post-date">{{result.object.fecha|date:'d F Y'}}</div>
                         </div>
                         <div class="post-meta-item">
                             <div class="post-meta-icon fa fa-globe"></div>
-                            <div class="post-comment">{{obj.escuela.pais}}</div>
+                            <div class="post-comment">{{result.object.escuela.pais}}</div>
                         </div>
                     </div>
                     <div class="post-title h6">
-                        <a href="{% url 'detalle-noticia' obj.slug %}" class="text-limit">
-                            {{obj.titulo}}
+                        <a href="{% url 'detalle-noticia' result.object.slug %}" class="text-limit">
+                            {{result.object.titulo}}
                         </a>
                     </div>
                 </div>
             </div>
+            {% empty %}
+                <p>No se encontraron resultados</p>
             {% endfor %}
 
 
@@ -97,7 +89,14 @@
             <div class="container">
                 <nav aria-label="Page navigation" class="text-center">
                     <ul class="pagination text-center d-flex justify-content-center">
-                        {% show_pages %}
+                      {% if page.has_previous or page.has_next %}
+
+                       {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}" class="endless_page_link">{% endif %}{% if page.has_previous %}< </a>{% endif %}
+                       <span class="endless_page_current">{{ page.number }} de {{ page.paginator.num_pages }}</span>
+
+                       {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}" class="endless_page_link">{% endif %} {% if page.has_next %}> </a>{% endif %}
+
+                       {% endif %}
                     </ul>
                 </nav>
 
@@ -106,6 +105,14 @@
     </div>
 </section>
 {% endblock content %}
+
+{% block extra_css %}
+<style media="screen">
+  .endless_page_current {
+    width: auto !important;
+  }
+</style>
+{% endblock extra_css %}
 
 {% block extra_js %}
 <script type="text/javascript">

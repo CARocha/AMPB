@@ -50,29 +50,21 @@
 
             </div>
         </div>
-        {% comment %} <div class="row row-30 justify-content-center">
-            <ul class="list filter">
-                <li class="active"><a class="btn btn-primary" href="{% url 'lista-biblioteca' %}">Todos</a></li>
-                {% for obj in paises %}
-                <li><a class="btn btn-primary" href="{% url 'filtro-biblioteca' obj.0 %}">{{obj.1}}</a></li>
-                {% endfor %}
-            </ul>
-        </div> {% endcomment %}
+
         <div class="row no-gutters justify-content-center" data-lightgallery>
-            {% paginate 12 objects_list %}
-            {% for obj in objects_list %}
+            {% for result in page.object_list %}
             <div class="col-6 col-xs-5 col-md-3">
                 <!-- Thumbnail gallery-->
                 <div class="person person-boxed mb-4 ">
                     <div class="person-media">
-                        {% thumbnail obj.foto "595x842" crop="center" as im %}
+                        {% thumbnail result.object.foto "595x842" crop="center" as im %}
                         <img class="person-img" src="{{im.url}}" alt=""/>
                         {% endthumbnail %}
                     </div>
                     <div class="person-body">
                         <div class="person-title h6">
-                            <a data-fancybox data-src="#detalle_{{obj.id}}" href="javascript:;">
-                                {{obj.nombre}}
+                            <a data-fancybox data-src="#detalle_{{result.object.id}}" href="javascript:;">
+                                {{result.object.nombre}}
                             </a>
                         </div>
                     </div>
@@ -80,21 +72,21 @@
             </div>
 
             <!--Descripcion-->
-            <div style="display: none;" id="detalle_{{obj.id}}">
+            <div style="display: none;" id="detalle_{{result.object.id}}">
                 <section class="bg-transparent text-center text-md-left">
 
                     <div class="container">
                         <div class="row">
 
                             <div class="col-md-6 col-lg-8 bg-primary context-dark spacing-box">
-                                <h5 class="line-bottom">{{obj.tipo}} / {{obj.fecha|date:'Y'}}</h5>
-                                <h4>{{obj.nombre}}</h4>
-                                <p class="big">{{obj.descripcion|safe}}</p>
+                                <h5 class="line-bottom">{{result.object.tipo}} / {{result.object.fecha|date:'Y'}}</h5>
+                                <h4>{{result.object.nombre}}</h4>
+                                <p class="big">{{result.object.descripcion|safe}}</p>
 
-                                <a class="btn btn-outline" href="/media/{{obj.archivo}}" target="_blank">Descargar</a>
+                                <a class="btn btn-outline" href="/media/{{result.object.archivo}}" target="_blank">Descargar</a>
                             </div>
                             <div class="col-md-6 col-lg-4 bg-image p-0" >
-                                {% thumbnail obj.foto "595x842" crop="center" as im %}
+                                {% thumbnail result.object.foto "595x842" crop="center" as im %}
                                 <img class="person-img" src="{{im.url}}" alt=""/ width="100%">
                                 {% endthumbnail %}
                             </div>
@@ -103,13 +95,22 @@
                     </div>
                 </section>
             </div>
+            {% empty %}
+                <p>No se encontraron resultados</p>
             {% endfor %}
         </div>
         <div class="row">
             <div class="container">
                 <nav aria-label="Page navigation" class="text-center">
                     <ul class="pagination text-center d-flex justify-content-center">
-                        {% show_pages %}
+                      {% if page.has_previous or page.has_next %}
+
+                       {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}" class="endless_page_link">{% endif %}{% if page.has_previous %}< </a>{% endif %}
+                       <span class="endless_page_current">{{ page.number }} de {{ page.paginator.num_pages }}</span>
+
+                       {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}" class="endless_page_link">{% endif %} {% if page.has_next %}> </a>{% endif %}
+
+                       {% endif %}
                     </ul>
                 </nav>
             </div>
@@ -124,6 +125,11 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+<style media="screen">
+  .endless_page_current {
+    width: auto !important;
+}
+</style>
 {% endblock extra_css %}
 {% block extra_js %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
