@@ -363,6 +363,10 @@ p {
 .aprende .person-boxed {
   max-width: 100%;
 }
+.aprende .person-title {
+  line-height: 1.5;
+  min-height: 54px;
+}
 /* -------------------------------------------------------------------------- */
 /*                                   Cursos                                   */
 /* -------------------------------------------------------------------------- */
@@ -467,17 +471,17 @@ p {
   padding: 0 !important;
 }
 @media (min-width: 1600px) {
-  div.spacing-box {
+  .fancybox-content div.spacing-box {
     padding: 4.25rem 2.375rem;
   }
 }
 @media (min-width: 992px) {
-  div.spacing-box {
+  .fancybox-content div.spacing-box {
     padding: 4.075rem 2.0625rem;
   }
 }
 @media (min-width: 768px) {
-  div.spacing-box {
+  .fancybox-content div.spacing-box {
     padding: 3.9875rem 2.40625rem;
   }
 }
@@ -500,7 +504,7 @@ p {
   color: #fff !important;
 }
 .person-boxed .person-title {
-  min-height: 38px;
+  color: #fff !important;
 }
 /* -------------------------------------------------------------------------- */
 /*                                    Badge                                   */
@@ -528,6 +532,37 @@ p {
   -moz-animation: spin 4s linear infinite;
   -o-animation: spin 4s linear infinite;
   animation: spin 4s linear infinite;
+}
+/* -------------------------------------------------------------------------- */
+/*                                  Reflecion                                 */
+/* -------------------------------------------------------------------------- */
+.reflexion .fa-quote-right {
+  font-size: 2em;
+  border-bottom: 2px solid #fff;
+}
+.reflexion .bg-primary {
+  background: #8cc63f;
+}
+@media (min-width: 768px) {
+  .reflexion div.spacing-box {
+    padding: 2.9875rem 1.40625rem !important;
+  }
+}
+.reflexion .owl-carousel .owl-prev {
+  color: #8cc63f;
+  background: transparent;
+  left: -40px;
+}
+.reflexion .owl-carousel .owl-prev:hover {
+  background: transparent;
+}
+.reflexion .owl-carousel .owl-next {
+  right: -40px;
+  color: #8cc63f;
+  background: transparent;
+}
+.reflexion .owl-carousel .owl-next:hover {
+  background: transparent;
 }
 /* -------------------------------------------------------------------------- */
 /*                                 Responsive                                 */

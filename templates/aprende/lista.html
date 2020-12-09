@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 {% load el_pagination_tags %}
+{% block extra_css %}
 
+{% endblock extra_css %}
 {% block content %}
 <section class="section breadcrumb-section">
     <div class="container">
@@ -9,7 +11,7 @@
         <div class="breadcrumb">
             <div class="breadcrumb-inner">
                 <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
-                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Aprende</span>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Formación</span>
                 </div>
             </div>
         </div>
@@ -19,36 +21,53 @@
 <!-- Gallery-->
 <section class="section-md bg-transparent text-center aprende">
     <div class="container">
-        {% comment %} <h3>Titilo de aprende</h3> {% endcomment %}
+        {% comment %} <h3>Titulo de Formación</h3> {% endcomment %}
 
-        <div class="row justify-content-center" data-lightgallery>
-            {% paginate 9 objects_list %}
-            {% for obj in objects_list %}
-            <div class="col-6 col-xs-5 col-md-4">
-                <!-- Thumbnail gallery-->
-                <div class="person person-boxed mb-4 ">
-                    <div class="person-media">
-                        {% thumbnail obj.imagen "600x400" crop="center" as im %}
-                        <img class="person-img" src="{{im.url}}" alt="" />
-                        {% empty %}
-                        <img class="person-img" src="http://placehold.it/600x400" alt=""/>
-                        {% endthumbnail %}
-                    </div>
-                    <div class="person-body">
-                        <div class="person-title h6"><a href="{% url 'detalle-curso' obj.slug %}">{{obj.titulo}}</a></div>
-                    </div>
+        <div class="row justify-content-center">
+            <div class="col-6 col-xs-6 col-md-6 col-lg-8 reflexion">
+                <div class="owl-carousel " data-owl="{&quot;nav&quot;:true}" data-loop="false" data-items="1" data-sm-items="1" data-md-items="1" data-lg-items="1">
+                    {% for obj in reflexiones %}
+                    <div class="bg-primary context-dark spacing-box ">
+                        <i class="fa fa-quote-right"></i>
+                        <!-- <h4>Reflexion</h4> -->
+                        <p class="big">
+                            {{obj.texto}}
+                        </p>
+                        {% if obj.link %}
+                        <a class="btn btn-outline" href="{{obj.link}}">Leer más</a>
+                        {% endif %}
+                    </div>                  
+                
+                    {% endfor %}
+                    
                 </div>
+                
             </div>
-            {% endfor %}
-
-            {# reflexciones #}
-            {% for obj in reflexiones %}
-              {{obj.texto}}-{% if obj.link %}{{obj.link}}{% endif %}
-
-            {% endfor %}
-
-
         </div>
+        <div class="row justify-content-start">
+            
+            {% paginate 9 objects_list %}
+            {% for obj in objects_list|slice:":4" %}
+            <div class="col-6 col-xs-6 col-md-6 col-lg-4">
+                <!-- Thumbnail gallery-->
+                <a href="{% url 'detalle-curso' obj.slug %}">
+                    <div class="person person-boxed mb-4">
+                        <div class="person-media">
+                            {% thumbnail obj.imagen "600x400" crop="center" as im %}
+                            <img class="person-img" src="{{im.url}}" alt="" />
+                            {% empty %}
+                            <img class="person-img" src="http://placehold.it/600x400" alt=""/>
+                            {% endthumbnail %}
+                        </div>
+                        <div class="person-body">
+                            <div class="person-title h6 text-limit">{{obj.titulo}}</div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}       
+        </div>
+
         <div class="row">
             <div class="container">
                 <nav aria-label="Page navigation" class="text-center">
@@ -62,31 +81,6 @@
 </section>
 {% endblock content %}
 
-{% block extra_css %}
-<style>
-.endless_page_current, .endless_page_link {
-    height: 40px;
-    width: 40px;
-    margin: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius: 5px;
-    border: 2px solid transparent;
-    background: #42495b;
-    position: relative;
-    display: block;
-    height: 40px;
-    width: 40px;
-    margin-left: -2px;
-    line-height: 38px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 700;
-}
-.endless_page_current {
-    background: #4F002B;
-    border-color: #4F002B;
-}
-</style>
-{% endblock extra_css %}
+{% block extra_js %}
+
+{% endblock extra_js %}

@@ -58,24 +58,24 @@
                 {% endfor %}
             </ul>
         </div> {% endcomment %}
-        <div class="row no-gutters justify-content-center" data-lightgallery>
+        <div class="row no-gutters justify-content-start" data-lightgallery>
             {% paginate 12 objects_list %}
             {% for obj in objects_list %}
             <div class="col-6 col-xs-5 col-md-3">
                 <!-- Thumbnail gallery-->
                 <div class="person person-boxed mb-4 ">
-                    <div class="person-media">
-                        {% thumbnail obj.foto "595x842" crop="center" as im %}
-                        <img class="person-img" src="{{im.url}}" alt=""/>
-                        {% endthumbnail %}
-                    </div>
-                    <div class="person-body">
-                        <div class="person-title h6">
-                            <a data-fancybox data-src="#detalle_{{obj.id}}" href="javascript:;">
-                                {{obj.nombre}}
-                            </a>
+                    <a data-fancybox data-src="#detalle_{{obj.id}}" href="javascript:;">
+                        <div class="person-media">
+                            {% thumbnail obj.foto "595x842" crop="center" as im %}
+                            <img class="person-img" src="{{im.url}}" alt=""/>
+                            {% endthumbnail %}
                         </div>
-                    </div>
+                        <div class="person-body">
+                            <div class="person-title h6 text-limit">
+                                {{obj.nombre}}
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
 
