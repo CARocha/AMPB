@@ -24,8 +24,11 @@
         {% comment %} <h3>Titulo de Formación</h3> {% endcomment %}
 
         <div class="row justify-content-center">
-            <div class="col-6 col-xs-6 col-md-6 col-lg-8 reflexion">
-                <div class="owl-carousel " data-owl="{&quot;nav&quot;:true}" data-loop="false" data-items="1" data-sm-items="1" data-md-items="1" data-lg-items="1">
+            
+        </div>
+        <div class="row justify-content-start">
+            <div class="col-6 col-xs-6 col-md-6 col-lg-4 reflexion">
+                <div class="owl-carousel " data-owl="{&quot;dots&quot;:true}" data-loop="false" data-items="1" data-sm-items="1" data-md-items="1" data-lg-items="1">
                     {% for obj in reflexiones %}
                     <div class="bg-primary context-dark spacing-box ">
                         <i class="fa fa-quote-right"></i>
@@ -43,9 +46,6 @@
                 </div>
                 
             </div>
-        </div>
-        <div class="row justify-content-start">
-            
             {% paginate 9 objects_list %}
             {% for obj in objects_list|slice:":4" %}
             <div class="col-6 col-xs-6 col-md-6 col-lg-4">
