@@ -124,8 +124,11 @@ STATICFILES_DIRS = (
 
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
 CKEDITOR_CONFIGS = {
+
     'default': {
+        'embed_provider': '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}&api_key=0d3ebc2a045a69b42306cc',
         'extraPlugins': ','.join([
             # 'image2',
             'uploadimage', # the upload image feature
@@ -134,7 +137,6 @@ CKEDITOR_CONFIGS = {
             'autolink',
             'embed',
             'autoembed',
-
             'autogrow',
             # 'devtools',
             'widget',
@@ -165,6 +167,7 @@ CKEDITOR_CONFIGS = {
     },
 
 }
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 USE_DJANGO_JQUERY = True
