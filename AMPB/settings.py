@@ -128,7 +128,8 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_CONFIGS = {
 
     'default': {
-        'embed_provider': '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}&api_key=0d3ebc2a045a69b42306cc',
+        # 'embed_provider': '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}&api_key=0d3ebc2a045a69b42306cc',
+        'embed_provider': 'http://noembed.com/embed?url={callback}&callback={callback}',
         'extraPlugins': ','.join([
             # 'image2',
             'uploadimage', # the upload image feature
@@ -137,6 +138,7 @@ CKEDITOR_CONFIGS = {
             'autolink',
             'embed',
             'autoembed',
+            'oembed',
             'autogrow',
             # 'devtools',
             'widget',
@@ -155,7 +157,7 @@ CKEDITOR_CONFIGS = {
             { 'name': 'basicstyles', 'groups': [ 'basicstyles', 'cleanup' ], 'items': [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
             { 'name': 'paragraph', 'groups': [ 'list', 'indent', 'blocks', 'align', 'bidi' ], 'items': [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ] },
             { 'name': 'links', 'items': [ 'Link', 'Unlink', 'Anchor' ] },
-            { 'name': 'insert', 'items': [ 'Image', 'Youtube', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
+            { 'name': 'insert', 'items': [ 'Image', 'oembed', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe' ] },
             '/',
             { 'name': 'styles', 'items': [ 'Styles', 'Format', 'Font', 'FontSize' ] },
             { 'name': 'colors', 'items': [ 'TextColor', 'BGColor' ] },
