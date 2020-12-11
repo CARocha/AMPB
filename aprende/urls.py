@@ -6,6 +6,7 @@ router = routers.DefaultRouter()
 router.register(r'cursos', CursosViewSet)
 router.register(r'contenidos', ContenidoViewSet)
 router.register(r'modulos', ModuloViewSet)
+router.register(r'reflexion', ReflexionViewSet)
 
 urlpatterns = [
 	path('api/',include(router.urls)),

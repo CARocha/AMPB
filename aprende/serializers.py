@@ -1,4 +1,4 @@
-from .models import Cursos, Modulos, Contenidos
+from .models import *
 from rest_framework import serializers
 
 class CursoSerializer(serializers.ModelSerializer):
@@ -22,3 +22,8 @@ class ContenidoSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Contenidos
 		fields = ('id','modulo','titulo','contenido','orden','url_video','nombre_video')
+
+class ReflexionSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Reflexion
+		fields = ('id','texto','link','activo','fecha_creacion')

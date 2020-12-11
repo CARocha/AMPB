@@ -31,6 +31,10 @@ class ModulosFiltrado(generics.ListAPIView):
         id = self.kwargs['id']
         return Modulos.objects.filter(curso = id)
 
+class ReflexionViewSet(viewsets.ModelViewSet):
+    queryset = Reflexion.objects.all()
+    serializer_class = ReflexionSerializer
+
 def lista_cursos(request,template='aprende/lista.html'):
     objects_list = Cursos.objects.filter(activo = True).order_by('-id')
     reflexiones = Reflexion.objects.filter(activo = True).order_by('-fecha_creacion')[:3]
