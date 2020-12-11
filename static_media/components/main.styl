@@ -449,9 +449,12 @@ p
 .album 
     .thumbnail-gallery
         margin 10px
-.aprende 
+.aprende
     .person-boxed
         max-width: 100%
+    .person-title
+        line-height: 1.5
+        min-height: 54px
 
 /* -------------------------------------------------------------------------- */
 /*                                   Cursos                                   */
@@ -553,19 +556,19 @@ p
     padding: 0 !important
 
 @media (min-width: 1600px){
-div.spacing-box {
+.fancybox-content div.spacing-box {
     padding: 4.25rem 2.375rem;
 }
 }
 
 @media (min-width: 992px){
 
-div.spacing-box {
+.fancybox-content div.spacing-box {
     padding: 4.075rem 2.0625rem;
 }
 }
 @media (min-width: 768px){
-    div.spacing-box {
+    .fancybox-content div.spacing-box {
         padding: 3.9875rem 2.40625rem;
     }
 }
@@ -586,7 +589,7 @@ div.spacing-box {
     background: $base
     color: white !important
 .person-boxed .person-title
-    min-height: 38px
+    color white !important
 /* -------------------------------------------------------------------------- */
 /*                                    Badge                                   */
 /* -------------------------------------------------------------------------- */
@@ -605,6 +608,42 @@ div.spacing-box {
     -moz-animation:spin 4s linear infinite;
     animation:spin 4s linear infinite;
 
+/* -------------------------------------------------------------------------- */
+/*                                  Reflecion                                 */
+/* -------------------------------------------------------------------------- */
+.reflexion
+    .fa-quote-right
+        font-size:  2em
+        border-bottom: 2px solid #fff
+    .bg-primary
+        background: #8cc63f
+
+@media (min-width: 768px)
+    .reflexion div.spacing-box
+        padding: 2.9875rem 1.40625rem !important
+.reflexion
+    margin-bottom: 20px
+    .owl-carousel .owl-prev
+        color: #8cc63f
+        background: transparent
+        left -20px
+        &:hover
+            background transparent
+    .owl-carousel .owl-next
+        right -20px
+        color #8cc63f
+        background transparent
+        &:hover
+            background transparent
+    .big
+        font-size: 1.25rem
+.reflexion .owl-carousel .owl-dot:hover, .reflexion .owl-carousel .owl-dot.active
+    box-shadow: inset 0 0 0 10px #8cc63f;
+.reflexion .owl-carousel .owl-dot
+    box-shadow: inset 0 0 0 2px #8cc63f;
+@media (min-width: 1600px)
+    .reflexion .owl-carousel .owl-dots
+        margin-top: 1rem;
 
 /* -------------------------------------------------------------------------- */
 /*                                 Responsive                                 */
