@@ -7,6 +7,9 @@
 {% leaflet_css %}
 <style>
     #map { height: 250px; }
+    .section-md ul, .section-md ol {
+      list-style: disc !important;
+    }
 </style>
 {% endblock extra_css %}
 
@@ -70,14 +73,6 @@
     </div>
 </section>
 {% endblock content %}
-
-{% block extra_css %}
-<style media="screen">
-.section-md ul, .section-md ol {
-  list-style: disc !important;
-}
-</style>
-{% endblock extra_css %}
 
 {% block extra_js %}
 <script>
