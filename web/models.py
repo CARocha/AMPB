@@ -151,7 +151,7 @@ class TipoRecurso(models.Model):
 
 class Biblioteca(models.Model):
 	nombre = models.CharField(max_length=300)
-	descripcion = RichTextUploadingField()
+	descripcion = models.TextField()
 	foto = ImageField(upload_to='biblioteca/')
 	archivo = models.FileField(upload_to='documentos-biblioteca/')
 	fecha = models.DateField()

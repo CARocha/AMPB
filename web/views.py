@@ -21,6 +21,7 @@ def index(request,template='index.html'):
 	eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	liderazgos = Liderazgo.objects.order_by('-id')[:4]
 	galerias = Galeria.objects.order_by('-id')[:6]
+	escuelas = Escuela.objects.all()
 	return render(request, template, locals())
 
 def lista_noticias(request,template='noticias/lista.html'):

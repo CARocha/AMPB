@@ -2,6 +2,8 @@
 from django.contrib import admin
 from nested_inline.admin import NestedStackedInline, NestedTabularInline, NestedModelAdmin
 from .models import *
+from django.forms import Textarea
+from django import forms
 
 class InlineContenidos(NestedStackedInline):
     model = Contenidos
@@ -47,8 +49,16 @@ class CursosAdmin(NestedModelAdmin):
 admin.site.register(Cursos, CursosAdmin)
 admin.site.register(Modulos, TemasModulos)
 
+class ReflexionForm(forms.ModelForm):
+  class Meta:
+    model = Reflexion
+    widgets = {
+      'texto': Textarea(attrs={'rows': 1,'cols': 40,'style': 'height: 100px;resize:none;',}),
+    }
+    fields = '__all__'
 
 class ReflexionAdmin(admin.ModelAdmin):
     list_display = ('texto','fecha_creacion')
+    form = ReflexionForm
 
 admin.site.register(Reflexion, ReflexionAdmin)

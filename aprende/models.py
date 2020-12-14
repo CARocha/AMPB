@@ -68,6 +68,7 @@ class Contenidos(models.Model):
 
 class Reflexion(models.Model):
 	texto = models.CharField(max_length=300)
+	autor = models.CharField(max_length=300,verbose_name='Autor/Fuente')
 	link = models.URLField(blank=True,null=True)
 	activo = models.BooleanField()
 	fecha_creacion = models.DateTimeField(auto_now_add=True)

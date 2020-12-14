@@ -411,7 +411,6 @@
 
     //alert(result);
     //$('#mapid').height(result);
-
     var map = L.map('mapid').setView([12.8654156, -85.2072296], 7);
     mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
     L.tileLayer(
@@ -419,5 +418,10 @@
         attribution: '&copy; ' + mapLink + ' Contributors',
         maxZoom: 18,
         }).addTo(map);
+
+        {% for point in escuelas %}
+            var marker{{forloop.parentloop.counter}}_{{forloop.counter}} = L.marker([{{point.location}}]).addTo(map);
+            marker{{forloop.parentloop.counter}}_{{forloop.counter}}.bindPopup("{{point.nombre}}")
+        {% endfor %}
 </script>
 {% endblock extra_js %}
