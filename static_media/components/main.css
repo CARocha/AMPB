@@ -656,3 +656,8 @@ p {
 .quote-simple .quote-meta {
   font-size: 1rem;
 }
+.fancybox-content .context-dark h5,
+.fancybox-content .context-dark h4,
+.fancybox-content .context-dark p {
+  color: #fff;
+}
