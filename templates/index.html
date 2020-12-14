@@ -57,8 +57,8 @@
     <div class="container">
         <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
 
-            <h3>{{intro.titulo}}</h3>
-            <h5 class="text-primary">{{intro.subtitulo}}</h5>
+            <h3 class="text-primary">{{intro.titulo}}</h3>
+            <h5 class="text-gris">{{intro.subtitulo}}</h5>
             <!-- <p class="big">Teachzy offers students the best of education and entertainment opportunities available in the area. We are glad to take care of every student and university entrant.</p> -->
         </div>
         <div class="row row-30 justify-content-center mb-4">
@@ -107,89 +107,8 @@
 </section>
 
 <!-- Monitoreo-->
-{% comment %} <section class="section-sm bg-transparent text-center map-container">
-    <div class="container">
-        <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
-            <h3>Presencia Territorial</h3>
-        </div>
-    </div>
-</section>
-<section class="section-lg bg-primary bg-image-wrap context-dark text-center text-md-left">
 
-    <iframe class="bg-image-wrap-item bg-image" src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7916743.786498476!2d-86.901886!3d14.334794000000002!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sni!4v1601412901212!5m2!1ses!2sni"
-                width="40%" height="543" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
-    </iframe>
-    <div class="container">
-    <div class="row">
-        <div class="col-lg-7">
-        <div class="pr-xxl-5">
-            <h2>Su educación, el futuro</h2>
-            <p class="big">Así avanzamos en la construcción del nuevo liderazgo</p>
-            <div class="row row-30 row-lg-55">
-            <div class="col-6 col-sm-6 col-md-6">
-                    <!-- Blurb side-->
-                    <article class="blurb blurb-side">
-                        <div class="blurb-item">
-                        <!-- <div class="icon blurb-icon custom-font-graduated"></div> -->
-                        <img src="/static/img/editados/Estudiantes op.1.png" alt="" width="80px">
-                        </div>
-                        <div class="blurb-body">
-                        <div class="blurb-counter-value h2"><span data-counter="">697</span>
-                        </div>
-                        <div class="blurb-title h4">Estudiantes </div>
-                        </div>
-                    </article>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6">
-                    <!-- Blurb side-->
-                    <article class="blurb blurb-side">
-                        <div class="blurb-item">
-                        <!-- <div class="icon blurb-icon custom-font-male-teacher"></div> -->
-                        <img src="/static/img/editados/Docentes op.1.png" alt="" width="80px">
-                        </div>
-                        <div class="blurb-body">
-                        <div class="blurb-counter-value h2"><span data-counter="">50</span>
-                        </div>
-                        <div class="blurb-title h4">Docentes</div>
-                        </div>
-                    </article>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6">
-                    <!-- Blurb side-->
-                    <article class="blurb blurb-side">
-                        <div class="blurb-item">
-                        <!-- <div class="icon blurb-icon custom-font-student-at-desk"></div> -->
-                        <img src="/static/img/editados/Mujeres jóvenes op.1.png" alt="" width="80px">
-                        </div>
-                        <div class="blurb-body">
-                        <div class="blurb-counter-value h2"><span data-counter="">260</span>
-                        </div>
-                        <div class="blurb-title h4">Mujeres jóvenes</div>
-                        </div>
-                    </article>
-            </div>
-            <div class="col-6 col-sm-6 col-md-6">
-                    <!-- Blurb side-->
-                    <article class="blurb blurb-side">
-                        <div class="blurb-item">
-                        <!-- <div class="icon blurb-icon custom-font-university"></div> -->
-                        <img src="/static/img/editados/iniciativas territoriales op.3.png" alt="" width="130px">
-                        </div>
-                        <div class="blurb-body">
-                        <div class="blurb-counter-value h2"><span data-counter="">10</span><span class="counter-postfix">+</span>
-                        </div>
-                        <div class="blurb-title h4">Iniciativas en territorio</div>
-                        </div>
-                    </article>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-</section> {% endcomment %}
-
-<section class="bg-primary bg-image-wrap context-dark text-center text-md-left ">
+<section class="bg-secondary bg-image-wrap context-dark text-center text-md-left ">
 
     <div class="container-fluid">
         <div class="row">
@@ -272,8 +191,8 @@
 <section class="section-md bg-white text-center">
 	<div class="container">
 		<div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
-			<h3>Actualidad</h3>
-			<h5 class="text-primary">Informáte de las últimas acciones de la Escuela Mesoamericana</h5>
+			<h3 class="text-primary">Acontecimientos</h3>
+			<h5 class="text-gris">Informáte de las últimas acciones de la Escuela Mesoamericana</h5>
 		</div>
 		<div class="owl-carousel owl-content-1 noticias" data-owl="{&quot;dots&quot;:true}" data-loop="false" data-items="1" data-sm-items="2" data-md-items="2" data-lg-items="3">
 			{% for obj in actualidad %}
@@ -294,21 +213,24 @@
                     <img class="post-img" src="http://via.placeholder.com/600x400" alt="" />
                 {% endif %}
 				</a>
-				<div class="post-meta">
-					<div class="post-meta-item">
-					<div class="post-meta-icon fa fa-calendar"></div>
-					<div class="post-date">{{obj.fecha|date:'d F Y'}}</div>
-					</div>
-					<div class="post-meta-item">
-					<div class="post-meta-icon fa fa-globe"></div>
-					<div class="post-comment">{{obj.escuela.pais}}</div>
-					</div>
-				</div>
-				<div class="post-title h6">
-					<a href="{% url 'detalle-noticia' obj.slug %}" class="text-limit">
-						{{obj.titulo}}
-					</a>
-				</div>
+                <div class="content-news">
+                    <div class="post-meta">
+                        <div class="post-meta-item">
+                        <div class="post-meta-icon fa fa-calendar"></div>
+                        <div class="post-date">{{obj.fecha|date:'d F Y'}}</div>
+                        </div>
+                        <div class="post-meta-item">
+                        <div class="post-meta-icon fa fa-globe"></div>
+                        <div class="post-comment">{{obj.escuela.pais}}</div>
+                        </div>
+                    </div>
+                    <div class="post-title h6">
+                        <a href="{% url 'detalle-noticia' obj.slug %}" class="text-limit">
+                            {{obj.titulo}}
+                        </a>
+                    </div>
+                </div>
+				
 			</div>
             {% endfor %}
 
@@ -321,10 +243,10 @@
 
 
 <!-- Post event-->
-<section class="section-md bg-300 text-center">
+{% comment %} <section class="section-md bg-300 text-center">
     <div class="container">
         <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
-            <h2>Próximos Eventos</h2>
+            <h2 class="text-primary">Próximos Eventos</h2>
         </div>
         <div class="row row-30 justify-content-center">
             {% for obj in eventos %}
@@ -366,9 +288,57 @@
             <a class="btn btn-primary" href="/eventos/">Todos los eventos</a>
         </div>
     </div>
+</section> {% endcomment %}
+
+<section class="section-md bg-verde text-center">
+    <div class="container">
+        <div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
+            <h2 class="text-white">Próximos Eventos</h2>
+        </div>
+        <div class="row row-30 justify-content-center">
+            {% for obj in eventos %}
+            <div class="col-xs-8 col-sm-6 col-md-4">
+                    <!-- Post event-->
+                    <div class="post post-event" data-animate='{"class":"fadeInUp"}'>
+                        <a class="post-media" href="{% url 'detalle-evento' obj.slug %}">
+                            {% thumbnail obj.foto "600x400" crop="center" as im %}
+                                <img class="post-img" src="{{im.url}}" alt=""/>
+                            {% endthumbnail %}
+                            <div class="post-date">
+                                <div class="post-day">{{obj.inicio|date:'d'}}</div>
+                                <div class="post-month">{{obj.inicio|date:'M'}}</div>
+                            </div>
+                        </a>
+
+                        <div class="content-event">
+                            <div class="post-heading h5">
+                                <div class="post-title"><a href="{% url 'detalle-evento' obj.slug %}">{{obj.titulo|truncatechars:80}}</a></div>
+                            </div>
+                            <div class="post-meta post-meta-vertical big">
+                                <div class="post-meta-item">
+                                    <div class="post-meta-icon custom-font-clock"></div>
+                                    <div class="post-time">{{obj.hora_inicio|time:'h:i a'}} - {{obj.hora_fin|time:'h:i a'}}</div>
+                                </div>
+                                <br>
+                                <div class="post-meta-item">
+                                    <div class="post-meta-icon custom-font-pin"></div>
+                                    <div class="post-location">{{obj.lugar}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+
+                    </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="mt-5">
+            <a class="btn btn-primary" href="/eventos/">Todos los eventos</a>
+        </div>
+    </div>
 </section>
-
-
 
 <!-- Lideres-->
 <section class="section-md bg-white text-center">
