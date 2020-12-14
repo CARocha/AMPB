@@ -639,11 +639,11 @@ a.text-primary:hover, a.text-primary:focus {
 }
 
 .text-secondary {
-	color:  #f7941d !important;
+	color:  #FFC734 !important;
 }
 
 a.text-secondary:hover, a.text-secondary:focus {
-	color: #b36b00 !important;
+	color:#FFC734 !important;
 }
 
 .text-success {
@@ -4807,11 +4807,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a {
-	color: inherit;
+	color: #4F002B;
 }
 
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, .h1 a:hover, .h2 a:hover, .h3 a:hover, .h4 a:hover, .h5 a:hover, .h6 a:hover {
-	color: #4F002B;
+	color: #87C847;
 }
 
 h1, .h1 {
@@ -4922,11 +4922,11 @@ strong {
 }
 
 .context-dark {
-	color: #fff;
+	color: #4F002B;
 }
 
 .context-dark h1, .context-dark h2, .context-dark h3, .context-dark h4, .context-dark h5, .context-dark h6, .context-dark .h1, .context-dark .h2, .context-dark .h3, .context-dark .h4, .context-dark .h5, .context-dark .h6 {
-	color: #fff;
+	color: #4F002B;
 }
 
 /** @section Spacing*/
@@ -5210,13 +5210,13 @@ button.bg-primary:focus {
 }
 
 .bg-secondary {
-	background-color:  #f7941d;
+	background-color: #FFC734;
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
 button.bg-secondary:hover,
 button.bg-secondary:focus {
-	background-color: #cc7a00;
+	background-color: #FFC734;
 }
 
 .bg-success {
