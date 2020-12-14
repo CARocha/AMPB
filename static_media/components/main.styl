@@ -53,13 +53,13 @@
 /*                                   Colores                                  */
 /* -------------------------------------------------------------------------- */
 
-$amarillo = rgb(253,215,0)
-$verde = rgb(0,121,27)
+$amarillo = #FFC734
+$verde =#87C847
 $cafe = rgb(157,89,24)
 $base = #4F002B
 $black_base = #42495b
-$gris = #e9eff4
-
+$grey = #e9eff4
+$gris = #909BA2;
 
 /* -------------------------------------------------------------------------- */
 /*                                   Mixins                                   */
@@ -120,8 +120,10 @@ transition()
 transform()
   vendor('transform', arguments)
 
-
-
+.text-gris
+    color: $gris
+.bg-verde
+    background: $verde
 /* -------------------------------------------------------------------------- */
 /*                                   Fuente                                   */
 /* -------------------------------------------------------------------------- */
@@ -369,7 +371,7 @@ p
 .social-share {
   border-radius: 3px;
   box-shadow: 0 1px 0 #e9e9e9 inset;
-  background: $gris;
+  background: $grey;
   border-color: $base #e7e7e7 #e4e4e4;
   border-radius: 3px;
   border-style: solid;
@@ -435,7 +437,7 @@ p
 /* -------------------------------------------------------------------------- */
 .post-text 
     figcaption
-        background: $gris
+        background: $grey
         padding: 10px
         font-size: 0.8rem
         font-weight: 700
@@ -548,7 +550,16 @@ p
 //     position: relative;
 //     top: -50px;
 //     box-shadow: 0px 3px 12px -3px rgba(0,0,0,0.2)
-
+.content-event
+    background: white
+    padding: 15px 20px
+    border-bottom-right-radius: 20px
+    border-bottom-left-radius: 20px
+.content-news
+    background: white
+    padding: 15px 20px
+    border-bottom-right-radius: 20px
+    border-bottom-left-radius: 20px
 /* -------------------------------------------------------------------------- */
 /*                                 Biblioteca                                 */
 /* -------------------------------------------------------------------------- */
@@ -676,4 +687,18 @@ p
             li
                 display: inline-block !important
                 padding:5px 10px
-        
+
+
+.post-meta-item
+    color: $gris
+    font-weight: 500
+
+.quote-simple
+    .quote-text
+        font-size: 1.1rem
+        color: $base
+    .quote-cite.h6
+        font-size: 1.5rem
+        color: #909BA2 
+    .quote-meta
+        font-size: 1rem

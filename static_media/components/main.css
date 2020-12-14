@@ -4,6 +4,12 @@
 /* -------------------------------------------------------------------------- */
 /*                                   Mixins                                   */
 /* -------------------------------------------------------------------------- */
+.text-gris {
+  color: #909ba2;
+}
+.bg-verde {
+  background: #87c847;
+}
 /* -------------------------------------------------------------------------- */
 /*                                   Fuente                                   */
 /* -------------------------------------------------------------------------- */
@@ -464,6 +470,18 @@ p {
 /* -------------------------------------------------------------------------- */
 /*                                   Eventos                                  */
 /* -------------------------------------------------------------------------- */
+.content-event {
+  background: #fff;
+  padding: 15px 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.content-news {
+  background: #fff;
+  padding: 15px 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
 /* -------------------------------------------------------------------------- */
 /*                                 Biblioteca                                 */
 /* -------------------------------------------------------------------------- */
@@ -622,4 +640,19 @@ p {
     display: inline-block !important;
     padding: 5px 10px;
   }
+}
+.post-meta-item {
+  color: #909ba2;
+  font-weight: 500;
+}
+.quote-simple .quote-text {
+  font-size: 1.1rem;
+  color: #4f002b;
+}
+.quote-simple .quote-cite.h6 {
+  font-size: 1.5rem;
+  color: #909ba2;
+}
+.quote-simple .quote-meta {
+  font-size: 1rem;
 }
