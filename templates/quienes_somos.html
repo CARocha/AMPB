@@ -44,8 +44,16 @@
 
 
 {% endblock content %}
-{% block extra_js %}
 
+{% block extra_css %}
+<style media="screen">
+.post-text ul, .post-text ol {
+  list-style: disc !important;
+}
+</style>
+{% endblock extra_css %}
+
+{% block extra_js %}
 <script>
     $(document).ready(function () {
         $('.scroll-to').click(function() {

@@ -128,6 +128,15 @@
     </ul>
 </div>
 {% endblock content %}
+
+{% block extra_css %}
+<style media="screen">
+.post-text ul, .post-text ol {
+  list-style: disc !important;
+}
+</style>
+{% endblock extra_css %}
+
 {% block extra_js %}
 <script>
     var tamano = $('.noticias').offset().top;
@@ -140,7 +149,6 @@
             $('.si-sticky').removeClass('slideleft');
         }
     });
-    
+
 </script>
 {% endblock extra_js %}
-

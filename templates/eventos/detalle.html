@@ -54,7 +54,7 @@
                                 {{object.hora_fin|time:'h:i a'}}
                             </div>
                         </div>
-                        
+
                         {% leaflet_map "map" %}
                         {% comment %} <div class="box-list-item">
                             {% leaflet_map "map" %}
@@ -64,12 +64,20 @@
             </div>
             <div class="col-md-6 col-xl-12">
                 {{object.descripcion|safe}}
-                
+
             </div>
         </div>
     </div>
 </section>
 {% endblock content %}
+
+{% block extra_css %}
+<style media="screen">
+.section-md ul, .section-md ol {
+  list-style: disc !important;
+}
+</style>
+{% endblock extra_css %}
 
 {% block extra_js %}
 <script>
