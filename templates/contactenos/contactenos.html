@@ -30,31 +30,47 @@
         </div>
         <div class="row row-30">
             <div class="col-md-8">
-                <form class="rd-form rd-mailform" >
+                <form class="rd-form rd-mailform" method="POST">{% csrf_token %}
                     <div class="row row-20">
+                      {% if messages %}
+                      <div class="col-md-12">
+                        Mensaje enviado
+                      </div>
+                      {% endif %}
+
+                      {% if form.errors %}
+                      <div class="col-md-12">
+                        {{form.errors}}
+                      </div>
+                      {% endif %}
                         <div class="col-md-6">
                         <div class="form-group">
-                            <input class="form-control" type="text" name="name" placeholder="Nombre*" data-constraints="@Required">
+                            {# <input class="form-control" type="text" name="name" placeholder="Nombre*" data-constraints="@Required"> #}
+                            {{form.nombre}}
                         </div>
                         </div>
                         <div class="col-md-6">
                         <div class="form-group">
-                            <input class="form-control" type="email" name="email" placeholder="Correo*" data-constraints="@Email @Required">
+                            {# <input class="form-control" type="email" name="email" placeholder="Correo*" data-constraints="@Email @Required"> #}
+                            {{form.correo}}
                         </div>
                         </div>
                         <div class="col-md-6">
                         <div class="form-group">
-                            <input class="form-control" type="text" name="phone" placeholder="Teléfono*" data-constraints="@Numeric @Required">
+                            {# <input class="form-control" type="text" name="phone" placeholder="Teléfono*" data-constraints="@Numeric @Required"> #}
+                            {{form.telefono}}
                         </div>
                         </div>
                         <div class="col-md-6">
                         <div class="form-group">
-                            <input class="form-control" type="text" name="subject" placeholder="Asunto">
+                            {# <input class="form-control" type="text" name="subject" placeholder="Asunto"> #}
+                            {{form.asunto}}
                         </div>
                         </div>
                         <div class="col-12">
                         <div class="form-group">
-                            <textarea class="form-control" name="textarea" placeholder="Mensaje"></textarea>
+                            {# <textarea class="form-control" name="textarea" placeholder="Mensaje"></textarea> #}
+                            {{form.mensaje}}
                         </div>
                         </div>
                     </div>
@@ -62,7 +78,7 @@
                         <button class="btn btn-primary" type="submit">Enviar Correo</button>
                     </div>
                 </form>
-               
+
             </div>
             <div class="col-md-4">
                 <h5 class="text-primary">Antes de contactarnos</h5>
@@ -95,5 +111,10 @@
 
 <script>
     $('#global-error').hide();
+    $('#id_nombre').addClass('form-control').attr("placeholder", "Nombre*");
+    $('#id_correo').addClass('form-control').attr("placeholder", "Correo*");
+    $('#id_telefono').addClass('form-control').attr("placeholder", "Teléfono*");
+    $('#id_asunto').addClass('form-control').attr("placeholder", "Asunto*");
+    $('#id_mensaje').addClass('form-control').attr("placeholder", "Mensaje");
 </script>
 {% endblock extra_js %}

@@ -5,15 +5,13 @@ from configuracion.models import *
 from haystack.query import SearchQuerySet
 from haystack.views import SearchView, search_view_factory
 from haystack.forms import ModelSearchForm
-from django import forms
+from .forms import *
+from django.http import HttpResponseRedirect
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.contrib import messages
 
 # Create your views here.
-
-class BuscadorForm(forms.Form):
-	def __init__(self, *args, **kwargs):
-		super(BuscadorForm, self).__init__(*args, **kwargs)
-		self.fields['q'] = forms.CharField()
-
 def index(request,template='index.html'):
 	banner = Banner.objects.order_by('-id')[:3]
 	actualidad = Actualidad.objects.order_by('-id')[:6]
@@ -81,6 +79,36 @@ def lista_biblioteca(request,template='biblioteca/lista.html'):
 
 def quienes_somos(request,template='quienes_somos.html'):
 	object_list = QuienesSomos.objects.order_by('orden')
+	return render(request, template, locals())
+
+
+def contactenos(request,template='contactenos/contactenos.html'):
+	if request.method == 'POST':
+		form = ContactoForm(request.POST)
+		if form.is_valid():
+			nombre = form.cleaned_data['nombre']
+			correo = form.cleaned_data['correo']
+			telefono = form.cleaned_data['telefono']
+			asunto = form.cleaned_data['asunto']
+			mensaje = form.cleaned_data['mensaje']
+
+			try:
+				subject, from_email = asunto, 'mail@gmail.com'
+				text_content =  render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
+
+				html_content = render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
+
+				msg = EmailMultiAlternatives(subject, text_content, from_email, ['comunicacion@escuelamesoamericana.org',])
+				msg.attach_alternative(html_content, "text/html")
+				msg.send()
+
+				enviado = True
+				messages.success(request, 'Success!')
+				return HttpResponseRedirect(request.path)
+			except:
+				pass
+	else:
+		form = ContactoForm()
 
 	return render(request, template, locals())
 

@@ -56,7 +56,6 @@
                     </div>
 
                     {% for modulo in object.modulos_set.all|dictsort:'order' %}
-
                     <div class="panel mi-movil-1">
                         <div class="panel-title ">
                             <a data-parent="#accordion1" data-toggle="collapse" href="#accordion{{forloop.counter}}"
@@ -88,6 +87,7 @@
             </div>
         </div>
 
+        
         <div class="row">
             <div class="container">
                 <nav aria-label="Page navigation" class="text-center">
@@ -131,6 +131,7 @@
                 </nav>
             </div>
         </div>
+
     </div>
 </section>
 {% endblock content %}

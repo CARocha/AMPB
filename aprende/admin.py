@@ -39,6 +39,8 @@ class TemasModulos(NestedModelAdmin):
             curso = Cursos.objects.get(modulos = id_modulo)
             curso.fecha = now
             curso.save()
+        else:
+            formset.save()
 
 
 class CursosAdmin(NestedModelAdmin):
