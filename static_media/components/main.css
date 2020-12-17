@@ -153,6 +153,55 @@ p {
   -webkit-line-clamp: 2; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
+.post-text blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #4f002b;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+.post-text blockquote:before {
+  color: #4f002b;
+  content: '\f10d';
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+}
+.post-text blockquote p {
+  display: inline;
+  font-size: 1.2rem;
+}
+.post-text ul {
+  margin-bottom: 2.5em;
+  list-style: none;
+  padding-left: 20px;
+}
+.post-text ul li {
+  font-size: 1.1rem;
+  font-family: SourceSansPro, sans-serif;
+  display: inline-flex;
+  margin-bottom: 5px;
+}
+.post-text ul li:before {
+  color: #4f002b;
+  content: '\f111';
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 0.6em;
+  position: relative;
+  margin-right: 10px;
+  top: 10px;
+}
+@media (max-width: 768px) {
+  .post-text iframe {
+    width: 100%;
+    height: 260px;
+  }
+  .post-text p iframe {
+    width: 100%;
+    height: 260px;
+  }
+}
 /* -------------------------------------------------------------------------- */
 /*                                  Paginado                                  */
 /* -------------------------------------------------------------------------- */

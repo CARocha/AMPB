@@ -262,6 +262,54 @@ p
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
+.post-text
+    blockquote
+        background: #f9f9f9;
+        border-left: 10px solid $base;
+        margin: 1.5em 10px;
+        padding: 0.5em 10px;
+        quotes: "\201C""\201D""\2018""\2019";
+        &:before
+            color: $base;
+            content: '\f10d';
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: 2em;
+            line-height: 0.1em;
+            margin-right: 0.25em;
+
+        p
+            display: inline;
+            font-size: 1.2rem
+    ul
+        margin-bottom: 2.5em;
+        list-style: none;
+        padding-left: 20px;
+        li
+            font-size: 1.1rem;
+            font-family: SourceSansPro, sans-serif;
+            display inline-flex
+            margin-bottom: 5px;
+            &:before
+                color: $base
+                content: '\f111'
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size:0.6em;
+                position: relative;
+                margin-right: 10px;
+                top: 10px;
+    
+@media (max-width: 768px){
+    .post-text iframe{
+        width: 100%
+        
+        height: 260px;
+    }
+    .post-text p iframe{
+        width: 100%
+        
+        height: 260px;
+    }
+}                
 
 /* -------------------------------------------------------------------------- */
 /*                                  Paginado                                  */
