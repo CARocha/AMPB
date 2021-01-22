@@ -210,6 +210,7 @@ HAYSTACK_CONNECTIONS = {
 CORS_ALLOW_METHODS = [
     'GET',
 ]
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_HEADERS = [
     'accept',
     'accept-encoding',
