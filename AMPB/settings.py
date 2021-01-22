@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'el_pagination',
     'location_field.apps.DefaultConfig',
     'solo',
+    'corsheaders',
 ]
 
 # SITE_ID = 1
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -204,3 +206,18 @@ HAYSTACK_CONNECTIONS = {
         'PATH': WHOOSH_INDEX,
     },
 }
+
+CORS_ALLOW_METHODS = [
+    'GET',
+]
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
