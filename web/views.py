@@ -23,13 +23,13 @@ def index(request,template='index.html'):
 	return render(request, template, locals())
 
 def lista_noticias(request,template='noticias/lista.html'):
-	objects_list = Actualidad.objects.order_by('-id')
+	objects_list = Actualidad.objects.order_by('-fecha')
 	paises = Actualidad.objects.values_list('escuela__pais__slug','escuela__pais__nombre').distinct('escuela__pais')
 	form = BuscadorForm
 	return render(request, template, locals())
 
 def filtro_noticias(request,slug=None,template='noticias/lista.html'):
-	objects_list = Actualidad.objects.filter(escuela__pais__slug = slug).order_by('-id')
+	objects_list = Actualidad.objects.filter(escuela__pais__slug = slug).order_by('-fecha')
 	paises = Actualidad.objects.values_list('escuela__pais__slug','escuela__pais__nombre').distinct('escuela__pais')
 	return render(request, template, locals())
 
@@ -53,13 +53,13 @@ def detalle_galeria(request,slug=None,template='galerias/detalle.html'):
 	return render(request, template, locals())
 
 def lista_eventos(request,template='eventos/lista.html'):
-	objects_list = Evento.objects.order_by('-id')
+	objects_list = Evento.objects.order_by('-inicio')
 	paises = Evento.objects.values_list('escuela__pais__slug','escuela__pais__nombre').distinct('escuela__pais')
 	form = BuscadorForm
 	return render(request, template, locals())
 
 def filtro_eventos(request,slug=None,template='eventos/lista.html'):
-	objects_list = Evento.objects.filter(escuela__pais__slug = slug).order_by('-id')
+	objects_list = Evento.objects.filter(escuela__pais__slug = slug).order_by('-inicio')
 	paises = Evento.objects.values_list('escuela__pais__slug','escuela__pais__nombre').distinct('escuela__pais')
 	return render(request, template, locals())
 
@@ -68,7 +68,7 @@ def detalle_evento(request,slug=None,template='eventos/detalle.html'):
 	return render(request, template, locals())
 
 def lista_biblioteca(request,template='biblioteca/lista.html'):
-	objects_list = Biblioteca.objects.order_by('-id')
+	objects_list = Biblioteca.objects.order_by('-fecha')
 	form = BuscadorForm
 	return render(request, template, locals())
 

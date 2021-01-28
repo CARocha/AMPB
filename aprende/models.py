@@ -10,11 +10,11 @@ from sorl.thumbnail import ImageField,get_thumbnail
 # Create your models here.
 
 class Cursos(models.Model):
-	titulo = models.CharField('Nombre del curso', max_length=250)
+	titulo = models.CharField('Nombre', max_length=250)
 	slug = models.SlugField(max_length=250, unique=True, editable=False)
 	imagen = ImageField(upload_to='images', null=True, blank=True)
 	#imagen_banner = models.FileField(upload_to='banner', null=True, blank=True)
-	descripcion = RichTextUploadingField('Descripción del curso')
+	descripcion = RichTextUploadingField('Descripción')
 	fecha = models.DateTimeField(auto_now=True,verbose_name='Ultima actualización')
 	activo = models.BooleanField(default=True)
 
@@ -34,10 +34,14 @@ class Cursos(models.Model):
 	def cached_img(self):
 		im = get_thumbnail(self.imagen, '1000', crop='center', quality=99)
 		return im.url
+	
+	class Meta:
+		verbose_name = 'Sesión'
+		verbose_name_plural = 'Sesiones'
 
 
 class Modulos(models.Model):
-	curso = models.ForeignKey(Cursos,on_delete=models.CASCADE)
+	curso = models.ForeignKey(Cursos,on_delete=models.CASCADE,verbose_name = "Sesión")
 	titulo = models.CharField('Nombre del tema', max_length=250)
 	order = OrderField(blank=True, for_fields=['curso'])
 
