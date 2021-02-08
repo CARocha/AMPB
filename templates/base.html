@@ -94,7 +94,7 @@
                             <li class="navbar-navigation-root-item"><a class="btn btn-primary" href="contact-us.html">Contáctenos</a>
                         </ul> -->
 						<ul class="navbar-navigation rd-navbar-nav">
-                            <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'quienes-somos' %}">Quiénes somos?</a>
+                            <li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="{% url 'quienes-somos' %}">Quiénes somos</a>
                                 {% if  quienes_somos  %}
                                 <ul class="navbar-navigation-dropdown rd-navbar-dropdown">
                                     <li class="navbar-navigation-back">
@@ -122,6 +122,15 @@
                             </li>
                             <li class="navbar-navigation-root-item">
                                 <a class="navbar-navigation-root-link" href="{% url 'lista-cursos' %}">Formación</a>
+                            </li>
+							<li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Nuestro trabajo</a>
+                                <ul class="navbar-navigation-dropdown rd-navbar-dropdown">
+                                    <li class="navbar-navigation-back">
+                                    <button class="navbar-navigation-back-btn">Atras</button>
+                                    </li>
+                                    <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'exp-liderazgo' %}">Experiencias de Liderazgo</a>
+                                    </li>
+                                </ul>
                             </li>
                             <!--<li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Monitoreo</a>
                                 </li>-->

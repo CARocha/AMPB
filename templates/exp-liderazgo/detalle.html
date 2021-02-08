@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load embed_video_tags %}
+
+{% block content %}
+<section class="section breadcrumb-section">
+    <div class="container">
+        <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="{% url 'exp-liderazgo' %}">Experiencias de Liderazgo</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Artículo</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Post single-->
+<section class="section-md bg-transparent">
+    <div class="container">
+        <div class="post">
+            <div class="post-media">
+                {% if object.foto %}
+                    {% thumbnail object.foto "1000x670" crop="center" as im %}
+                        <img class="post-img" src="{{im.url}}" alt="" />
+                    {% endthumbnail %}
+                {% elif object.video %}
+                {% video object.video as my_video %}
+                    {% video my_video '1170x500' %}
+                {% endvideo %}
+                {% else %}
+                    <img class="post-img" src="http://via.placeholder.com/1170x500" alt="" />
+                {% endif %}
+            </div>
+            <div class="post-meta">
+                <div class="post-meta-item">
+                    <div class="post-meta-icon fa fa-calendar"></div>
+                    <div class="post-date">{{object.fecha|date:'d F Y'}}</div>
+                </div>
+                {% comment %} <div class="post-meta-item">
+                    <div class="post-meta-icon fa fa-globe"></div>
+                    <div class="post-comment">{{object.escuela.pais}}</div>
+                </div>
+                <div class="post-meta-item">
+                    <div class="post-meta-icon fa fa-user"></div>
+                    <div class="post-comment">{{object.escuela}}</div>
+                </div> {% endcomment %}
+            </div>
+            <div class="post-title h4">{{object.titulo}}</div>
+            <div class="post-text">
+                {{object.contenido|safe}}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog-->
+<section class="section-md bg-transparent noticias">
+    <div class="container">
+        <div class="text-block text-block-1 text-center">
+            <h5 class="text-primary">Más Artículos</h5>
+            <h2>Experiencias Relacionadas</h2>
+        </div>
+        <div class="row row-30 justify-content-center">
+            {% for obj in relacionados %}
+            <div class="col-xs-9 col-sm-6 col-md-4">
+                <!-- Post-->
+                <div class="post post-responsive post-responsive-1">
+                    <a class="post-media" href="{% url 'detalle-exp' obj.slug %}">
+                        {% if obj.foto %}
+                            {% thumbnail obj.foto "600x400" crop="center" as im %}
+                                <img class="post-img" src="{{im.url}}" alt="" />
+                            {% endthumbnail %}
+                        {% elif obj.video %}
+                        {% video obj.video as my_video %}
+                            {% thumbnail my_video.thumbnail "600x400" crop="center" as im %}
+                                <img class="post-img" src="{{im.url}}" alt="" />
+                            {% endthumbnail %}
+                        {% endvideo %}
+                        {% else %}
+                            <img class="post-img" src="http://via.placeholder.com/600x400" alt="" />
+                        {% endif %}
+                    </a>
+                    <div class="post-meta">
+                        <div class="post-meta-item">
+                            <div class="post-meta-icon fa fa-calendar"></div>
+                            <div class="post-date">{{obj.fecha|date:'d F Y'}}</div>
+                        </div>
+                        <div class="post-meta-item">
+                            <div class="post-meta-icon fa fa-globe"></div>
+                            <div class="post-comment">{{obj.escuela.pais}}</div>
+                        </div>
+                    </div>
+                    <div class="post-title h6">
+                        <a href="{% url 'detalle-noticia' obj.slug %}" class="text-limit">
+                            {{obj.titulo}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<div class="si-sticky">
+    <ul class="social-share">
+        <li>
+            <a href="https://twitter.com/share?url=URLTOSHARE" class="tw" title="Tweet this page!">
+            <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/sharer.php?u=URLTOSHARE&amp;t=TITLE" class="fb" title="Share this page!">
+            <i class="fa fa-facebook"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://plus.google.com/share?url=URLTOSHARE" class="wt" title="Share this page!">
+            <i class="fa fa-whatsapp"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://plus.google.com/share?url=URLTOSHARE" class="gp" title="Share this page!">
+            <i class="fa fa-envelope"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+{% endblock content %}
+
+{% block extra_css %}
+<style media="screen">
+.post-text ul, .post-text ol {
+  list-style: disc !important;
+}
+</style>
+{% endblock extra_css %}
+
+{% block extra_js %}
+<script>
+    var tamano = $('.noticias').offset().top;
+    //alert(tamano);
+    $(document).scroll(function() {
+        if($('.si-sticky').offset().top >= tamano){
+            $('.si-sticky').addClass('slideleft');
+        }else{
+
+            $('.si-sticky').removeClass('slideleft');
+        }
+    });
+
+</script>
+{% endblock extra_js %}

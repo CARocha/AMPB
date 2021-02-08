@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load embed_video_tags %}
+{% load el_pagination_tags %}
+
+{% block content %}
+<section class="section breadcrumb-section">
+    <div class="container">
+        <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Experiencias de Liderazgo</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog-->
+<section class="section-md bg-transparent noticias">
+    <div class="container">
+        <div class="row row-30 justify-content-center">
+            <div class="col-md-6 col-lg-8">
+
+                <h2 class="mt-0">Experiencias de Liderazgo</h2>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="widget">
+                    <div class="widget-body">
+                        <form class="rd-form rd-form-boxed rd-form-boxed-1" action="{% url 'search-exp' %}"
+                            method="GET" data-rd-search>
+                            <div class="form-group">
+                                <!--<input class="form-control" type="text" placeholder="Buscar" autocomplete="off"
+                                    name="qs">-->
+                                {{form.q}}
+                            </div>
+                            <button class="rd-form-boxed-btn custom-font-search"></button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% comment %} <div class="row row-30 justify-content-center">
+            <ul class="list filter">
+                <li class="active"><a class="btn btn-primary" href="{% url 'exp-liderazgo' %}">Todos</a></li>
+                {% for obj in paises %}
+                <li><a class="btn btn-primary" href="{% url 'filtro-noticias' obj.0 %}">{{obj.1}}</a></li>
+                {% endfor %}
+            </ul>
+        </div> {% endcomment %}
+
+
+        <div class="row row-30 justify-content-center">
+            {% paginate 9 objects_list %}
+            {% for obj in objects_list %}
+            <div class="col-xs-9 col-sm-6 col-md-4">
+                <!-- Post-->
+                <div class="post post-responsive post-responsive-1">
+                    <a class="post-media" href="{% url 'detalle-exp' obj.slug %}">
+                        {% if obj.foto %}
+                            {% thumbnail obj.foto "600x400" crop="center" as im %}
+                                <img class="post-img" src="{{im.url}}" alt="" />
+                            {% endthumbnail %}
+                        {% elif obj.video %}
+                        {% video obj.video as my_video %}
+                            {% thumbnail my_video.thumbnail "600x400" crop="center" as im %}
+                                <img class="post-img" src="{{im.url}}" alt="" />
+                            {% endthumbnail %}
+                        {% endvideo %}
+                        {% else %}
+                            <img class="post-img" src="http://via.placeholder.com/600x400" alt="" />
+                        {% endif %}
+                    </a>
+                    <div class="post-meta">
+                        <div class="post-meta-item">
+                            <div class="post-meta-icon fa fa-calendar"></div>
+                            <div class="post-date">{{obj.fecha|date:'d F Y'}}</div>
+                        </div>
+                        <div class="post-meta-item">
+                            <div class="post-meta-icon fa fa-globe"></div>
+                            <div class="post-comment">{{obj.escuela.pais}}</div>
+                        </div>
+                    </div>
+                    <div class="post-title h6">
+                        <a href="{% url 'detalle-exp' obj.slug %}" class="text-limit">
+                            {{obj.titulo}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+        </div>
+        <div class="row">
+            <div class="container">
+                <nav aria-label="Page navigation" class="text-center">
+                    <ul class="pagination text-center d-flex justify-content-center">
+                        {% show_pages %}
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  $("#id_q").addClass("form-control");
+  $("#id_q").attr( "placeholder", "Buscar" );
+</script>
+{% endblock extra_js %}

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load embed_video_tags %}
+{% load el_pagination_tags %}
+
+{% block content %}
+<section class="section breadcrumb-section">
+    <div class="container">
+        <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Experiencias de Liderazgo</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog-->
+<section class="section-md bg-transparent noticias">
+    <div class="container">
+        <div class="row row-30 justify-content-center">
+            <div class="col-md-6 col-lg-8">
+
+                <h2 class="mt-0">Experiencias de Liderazgo</h2>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="widget">
+                    <div class="widget-body">
+                        <form class="rd-form rd-form-boxed rd-form-boxed-1" action="{% url 'search-exp' %}"
+                            method="GET" data-rd-search>
+                            <div class="form-group">
+                              <!--<input class="form-control" type="text" placeholder="Buscar" autocomplete="off"
+                                  name="qs">-->
+                              {{form.q}}
+                            </div>
+                            <button class="rd-form-boxed-btn custom-font-search"></button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row row-30 justify-content-center">
+            {# {% paginate 9 page.objects_list %} #}
+            {% for result in page.object_list %}
+            <div class="col-xs-9 col-sm-6 col-md-4">
+                <!-- Post-->
+                <div class="post post-responsive post-responsive-1">
+                    <a class="post-media" href="{% url 'detalle-exp' result.object.slug %}">
+                        {% if result.object.foto %}
+                            {% thumbnail result.object.foto "600x400" crop="center" as im %}
+                                <img class="post-img" src="{{im.url}}" alt="" />
+                            {% endthumbnail %}
+                        {% elif result.object.video %}
+                        {% video result.object.video as my_video %}
+                            {% thumbnail my_video.thumbnail "600x400" crop="center" as im %}
+                                <img class="post-img" src="{{im.url}}" alt="" />
+                            {% endthumbnail %}
+                        {% endvideo %}
+                        {% else %}
+                            <img class="post-img" src="http://via.placeholder.com/600x400" alt="" />
+                        {% endif %}
+                    </a>
+                    <div class="post-meta">
+                        <div class="post-meta-item">
+                            <div class="post-meta-icon fa fa-calendar"></div>
+                            <div class="post-date">{{result.object.fecha|date:'d F Y'}}</div>
+                        </div>
+                        <div class="post-meta-item">
+                            <div class="post-meta-icon fa fa-globe"></div>
+                            <div class="post-comment">{{result.object.escuela.pais}}</div>
+                        </div>
+                    </div>
+                    <div class="post-title h6">
+                        <a href="{% url 'detalle-exp' result.object.slug %}" class="text-limit">
+                            {{result.object.titulo}}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+                <p>No se encontraron resultados</p>
+            {% endfor %}
+
+
+
+        </div>
+        <div class="row">
+            <div class="container">
+                <nav aria-label="Page navigation" class="text-center">
+                    <ul class="pagination text-center d-flex justify-content-center">
+                      {% if page.has_previous or page.has_next %}
+
+                       {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}" class="endless_page_link">{% endif %}{% if page.has_previous %}< </a>{% endif %}
+                       <span class="endless_page_current">{{ page.number }} de {{ page.paginator.num_pages }}</span>
+
+                       {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}" class="endless_page_link">{% endif %} {% if page.has_next %}> </a>{% endif %}
+
+                       {% endif %}
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block extra_css %}
+<style media="screen">
+  .endless_page_current {
+    width: auto !important;
+  }
+</style>
+{% endblock extra_css %}
+
+{% block extra_js %}
+<script type="text/javascript">
+  $("#id_q").addClass("form-control");
+  $("#id_q").attr( "placeholder", "Buscar" );
+</script>
+{% endblock extra_js %}

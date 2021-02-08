@@ -33,3 +33,14 @@ class BibliotecaIndex(indexes.SearchIndex, indexes.Indexable):
 
     def index_queryset(self, using=None):
         return self.get_model().objects.order_by('-id')
+
+class ExperienciaLiderazgoIndex(indexes.SearchIndex, indexes.Indexable):
+    text = indexes.NgramField(document=True, use_template=True)
+    titulo = indexes.NgramField(model_attr='titulo')
+    resumen = indexes.NgramField(model_attr='contenido', null=True)
+
+    def get_model(self):
+        return ExperienciaLiderazgo
+
+    def index_queryset(self, using=None):
+        return self.get_model().objects.order_by('-id')

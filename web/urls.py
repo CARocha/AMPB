@@ -18,5 +18,8 @@ urlpatterns = [
     path('biblioteca/busqueda/', search_biblioteca, name='search-biblioteca'),
     path('quienes-somos/', quienes_somos, name='quienes-somos'),
     # path('biblioteca/por-pais/<slug>', filtro_biblioteca, name='filtro-biblioteca'),
+    path('experiencia-liderazgo/', exp_liderazgo, name='exp-liderazgo'),
+    path('experiencia-liderazgo/<slug>', exp_detalle, name='detalle-exp'),
+    path('experiencia-liderazgo/busqueda/', search_exp, name='search-exp'),
     path('contactenos/', contactenos, name='contactenos'),
 ]

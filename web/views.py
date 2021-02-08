@@ -68,7 +68,7 @@ def detalle_evento(request,slug=None,template='eventos/detalle.html'):
 	return render(request, template, locals())
 
 def lista_biblioteca(request,template='biblioteca/lista.html'):
-	objects_list = Biblioteca.objects.order_by('-fecha')
+	objects_list = Biblioteca.objects.order_by('-id')
 	form = BuscadorForm
 	return render(request, template, locals())
 
@@ -112,6 +112,16 @@ def contactenos(request,template='contactenos/contactenos.html'):
 
 	return render(request, template, locals())
 
+def exp_liderazgo(request,template='exp-liderazgo/lista.html'):
+	objects_list = ExperienciaLiderazgo.objects.order_by('-id')
+	form = BuscadorForm
+	return render(request, template, locals())
+
+def exp_detalle(request,slug=None,template='exp-liderazgo/detalle.html'):
+	object = ExperienciaLiderazgo.objects.get(slug = slug)
+	relacionados = ExperienciaLiderazgo.objects.exclude(id = object.id)[:3]
+	return render(request, template, locals())
+
 ######## buscadores #############
 def search_actualidad(request):
 	sqs = SearchQuerySet().models(Actualidad).order_by('-id')
@@ -138,6 +148,16 @@ def search_biblioteca(request):
 	view = search_view_factory(
 		view_class=SearchView,
 		template='search/search_biblioteca.html',
+		searchqueryset=sqs,
+		form_class=ModelSearchForm
+		)
+	return view(request)
+
+def search_exp(request):
+	sqs = SearchQuerySet().models(ExperienciaLiderazgo).order_by('-id')
+	view = search_view_factory(
+		view_class=SearchView,
+		template='search/search_exp.html',
 		searchqueryset=sqs,
 		form_class=ModelSearchForm
 		)
