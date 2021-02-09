@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 SEARCH_PATTERN = 'href=\\"/media/ckeditor/'
 SITE_DOMAIN = "http://ampb.caps-nicaragua.org"
-REPLACE_WITH = 'href=\\"%s/media/ckeditor/' % SITE_DOMAIN
+REPLACE_WITH = 'href=\\"%s/media/uploads/' % SITE_DOMAIN
 
 class FixAbsolutePathSerializer(serializers.Field):
 
