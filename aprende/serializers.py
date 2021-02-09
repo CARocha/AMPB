@@ -1,6 +1,16 @@
 from .models import *
 from rest_framework import serializers
 
+SEARCH_PATTERN = 'href=\\"/media/ckeditor/'
+SITE_DOMAIN = "http://ampb.caps-nicaragua.org"
+REPLACE_WITH = 'href=\\"%s/media/ckeditor/' % SITE_DOMAIN
+
+class FixAbsolutePathSerializer(serializers.Field):
+
+    def to_representation(self, value):
+        text = value.replace(SEARCH_PATTERN, REPLACE_WITH)
+        return text
+
 class CursoSerializer(serializers.ModelSerializer):
 	imagen = serializers.CharField(source='cached_img')
 	class Meta:
@@ -17,6 +27,7 @@ class ModulosSerializer(serializers.ModelSerializer):
 
 class ContenidoSerializer(serializers.ModelSerializer):
 	# modulo = ModulosSerializer()
+	contenido = FixAbsolutePathSerializer()
 	orden = serializers.IntegerField(source='order')
 
 	class Meta:
