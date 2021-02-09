@@ -1,7 +1,7 @@
 from .models import *
 from rest_framework import serializers
 
-SEARCH_PATTERN = 'href=\\"/media/ckeditor/'
+SEARCH_PATTERN = 'href=\\"/media/uploads/'
 SITE_DOMAIN = "http://ampb.caps-nicaragua.org"
 REPLACE_WITH = 'href=\\"%s/media/uploads/' % SITE_DOMAIN
 
