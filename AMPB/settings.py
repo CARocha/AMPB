@@ -126,7 +126,7 @@ STATICFILES_DIRS = (
 )
 
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_UPLOAD_PATH = "http://ampb.caps-nicaragua.org/uploads/"
 
 CKEDITOR_CONFIGS = {
 
