@@ -117,7 +117,7 @@ USE_TZ = True
 
 MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 # MEDIA_URL = '/media/'
-MEDIA_URL = 'http://ampb.caps-nicaragua.org/media/'
+MEDIA_URL = 'http://www.escuelamesoamericana.org/media/'
 STATIC_ROOT = os.environ.get('STATIC_ROOT', os.path.join(BASE_DIR, 'static'))
 STATIC_URL = '/static/'
 
@@ -126,7 +126,7 @@ STATICFILES_DIRS = (
 )
 
 
-CKEDITOR_UPLOAD_PATH = "http://ampb.caps-nicaragua.org/uploads/"
+CKEDITOR_UPLOAD_PATH = "http://www.escuelamesoamericana.org/uploads/"
 
 CKEDITOR_CONFIGS = {
 
