@@ -50,7 +50,7 @@
             {% for obj in objects_list %}
             <div class="col-6 col-xs-12 col-md-6 col-lg-4">
                 <!-- Thumbnail gallery-->
-                <a href="{% url 'detalle-curso' obj.slug %}">
+                <a href="{% if obj.modulos_set.all %}{% url 'detalle-curso' obj.slug %}{% endif %}">
                     <div class="person person-boxed mb-4">
                         <div class="person-media">
                             {% thumbnail obj.imagen "600x400" crop="center" as im %}

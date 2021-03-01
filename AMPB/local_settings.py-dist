@@ -26,6 +26,9 @@ DATABASES = {
     }
 }
 
+MEDIA_URL = 'http://www.escuelamesoamericana.org/media/'
+CKEDITOR_UPLOAD_PATH = "http://www.escuelamesoamericana.org/uploads/"
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

@@ -118,8 +118,6 @@ USE_TZ = True
 MEDIA_ROOT = os.environ.get('MEDIA_ROOT', os.path.join(BASE_DIR, 'media'))
 # MEDIA_URL = '/media/'
 # CKEDITOR_UPLOAD_PATH = "/uploads/"
-MEDIA_URL = 'http://www.escuelamesoamericana.org/media/'
-CKEDITOR_UPLOAD_PATH = "http://www.escuelamesoamericana.org/uploads/"
     
 STATIC_ROOT = os.environ.get('STATIC_ROOT', os.path.join(BASE_DIR, 'static'))
 STATIC_URL = '/static/'
