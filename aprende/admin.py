@@ -5,14 +5,14 @@ from .models import *
 from django.forms import Textarea
 from django import forms
 
-class InlineContenidos(NestedStackedInline):
+class InlineContenidos(admin.StackedInline):#NestedStackedInline
     model = Contenidos
     extra = 1
     fk_name = 'modulo'
     can_delete = True
 
 from datetime import datetime
-class TemasModulos(NestedModelAdmin):
+class TemasModulos(admin.ModelAdmin):#NestedModelAdmin
     inlines = [InlineContenidos]
     list_display = ('titulo', 'curso')
     search_fields = ('titulo',)
