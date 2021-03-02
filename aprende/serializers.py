@@ -2,7 +2,7 @@ from .models import *
 from rest_framework import serializers
 
 SEARCH_PATTERN = 'src=\"/media/uploads/'
-SITE_DOMAIN = "http://ampb.caps-nicaragua.org"
+SITE_DOMAIN = "http://www.escuelamesoamericana.org"
 REPLACE_WITH = 'src=\"%s/media/uploads/' % SITE_DOMAIN
 
 class FixAbsolutePathSerializer(serializers.Field):
