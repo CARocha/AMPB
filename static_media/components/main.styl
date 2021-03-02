@@ -756,3 +756,41 @@ p
     .context-dark h4
     .context-dark p
         color white
+
+/* -------------------------------------------------------------------------- */
+/*                                Menu lateral                                */
+/* -------------------------------------------------------------------------- */
+.menu-contenido
+    padding: 20px
+    h6
+        cursor: pointer
+.sidenav
+    height: 100%
+    width: 0
+    position: fixed
+    z-index: 9999
+    top: 0
+    left: 0
+    background-color: #fff
+    overflow-x: hidden
+    padding-top: 60px
+    transition: 0.5s
+    .widget-title
+        text-align: center
+    a
+        padding: 8px 8px 8px 32px
+        text-decoration: none
+        color: #818181
+        display: block
+        transition: 0.3s
+    .closebtn
+        position: absolute
+        top: 0
+        right: 25px
+        font-size: 36px
+        margin-left: 50px
+    .intro .list-group-item
+        padding-top: 15px
+        padding-bottom: 15px
+@media screen and (max-height: 450px)
+    .sidenav {padding-top: 15px;}

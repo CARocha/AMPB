@@ -3,6 +3,7 @@
 {% load extras %}
 
 {% block content %}
+
 <section class="section breadcrumb-section">
     <div class="container">
         <!-- Breadcrumb-->
@@ -14,6 +15,15 @@
                 </div>
             </div>
         </div>
+        
+    </div>
+    <div>
+        
+    </div>
+</section>
+<section class="menu-contenido d-block d-md-none">
+    <div class="float-right">
+        <h6 onclick="openNav()">Tabla de Contenido <i class="fas fa-bars"></i></h6>
     </div>
 </section>
 <!-- Curso-->
@@ -40,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 d-none d-md-block">
                 <div class="widget-title h4">Tabla de Contenido</div>
 
                 <div class="panel-group">
@@ -134,6 +144,52 @@
 
     </div>
 </section>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="widget-title h4">Tabla de Contenido</div>
+
+    <div class="panel-group">
+        <div class="panel intro">
+            <div class="panel-collapse">
+                <div class="panel-content p-0">
+                    <div class="list-group mb-0 ">
+                        <a class="list-group-item {% if request.path == '/aprende/'|add:object.slug|add:'/' %}active{% endif %}
+                        " href="{% url 'detalle-curso' object.slug %}">Introducción</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for modulo in object.modulos_set.all|dictsort:'order' %}
+        <div class="panel">
+            <div class="panel-title ">
+                <a data-parent="#accordion1" data-toggle="collapse" href="#navacordion{{forloop.counter}}"
+                {% if last_path_id in modulo.id|ids %}
+                class="d-flex" aria-expanded="true"
+                {% else %}
+                class="collapsed d-flex" aria-expanded="false"
+                {% endif %}
+                >
+                    {{modulo.titulo}}<span class="fa fa-chevron-up badge ml-auto"></span>
+                </a>
+            </div>
+            <div id="navacordion{{forloop.counter}}" class="panel-collapse collapse {% if last_path_id in modulo.id|ids %}show{% endif %}
+            " role="tablist" aria-expanded="false" {% if last_path_id in modulo.id|ids %}style="height: auto;"{% else %}style="height: 0px;"{% endif %}>
+                <div class="panel-content p-0">
+                    <div class="list-group mb-0">
+                        {% for cont in modulo.contenidos_set.all %}
+                        <a href="{% url 'detalle-contenido' object.slug cont.id %}" class="
+                        list-group-item scroll-to {% if contenido.id == cont.id %}active{% endif %}">
+                            {{cont.titulo}}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}
 
 {% block extra_css %}
@@ -147,4 +203,15 @@
 {% block extra_js %}
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script>
+    /* Set the width of the side navigation to 250px */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "300px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
 {% endblock extra_js %}
