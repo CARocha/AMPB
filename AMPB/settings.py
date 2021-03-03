@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'lugar',
     'aprende',
     'configuracion',
+    'monitoreo',
     #
     'ckeditor',
     'ckeditor_uploader',

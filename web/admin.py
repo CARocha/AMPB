@@ -25,7 +25,7 @@ admin.site.register(Liderazgo)
 #admin.site.register(Galeria,GaleriaAdmin)
 admin.site.register(Biblioteca)
 admin.site.register(TipoRecurso)
-admin.site.register(Fases)
+# admin.site.register(Fases)
 admin.site.register(ExperienciaLiderazgo)
 
 #flatpages

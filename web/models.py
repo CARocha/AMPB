@@ -8,24 +8,24 @@ from lugar.models import *
 from django.template.defaultfilters import slugify
 from embed_video.fields import EmbedVideoField
 from location_field.models.plain import PlainLocationField
+from monitoreo.models import *
 
 # Create your models here.
-class Fases(models.Model):
-	nombre = models.CharField(max_length=300)
-	descripcion = RichTextUploadingField()
+# class Fases(models.Model):
+# 	nombre = models.CharField(max_length=300)
+# 	descripcion = RichTextUploadingField()
 
-	def __str__(self):
-		return self.nombre
+# 	def __str__(self):
+# 		return self.nombre
 
-	class Meta:
-		verbose_name_plural = "Fases"
-		verbose_name = "Fase"
+# 	class Meta:
+# 		verbose_name_plural = "Fases"
+# 		verbose_name = "Fase"
 
 class Escuela(models.Model):
 	nombre = models.CharField(max_length=300)
 	foto = ImageField(upload_to='escuelas/')
 	descripcion = RichTextUploadingField()
-	fundacion = models.DateField()
 	pais = models.ForeignKey(Pais,on_delete=models.CASCADE)
 	departamento = ChainedForeignKey(Departamento,
 					chained_field="pais",
@@ -35,9 +35,18 @@ class Escuela(models.Model):
 					chained_model_field="departamento")
 	lugar = models.CharField(max_length=250)
 	location = PlainLocationField(based_fields=['lugar'], zoom=7)
+	fundacion = models.DateField()
+	tipo_organizacion = models.ForeignKey(TipoOrganizacion, verbose_name="Tipo de organización", on_delete=models.CASCADE,null=True,blank=True)
+	area_trabajo = models.ManyToManyField(AreaTrabajo, verbose_name="Área de trabajo",blank=True)
+	nombre_referencia = models.CharField(max_length=300,null=True,blank=True)
+	cargo_referencia = models.CharField(max_length=300,null=True,blank=True)
+	telefono_referencia = models.CharField(max_length=300,null=True,blank=True)
+	correo_referencia = models.EmailField( max_length=300,null=True,blank=True)
 	hombres = models.IntegerField(default=0)
 	mujeres = models.IntegerField(default=0)
-	fase = models.ForeignKey(Fases,on_delete=models.CASCADE,blank=True,null=True)
+	otros = models.IntegerField(default=0)
+	talleres_impartidos = models.ManyToManyField(Talleres,blank=True)
+	# fase = models.ForeignKey(Fases,on_delete=models.CASCADE,blank=True,null=True)
 	slug = models.SlugField(max_length=300,editable=False)
 
 	def __str__(self):
@@ -48,11 +57,13 @@ class Escuela(models.Model):
 		return super(Escuela, self).save(*args, **kwargs)
 
 	class Meta:
-		verbose_name_plural = "Escuelas"
+		verbose_name_plural = "Núcleos"
+		verbose_name = "Núcleo"
 
 class Emprendimientos(models.Model):
 	escuela = models.ForeignKey(Escuela,on_delete=models.CASCADE)
 	titulo = models.CharField(max_length=300)
+	tipo = models.ForeignKey(TipoEmprendimiento,on_delete=models.CASCADE,null=True,blank=True)
 	descripcion = models.TextField()
 
 	class Meta:
