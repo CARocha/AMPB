@@ -25,6 +25,7 @@ class Escuela(models.Model):
 	nombre = models.CharField(max_length=300)
 	foto = ImageField(upload_to='escuelas/')
 	descripcion = RichTextUploadingField()
+	fundacion = models.DateField()
 	pais = models.ForeignKey(Pais,on_delete=models.CASCADE)
 	departamento = ChainedForeignKey(Departamento,
 					chained_field="pais",
