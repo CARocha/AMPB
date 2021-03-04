@@ -37,4 +37,4 @@ class ContenidoSerializer(serializers.ModelSerializer):
 class ReflexionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Reflexion
-		fields = ('id','texto','link','activo','fecha_creacion')
+		fields = ('id','texto','autor','link','activo','fecha_creacion')
