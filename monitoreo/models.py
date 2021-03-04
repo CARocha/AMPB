@@ -106,3 +106,32 @@ class Participantes(models.Model):
 	class Meta:
 		verbose_name_plural = "Participantes"
 		verbose_name = "Participante"
+
+class PerfilVocacional(models.Model):
+	nombre = models.CharField(max_length=250)
+	slug = models.SlugField(max_length=300,editable=False)
+
+	def __str__(self):
+		return self.nombre
+
+	class Meta:
+		verbose_name_plural = "Perfiles vocacionales metodológico"
+		verbose_name = "Perfil vocacional metodológico"
+	
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.nombre)
+		return super(PerfilVocacional, self).save(*args, **kwargs)
+
+class Formadores(models.Model):
+	nombre = models.CharField(max_length=250)
+	sexo = models.IntegerField(choices=SEXO_CHOICES)
+	nivel_escolaridad = models.IntegerField(verbose_name='Nivel académico',choices=ESCOLARIDAD_CHOICES)
+	organizacion = models.ForeignKey('web.Escuela', verbose_name='Organización forestal a la que pertenece', on_delete=models.CASCADE)
+	perfil_vocacional = models.ForeignKey(PerfilVocacional, verbose_name='Perfil vocacional metodológico', on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.nombre
+	
+	class Meta:
+		verbose_name_plural = "Personas formadoras de formadores"
+		verbose_name = "Persona formadora de formadores"
