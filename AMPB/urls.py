@@ -29,5 +29,6 @@ urlpatterns = [
     # path('pages/', include('django.contrib.flatpages.urls')),
     path('aprende/', include('aprende.urls')),
     path('',index),
-    path('', include('web.urls'))
+    path('', include('web.urls')),
+    path('nuestro-trabajo/', include('monitoreo.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

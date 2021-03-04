@@ -61,7 +61,7 @@ class Escuela(models.Model):
 		verbose_name = "Núcleo"
 
 class Emprendimientos(models.Model):
-	escuela = models.ForeignKey(Escuela,on_delete=models.CASCADE)
+	escuela = models.ForeignKey(Escuela,on_delete=models.CASCADE,verbose_name='Núcleo')
 	titulo = models.CharField(max_length=300)
 	tipo = models.ForeignKey(TipoEmprendimiento,on_delete=models.CASCADE,null=True,blank=True)
 	descripcion = models.TextField()

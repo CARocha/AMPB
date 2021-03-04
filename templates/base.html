@@ -130,6 +130,10 @@
                                     </li>
                                     <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'exp-liderazgo' %}">Experiencias de Liderazgo</a>
                                     </li>
+                                    {% if user.is_authenticated %}
+                                    <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'formadores' %}">Formadores</a>
+                                    </li>
+                                    {% endif %}
                                 </ul>
                             </li>
                             <!--<li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Monitoreo</a>
