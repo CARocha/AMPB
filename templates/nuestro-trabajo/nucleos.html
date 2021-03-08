@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load leaflet_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+{% leaflet_js %}
+{% leaflet_css %}
+<style>
+
+    #mapid, .map-container{height: 100%;}
+    .pr-xxl-5{padding-left:80px;}
+    .map-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    }
+
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<section class="section-md bg-transparent">
+    <div class="container">
+        <div class="row">
+        nucleos: {{escuelas.count}}
+        territorios: {{territorios}}
+        lideres: {{lideres}}
+        Personas formadoras de formadores: {{formadores}}
+        emprendimientos: {{emprendimientos}}
+        </div>
+        <div class="row">
+            <div class="map-container col-md-6" >
+                {% leaflet_map "mapid" %}
+            </div>
+            <div class="col-md-6">
+                <div id="container"></div>
+            </div>
+        </div>
+
+        <div class="row row-30 justify-content-center">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <table id="table_id" class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>País</th>
+                            <th>Departamento</th>
+                            <th>Municipio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in escuelas %}
+                        <tr>
+                            <td><a href="{% url 'detalle-nucleo' obj.slug %}">{{obj.nombre}}</a></td>
+                            <td>{{obj.pais}}</td>
+                            <td>{{obj.departamento}}</td>
+                            <td>{{obj.municipio}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script>
+var map = L.map('mapid').setView([12.8654156, -85.2072296], 6);
+mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+L.tileLayer(
+    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; ' + mapLink + ' Contributors',
+    maxZoom: 18,
+    }).addTo(map);
+
+    {% for point in escuelas %}
+        var marker{{forloop.parentloop.counter}}_{{forloop.counter}} = L.marker([{{point.location}}]).addTo(map);
+        marker{{forloop.parentloop.counter}}_{{forloop.counter}}.bindPopup("{{point.nombre}}")
+    {% endfor %}
+
+//chart
+Highcharts.chart('container', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: 'Núcleo de jovenes'
+    },
+    xAxis: {
+        categories: ['Jovenes',]
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Total'
+        }
+    },
+    legend: {
+        reversed: true
+    },
+ 
+    series: [{
+        name: 'Mujeres',
+        data: [{{mujeres}},]
+    }, {
+        name: 'Hombres',
+        data: [{{hombres}},]
+    }, {
+        name: 'Otros',
+        data: [{{otros}},]
+    }]
+});
+</script>
+
+<script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+<script src="//cdn.rawgit.com/ashl1/datatables-rowsgroup/v1.0.0/dataTables.rowsGroup.js"></script>
+<script>
+$(document).ready(function() {
+    $('table').dataTable( {
+        buttons: [
+            // 'copy', 'excel',
+        ],
+        dom: 'lBfrtip',
+        "language": {
+            "url": "https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json",
+            "buttons": {copy: "Copiar",}
+        },
+    } );
+} );
+</script>
+{% endblock extra_js %}

@@ -130,7 +130,11 @@
                                     </li>
                                     <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'exp-liderazgo' %}">Experiencias de Liderazgo</a>
                                     </li>
+                                    <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'nucleos' %}">Núcleos</a>
+                                    </li>
                                     {% if user.is_authenticated %}
+                                     <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'participantes' %}">Participantes</a>
+                                    </li>
                                     <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'formadores' %}">Formadores</a>
                                     </li>
                                     {% endif %}

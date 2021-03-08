@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load leaflet_tags %}
+
+{% block extra_css %}
+{% leaflet_js %}
+{% leaflet_css %}
+<style>
+    #mapid, .map-container{height: 100%;}
+    .pr-xxl-5{padding-left:80px;}
+    .map-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    }
+</style>
+{% endblock extra_css %}
+
+{% block content %}
+<section class="section-md bg-transparent">
+    <div class="container">
+    {{object.nombre}}
+    {% thumbnail object.foto "1000x670" crop="center" as im %}
+        <img class="post-img" src="{{im.url}}" alt="" />
+    {% endthumbnail %}
+    {{object.descripcion|safe}}
+    {{object.pais}}
+    {{object.departamento}}
+    {{object.municipio}}
+    <div class="map-container" >
+        {% leaflet_map "mapid" %}
+    </div>
+    
+    {{object.fundacion}}
+    {{object.tipo_organizacion}}
+    {% for obj in object.area_trabajo.all %}{{obj}}{% if not forloop.last %}, {% endif %}{% endfor %}
+    {{object.hombres}}
+    {{object.mujeres}}
+    {{object.otros}}
+    {% for obj in object.talleres_impartidos.all %}{{obj}}{% if not forloop.last %}, {% endif %}{% endfor %}
+    </div>
+</section>
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+var map = L.map('mapid').setView([{{object.location}}], 6);
+mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+L.tileLayer(
+    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; ' + mapLink + ' Contributors',
+    maxZoom: 18,
+    }).addTo(map);
+L.marker([{{object.location}}]).addTo(map);
+</script>
+{% endblock extra_js %}
