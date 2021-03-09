@@ -10,6 +10,7 @@ from django.http import HttpResponseRedirect
 from django.core.mail import send_mail, EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.contrib import messages
+from django.db.models import Sum
 
 # Create your views here.
 def index(request,template='index.html'):
@@ -20,6 +21,12 @@ def index(request,template='index.html'):
 	liderazgos = Liderazgo.objects.order_by('-id')[:4]
 	galerias = Galeria.objects.order_by('-id')[:6]
 	escuelas = Escuela.objects.all()
+
+	#
+	territorios = Escuela.objects.distinct('municipio').count()
+	jovenes = Escuela.objects.aggregate(total = Sum('hombres') + Sum('mujeres') + Sum('otros'))['total']
+	emprendimientos = Emprendimientos.objects.count()
+
 	return render(request, template, locals())
 
 def lista_noticias(request,template='noticias/lista.html'):

@@ -7,6 +7,8 @@
 {% block extra_css %}
 {% leaflet_js %}
 {% leaflet_css %}
+<link rel="stylesheet" href="/static/components/MarkerCluster.css">
+<link rel="stylesheet" href="/static/components/MarkerCluster.Default.css">
 <style>
 
     #mapid, .map-container{height: 100%;}
@@ -125,9 +127,9 @@
                                 <img src="/static/img/editados/Estudiantes op.1v2.png" alt="" width="80px">
                                 </div>
                                 <div class="blurb-body">
-                                <div class="blurb-counter-value h2"><span data-counter="">697</span>
+                                <div class="blurb-counter-value h2"><span data-counter="">{{escuelas.count}}</span>
                                 </div>
-                                <div class="blurb-title h4">Estudiantes </div>
+                                <div class="blurb-title h4">Organizaciones</div>
                                 </div>
                             </article>
                     </div>
@@ -139,9 +141,9 @@
                                 <img src="/static/img/editados/Docentes op.1v2.png" alt="" width="80px">
                                 </div>
                                 <div class="blurb-body">
-                                <div class="blurb-counter-value h2"><span data-counter="">50</span>
+                                <div class="blurb-counter-value h2"><span data-counter="">{{territorios}}</span>
                                 </div>
-                                <div class="blurb-title h4">Docentes</div>
+                                <div class="blurb-title h4">Territorios</div>
                                 </div>
                             </article>
                     </div>
@@ -153,9 +155,9 @@
                                 <img src="/static/img/editados/Mujeres jóvenes op.1v2.png" alt="" width="80px">
                                 </div>
                                 <div class="blurb-body">
-                                <div class="blurb-counter-value h2"><span data-counter="">260</span>
+                                <div class="blurb-counter-value h2"><span data-counter="">{{jovenes}}</span>
                                 </div>
-                                <div class="blurb-title h4">Mujeres jóvenes</div>
+                                <div class="blurb-title h4">Jóvenes</div>
                                 </div>
                             </article>
                     </div>
@@ -167,9 +169,9 @@
                                 <img src="/static/img/editados/iniciativas territoriales op.3v2.png" alt="" width="130px">
                                 </div>
                                 <div class="blurb-body">
-                                <div class="blurb-counter-value h2"><span data-counter="">10</span><span class="counter-postfix">+</span>
+                                <div class="blurb-counter-value h2"><span data-counter="">{{emprendimientos}}</span>
                                 </div>
-                                <div class="blurb-title h4">Iniciativas en territorio</div>
+                                <div class="blurb-title h4">Emprendimientos</div>
                                 </div>
                             </article>
                     </div>
@@ -373,14 +375,8 @@
 {% endblock content %}
 
 {% block extra_js %}
-
+<script  type="text/javascript" src="/static/components/leaflet.markercluster.js" ></script>
 <script>
-    //alert($("#mapid").innerHeight());
-
-    //var result = $("#prueid").height();
-
-    //alert(result);
-    //$('#mapid').height(result);
     var map = L.map('mapid').setView([12.8654156, -85.2072296], 6);
     mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
     L.tileLayer(
@@ -389,9 +385,11 @@
         maxZoom: 18,
         }).addTo(map);
 
+        var markers = L.markerClusterGroup();
         {% for point in escuelas %}
-            var marker{{forloop.parentloop.counter}}_{{forloop.counter}} = L.marker([{{point.location}}]).addTo(map);
-            marker{{forloop.parentloop.counter}}_{{forloop.counter}}.bindPopup("{{point.nombre}}")
+            var marker = L.marker([{{point.location}}]).bindPopup('<a href="{% url 'detalle-nucleo' point.slug %}">{{point.nombre}}</a>')
+            markers.addLayer(marker);
         {% endfor %}
+        map.addLayer(markers);
 </script>
 {% endblock extra_js %}

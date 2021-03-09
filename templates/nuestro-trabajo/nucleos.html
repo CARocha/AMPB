@@ -5,6 +5,8 @@
 <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
 {% leaflet_js %}
 {% leaflet_css %}
+<link rel="stylesheet" href="/static/components/MarkerCluster.css">
+<link rel="stylesheet" href="/static/components/MarkerCluster.Default.css">
 <style>
 
     #mapid, .map-container{height: 100%;}
@@ -70,6 +72,8 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<script  type="text/javascript" src="/static/components/leaflet.markercluster.js" ></script>
 <script>
 var map = L.map('mapid').setView([12.8654156, -85.2072296], 6);
 mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
@@ -79,10 +83,12 @@ L.tileLayer(
     maxZoom: 18,
     }).addTo(map);
 
-    {% for point in escuelas %}
-        var marker{{forloop.parentloop.counter}}_{{forloop.counter}} = L.marker([{{point.location}}]).addTo(map);
-        marker{{forloop.parentloop.counter}}_{{forloop.counter}}.bindPopup("{{point.nombre}}")
-    {% endfor %}
+    var markers = L.markerClusterGroup();
+        {% for point in escuelas %}
+            var marker = L.marker([{{point.location}}]).bindPopup('<a href="{% url 'detalle-nucleo' point.slug %}">{{point.nombre}}</a>')
+            markers.addLayer(marker);
+        {% endfor %}
+        map.addLayer(markers);
 
 //chart
 Highcharts.chart('container', {
@@ -90,10 +96,10 @@ Highcharts.chart('container', {
         type: 'bar'
     },
     title: {
-        text: 'Núcleo de jovenes'
+        text: 'Núcleo de jóvenes'
     },
     xAxis: {
-        categories: ['Jovenes',]
+        categories: ['Jóvenes',]
     },
     yAxis: {
         min: 0,
