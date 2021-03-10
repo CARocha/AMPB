@@ -2,6 +2,41 @@
 {% load thumbnail %}
 {% load embed_video_tags %}
 
+
+{% block share %}
+<meta property="og:title" content="{{object.titulo}}" />
+<meta property="og:type" content="article" />
+{% if object.imagen_portada %}
+	<meta property="og:image" content="http://www.escuelamesoamericana.org/media/{{object.foto}}">
+    <meta property="og:image:secure_url" content="http://www.escuelamesoamericana.org/media/{{object.foto}}">
+{% elif object.url %}
+ 	{% video object.url as video %}
+		<meta property="og:image" content="{{video.thumbnail}}">
+	{% endvideo %}
+{% endif %}
+
+<meta property="og:image:width" content="600" />
+<meta property="og:image:height" content="600" />
+<meta property="og:description" content="{{object.contenido|striptags|truncatewords:15}}" />
+<meta property="og:image:alt" content="{{object.titulo}}" />
+<meta property="og:url" content="http://www.escuelamesoamericana.org{{request.path}}" />
+<meta property="og:locale" content="es_ES" />
+
+<!-- twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{object.titulo}}">
+<meta name="twitter:description" content="{{object.contenido|striptags|truncatewords:15}}">
+{% if object.foto %}
+	<meta name="twitter:image" content="http://www.escuelamesoamericana.org/media/{{object.foto}}">
+    <meta name="twitter:image:alt" content="{{object.titulo}}">
+{% elif object.url %}
+ 	{% video object.url as video %}
+		<meta property="twitter:image" content="{{video.thumbnail}}">
+	{% endvideo %}
+{% endif %}
+<meta name="twitter:domain" content="http://www.escuelamesoamericana.org">
+{% endblock share %}
+
 {% block content %}
 <section class="section breadcrumb-section">
     <div class="container">
