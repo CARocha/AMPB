@@ -590,14 +590,6 @@ p
 /*                                   Eventos                                  */
 /* -------------------------------------------------------------------------- */
 
-// .event-content
-//     border-radius: 0.625rem;
-//     background: white;
-//     padding: 10px;
-//     margin: 10px;
-//     position: relative;
-//     top: -50px;
-//     box-shadow: 0px 3px 12px -3px rgba(0,0,0,0.2)
 .content-event
     background: white
     padding: 15px 20px
@@ -794,3 +786,54 @@ p
         padding-bottom: 15px
 @media screen and (max-height: 450px)
     .sidenav {padding-top: 15px;}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Monitore                                  */
+/* -------------------------------------------------------------------------- */
+.panel
+    .panel-title
+        color: white
+        background: $base
+    .panel-body
+        padding: 10px 10px
+.nuecleos
+    .contadores
+        .blurb-counter-value span 
+            color: $base
+.nucleo
+    .informacion
+        b
+            color: $base
+.dataTables_paginate
+    margin-bottom: 20px
+    #table_id_previous
+    #table_id_next
+        width: auto
+        height: auto
+        a
+            width: auto
+            height: auto
+    .paginate_button a
+        line-height: 20px
+        height: auto
+.dt-buttons
+    .buttons-html5
+        text-align: center;
+        border: 2px solid transparent;
+        font-weight: 700;
+        text-transform: capitalize;
+        color: #fff;
+        background: $black_base;
+        transition: all 0.2s ease-in-out;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        line-height: 1.47;
+.pagination
+    .page-item .page-link
+        margin-left: 0
+        text-align: center
+    .page-item.active .page-link 
+        background: transparent
+        border-color: transparent
+
+

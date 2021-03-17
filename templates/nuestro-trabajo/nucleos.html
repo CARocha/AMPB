@@ -2,14 +2,17 @@
 {% load leaflet_tags %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.24/datatables.min.css"/>
 {% leaflet_js %}
 {% leaflet_css %}
 <link rel="stylesheet" href="/static/components/MarkerCluster.css">
 <link rel="stylesheet" href="/static/components/MarkerCluster.Default.css">
 <style>
 
-    #mapid, .map-container{height: 100%;}
+    #mapid, .map-container{
+        height: 100%;
+        min-height: 400px;
+    }
     .pr-xxl-5{padding-left:80px;}
     .map-container {
     overflow: hidden;
@@ -21,46 +24,116 @@
 {% endblock extra_css %}
 
 {% block content %}
-<section class="section-md bg-transparent">
+<section class="section breadcrumb-section">
     <div class="container">
-        <div class="row">
-        nucleos: {{escuelas.count}}
-        territorios: {{territorios}}
-        lideres: {{lideres}}
-        Personas formadoras de formadores: {{formadores}}
-        emprendimientos: {{emprendimientos}}
+        <!-- Breadcrumb-->
+        <div class="breadcrumb">
+            <div class="breadcrumb-inner">
+                <div class="breadcrumb-item"><a class="breadcrumb-link" href="/">Inicio</a></div>
+                <div class="breadcrumb-item"><span class="breadcrumb-text breadcrumb-active">Núcleos</span>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="map-container col-md-6" >
-                {% leaflet_map "mapid" %}
+        
+    </div>
+</section>
+<section class="section-md bg-transparent nuecleos">
+    <div class="container">
+        <div class="row justify-content-md-center mb-5">
+            <div class="col-md-2">
+                <div class="blurb-body">
+                    <div class="blurb-counter-value h2 text-center">
+                        <span data-counter="">{{escuelas.count}}</span>
+                    </div>
+                    <div class="blurb-title h4 text-center">Núcleos</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="blurb-body">
+                    <div class="blurb-counter-value h2 text-center">
+                        <span data-counter="">{{territorios}}</span>
+                    </div>
+                    <div class="blurb-title h4 text-center">Territorios</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="blurb-body">
+                    <div class="blurb-counter-value h2 text-center">
+                        <span data-counter="">{{lideres}}</span>
+                    </div>
+                    <div class="blurb-title h4 text-center">Líderes</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="blurb-body">
+                    <div class="blurb-counter-value h2 text-center">
+                        <span data-counter="">{{formadores}}</span>
+                    </div>
+                    <div class="blurb-title h4 text-center">Formadores</div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="blurb-body">
+                    <div class="blurb-counter-value h2 text-center">
+                        <span data-counter="">{{emprendimientos}}</span>
+                    </div>
+                    <div class="blurb-title h4 text-center">Emprendimientos</div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6 map-container" >
+                <div class="panel">
+                    <div class="panel-title">
+                        Cobertura
+                    </div>
+                    {% leaflet_map "mapid" %}
+                </div>
+                
             </div>
             <div class="col-md-6">
-                <div id="container"></div>
+                <div class="panel">
+                    <div class="panel-title">
+                        Núcleo de jóvenes
+                    </div>
+                    <div id="container"></div>
+                </div>
+                
             </div>
         </div>
 
-        <div class="row row-30 justify-content-center">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <table id="table_id" class="table table-responsive">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>País</th>
-                            <th>Departamento</th>
-                            <th>Municipio</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for obj in escuelas %}
-                        <tr>
-                            <td><a href="{% url 'detalle-nucleo' obj.slug %}">{{obj.nombre}}</a></td>
-                            <td>{{obj.pais}}</td>
-                            <td>{{obj.departamento}}</td>
-                            <td>{{obj.municipio}}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+        <div class="row justify-content-center mt-5">
+            <div class="col">
+                <div class="panel">
+                    <div class="panel-title">
+                        Lista de Núcleos
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table id="table_id" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>País</th>
+                                        <th>Departamento</th>
+                                        <th>Municipio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for obj in escuelas %}
+                                    <tr>
+                                        <td><a href="{% url 'detalle-nucleo' obj.slug %}">{{obj.nombre}}</a></td>
+                                        <td>{{obj.pais}}</td>
+                                        <td>{{obj.departamento}}</td>
+                                        <td>{{obj.municipio.nombre}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
@@ -96,7 +169,7 @@ Highcharts.chart('container', {
         type: 'bar'
     },
     title: {
-        text: 'Núcleo de jóvenes'
+        text: ''
     },
     xAxis: {
         categories: ['Jóvenes',]
@@ -124,8 +197,8 @@ Highcharts.chart('container', {
 });
 </script>
 
-<script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.24/datatables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
@@ -136,6 +209,11 @@ Highcharts.chart('container', {
 <script>
 $(document).ready(function() {
     $('table').dataTable( {
+        responsive: true,
+        deferRender: true,
+        scrollx: true,
+        scroller: true,
+        lengthChange: false,
         buttons: [
             // 'copy', 'excel',
         ],
