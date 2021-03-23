@@ -135,3 +135,43 @@ class Formadores(models.Model):
 	class Meta:
 		verbose_name_plural = "Personas formadoras de formadores"
 		verbose_name = "Persona formadora de formadores"
+	
+class Rubro(models.Model):
+	nombre = models.CharField(max_length=250)
+	slug = models.SlugField(max_length=300,editable=False)
+
+	def __str__(self):
+		return self.nombre
+
+class HomologacionFondos(models.Model):
+	rubro = models.ForeignKey(Rubro, on_delete=models.CASCADE)
+	presupuesto = models.FloatField()
+	
+	def __str__(self):
+		return self.nombre
+	
+	class Meta:
+		verbose_name_plural = "Homologación de Fondos"
+		verbose_name = "Homologación de Fondos"
+
+MESES_CHOICES = (('Enero','Enero'),('Febrero','Febrero'),('Marzo','Marzo'),('Abril','Abril'),
+				('Mayo','Mayo'),('Junio','Junio'),('Julio','Julio'),('Agosto','Agosto'),
+				('Septiembre','Septiembre'),('Octubre','Octubre'),('Noviembre','Noviembre'),
+				('Diciembre','Diciembre'))
+
+class AnioEjecucion(models.Model):
+	homologacion_fondos = models.ForeignKey(HomologacionFondos, on_delete=models.CASCADE)
+	anio = models.IntegerField(verbose_name='Año')
+
+	class Meta:
+		verbose_name_plural = "Años"
+		verbose_name = "Año"
+		
+
+class Ejecucion(models.Model):
+	anioejecucion = models.ForeignKey(AnioEjecucion, on_delete=models.CASCADE)
+	mes = models.CharField(choices=MESES_CHOICES, max_length=20)
+	ejecucion = models.FloatField()
+
+	class Meta:
+		verbose_name_plural = "Ejecución"
