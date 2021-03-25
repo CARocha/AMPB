@@ -22,6 +22,7 @@ def nucleos(request,template='nuestro-trabajo/nucleos.html'):
 
 def detalle_nucleo(request,slug,template='nuestro-trabajo/detalle_nucleo.html'):
     object = Escuela.objects.get(slug=slug)
+    emprendimientos = Emprendimientos.objects.filter(escuela = object)
     return render(request, template, locals()) 
 
 @login_required

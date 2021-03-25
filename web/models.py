@@ -66,8 +66,19 @@ class Emprendimientos(models.Model):
 	tipo = models.ForeignKey(TipoEmprendimiento,on_delete=models.CASCADE,null=True,blank=True)
 	descripcion = models.TextField()
 
+	def __str__(self):
+		return self.titulo
+
 	class Meta:
 		verbose_name_plural = "Emprendimientos"
+
+class FotosEmprendimientos(models.Model):
+	emprendimientos = models.ForeignKey(Emprendimientos, on_delete=models.CASCADE)
+	foto = ImageField(upload_to='emprendimientos/')
+
+	class Meta:
+		verbose_name_plural = "Fotos"
+		verbose_name = "Foto"
 
 class Banner(models.Model):
 	titulo = models.CharField(max_length=250)

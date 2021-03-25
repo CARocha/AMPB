@@ -15,7 +15,7 @@ class CursoSerializer(serializers.ModelSerializer):
 	imagen = serializers.CharField(source='cached_img')
 	class Meta:
 		model = Cursos
-		fields = ('id','titulo','imagen','descripcion','fecha','activo')
+		fields = ('id','titulo','imagen','descripcion','fecha','activo','destacado')
 
 class ModulosSerializer(serializers.ModelSerializer):
 	# curso = CursoSerializer()

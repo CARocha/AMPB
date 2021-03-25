@@ -17,8 +17,16 @@ class Emprendimientos_Inline(admin.TabularInline):
 class EscuelaAdmin(admin.ModelAdmin):
 	inlines = [Emprendimientos_Inline,]
 
+
+class FotosEmprendimientos_Inline(admin.TabularInline):
+	model = FotosEmprendimientos
+	extra = 1
+
+class EmprendimientosAdmin(admin.ModelAdmin):
+	inlines = [FotosEmprendimientos_Inline,]
+
 admin.site.register(Escuela)
-admin.site.register(Emprendimientos)
+admin.site.register(Emprendimientos,EmprendimientosAdmin)
 admin.site.register(Banner)
 admin.site.register(Actualidad)
 admin.site.register(Evento)

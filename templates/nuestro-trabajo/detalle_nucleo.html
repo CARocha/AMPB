@@ -113,20 +113,30 @@
                 </div>
             </div>
         </div>
-    
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+        {% if emprendimientos %}
+        <div class="row">
+            <div class="col-md-12">
+                <h5>Emprendimientos</h5>
+                <hr>
+                <div class="descripcion mt-3">
+                    <div class="post-text">
+                        {% for emp in emprendimientos %}
+                            {{emp.titulo}}
+                            {{emp.tipo}}
+                            {{emp.descripcion}}
+                            {% for foto in emp.fotosemprendimientos_set.all %}
+                                {% thumbnail foto.foto "400x270" crop="center" as im %}
+                                    <img class="post-img" src="{{im.url}}" alt="" />
+                                {% endthumbnail %}
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        {% endif %}
     
     </div>
 </section>

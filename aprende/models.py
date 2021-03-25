@@ -17,6 +17,7 @@ class Cursos(models.Model):
 	descripcion = RichTextUploadingField('Descripción')
 	fecha = models.DateTimeField(auto_now=True,verbose_name='Ultima actualización')
 	activo = models.BooleanField(default=True)
+	destacado = models.BooleanField(default=True)
 
 	class Meta:
 		ordering = ('-fecha',)
