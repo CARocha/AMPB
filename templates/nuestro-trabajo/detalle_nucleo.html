@@ -3,6 +3,7 @@
 {% load leaflet_tags %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
 {% leaflet_js %}
 {% leaflet_css %}
 <style>
@@ -115,26 +116,54 @@
         </div>
 
         {% if emprendimientos %}
-        <div class="row">
-            <div class="col-md-12">
-                <h5>Emprendimientos</h5>
+        <h5>Emprendimientos</h5>
                 <hr>
-                <div class="descripcion mt-3">
-                    <div class="post-text">
-                        {% for emp in emprendimientos %}
-                            {{emp.titulo}}
-                            {{emp.tipo}}
-                            {{emp.descripcion}}
-                            {% for foto in emp.fotosemprendimientos_set.all %}
-                                {% thumbnail foto.foto "400x270" crop="center" as im %}
-                                    <img class="post-img" src="{{im.url}}" alt="" />
-                                {% endthumbnail %}
-                            {% endfor %}
+        <div class="row justify-content-start" data-lightgallery>
+        
+            {% for emp in emprendimientos %}
+            <div class="col-6 col-xs-5 col-md-3">
+                <!-- Thumbnail gallery-->
+                <div class="person person-boxed mb-4 ">
+                    <a data-fancybox data-src="#detalle_{{emp.id}}" href="javascript:;">
+                        <div class="person-media">
+                        {% for foto in emp.fotosemprendimientos_set.all|slice:'1' %}
+                            {% thumbnail foto.foto "695x442" crop="center" as im %}
+                            <img class="person-img" src="{{im.url}}" alt=""/>
+                            {% endthumbnail %}
                         {% endfor %}
-                    </div>
-                    
+                        </div>
+                        <div class="person-body">
+                            <div class="person-title h6 text-limit">
+                                {{emp.titulo}}
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
+
+            <!--Descripcion-->
+            <div style="display: none;" id="detalle_{{emp.id}}">
+                <section class="bg-transparent text-center text-md-left">
+
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-12 col-lg-12 bg-primary context-dark spacing-box">
+                                <h5 class="line-bottom">{{emp.tipo}}</h5>
+                                <h4>{{emp.titulo}}</h4>
+                                <p class="big">{{emp.descripcion|safe}}</p>
+                                {% for foto in emp.fotosemprendimientos_set.all %}
+                                    {% thumbnail foto.foto "400x250" crop="center" as im %}
+                                    <img class="person-img" src="{{im.url}}" alt="">
+                                    {% endthumbnail %}
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+            {% endfor %}
         </div>
         {% endif %}
     
@@ -143,6 +172,7 @@
 {% endblock content %}
 
 {% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 <script>
 var map = L.map('mapid').setView([{{object.location}}], 6);
 mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
