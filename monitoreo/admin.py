@@ -22,8 +22,13 @@ class AnioEjecucion_Inline(NestedTabularInline):
     extra = 1
     inlines = [Ejecucion_Inline,]
 
+class Presupuesto_Inline(NestedTabularInline):
+    model = Presupuesto
+    extra = 1
+
 class HomologacionFondosAdmin(NestedModelAdmin):
-    inlines = [AnioEjecucion_Inline,]
+    inlines = [Presupuesto_Inline,AnioEjecucion_Inline]
 
 admin.site.register(HomologacionFondos,HomologacionFondosAdmin)
 admin.site.register(Rubro)
+admin.site.register(FuenteFinanciamiento)

@@ -142,17 +142,37 @@ class Rubro(models.Model):
 
 	def __str__(self):
 		return self.nombre
-
-class HomologacionFondos(models.Model):
-	rubro = models.ForeignKey(Rubro, on_delete=models.CASCADE)
-	presupuesto = models.FloatField()
 	
+class FuenteFinanciamiento(models.Model):
+	nombre = models.CharField(max_length=250)
+	slug = models.SlugField(max_length=300,editable=False)
+
 	def __str__(self):
 		return self.nombre
 	
 	class Meta:
+		verbose_name_plural = "Fuentes de Financiamiento"
+		verbose_name = "Fuente de Financiamiento"
+
+class HomologacionFondos(models.Model):
+	rubro = models.ForeignKey(Rubro, on_delete=models.CASCADE)
+	
+	def __str__(self):
+		return self.rubro.nombre
+	
+	class Meta:
 		verbose_name_plural = "Homologación de Fondos"
 		verbose_name = "Homologación de Fondos"
+
+class Presupuesto(models.Model):
+	homologacion_fondos = models.ForeignKey(HomologacionFondos, on_delete=models.CASCADE)
+	presupuesto = models.FloatField()
+	fuente = models.ForeignKey(FuenteFinanciamiento, on_delete=models.CASCADE)
+
+	class Meta:
+		verbose_name_plural = "Presupuesto"
+		verbose_name = "Presupuesto"
+
 
 MESES_CHOICES = (('Enero','Enero'),('Febrero','Febrero'),('Marzo','Marzo'),('Abril','Abril'),
 				('Mayo','Mayo'),('Junio','Junio'),('Julio','Julio'),('Agosto','Agosto'),
