@@ -30,5 +30,13 @@ class HomologacionFondosAdmin(NestedModelAdmin):
     inlines = [Presupuesto_Inline,AnioEjecucion_Inline]
 
 admin.site.register(HomologacionFondos,HomologacionFondosAdmin)
-admin.site.register(Rubro)
+
+class Producto_Inline(admin.TabularInline):
+    model = Producto
+    extra = 1
+
+class RubroAdmin(admin.ModelAdmin):
+    inlines = [Producto_Inline,]
+
+admin.site.register(Rubro,RubroAdmin)
 admin.site.register(FuenteFinanciamiento)
