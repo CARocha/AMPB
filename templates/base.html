@@ -1,3 +1,5 @@
+{% load google_translate %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -145,6 +147,9 @@
                                 </li>-->
                             <li class="navbar-navigation-root-item">
                                 <a class="btn btn-primary" href="/contactenos">Contáctenos</a>
+                            </li>
+                            <li class="navbar-navigation-root-item">
+                                {% google_translate type='vertical' language='es' %}
                             </li>
 						</ul>
 					</div>
