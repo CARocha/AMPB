@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from web.views import *
+from django.views.generic import TemplateView
 
 admin.site.site_header = "Administración AMPB"
 admin.site.site_title = "Administración AMPB"
@@ -28,7 +29,8 @@ urlpatterns = [
     path('chaining/', include('smart_selects.urls')),
     # path('pages/', include('django.contrib.flatpages.urls')),
     path('aprende/', include('aprende.urls')),
-    path('',index),
+    path('',TemplateView.as_view(template_name='index-coming-soon.html')),
+    path('index/',index),
     path('', include('web.urls')),
     path('nuestro-trabajo/', include('monitoreo.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -143,6 +143,10 @@ class Rubro(models.Model):
 
 	def __str__(self):
 		return self.nombre
+	
+	def save(self, *args, **kwargs):
+		self.slug = slugify(self.nombre)
+		return super(Rubro, self).save(*args, **kwargs)
 
 class Producto(models.Model):
 	rubro = models.ForeignKey(Rubro, on_delete=models.CASCADE)
