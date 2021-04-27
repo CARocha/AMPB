@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'location_field.apps.DefaultConfig',
     'solo',
     'corsheaders',
-    'google_translate',
 ]
 
 # SITE_ID = 1
