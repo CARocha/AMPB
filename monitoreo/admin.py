@@ -24,10 +24,11 @@ class AnioEjecucion_Inline(NestedTabularInline):
 
 class Presupuesto_Inline(NestedTabularInline):
     model = Presupuesto
+    inlines = [AnioEjecucion_Inline,]
     extra = 1
 
 class HomologacionFondosAdmin(NestedModelAdmin):
-    inlines = [Presupuesto_Inline,AnioEjecucion_Inline]
+    inlines = [Presupuesto_Inline,]
 
 admin.site.register(HomologacionFondos,HomologacionFondosAdmin)
 

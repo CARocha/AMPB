@@ -195,7 +195,7 @@ MESES_CHOICES = (('Enero','Enero'),('Febrero','Febrero'),('Marzo','Marzo'),('Abr
 				('Diciembre','Diciembre'))
 
 class AnioEjecucion(models.Model):
-	homologacion_fondos = models.ForeignKey(HomologacionFondos, on_delete=models.CASCADE)
+	presupuesto = models.ForeignKey(Presupuesto, on_delete=models.CASCADE)
 	anio = models.IntegerField(verbose_name='Año')
 
 	class Meta:
