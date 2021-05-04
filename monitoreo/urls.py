@@ -7,5 +7,4 @@ urlpatterns = [
     path('participantes/', participantes, name='participantes'),
     path('formadores/', formadores, name='formadores'),
     path('finanzas/', finanzas, name='finanzas'),
-    path('ajax/rubro/', ajax_rubro),
 ]

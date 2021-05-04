@@ -43,22 +43,48 @@ def finanzas(request,template='nuestro-trabajo/finanzas.html'):
 	rubros = HomologacionFondos.objects.values_list('rubro','rubro__nombre').distinct('rubro')
 	total_presupuesto = HomologacionFondos.objects.aggregate(total = Sum('presupuesto__presupuesto'))['total']
 	rubro_dict = {}
+	presupuesto_dict = {}
 	for x in rubros:
-		ejecucion = Ejecucion.objects.filter(anioejecucion__homologacion_fondos__rubro = x[0]).aggregate(ejecucion = Sum('ejecucion'))['ejecucion']
+		ejecucion = Ejecucion.objects.filter(anioejecucion__presupuesto__homologacion_fondos__rubro = x[0]).aggregate(ejecucion = Sum('ejecucion'))['ejecucion']
 		rubro_dict[x[1]] = ejecucion
+
+		#presupuesto vs ejecucion
+		total = Presupuesto.objects.filter(homologacion_fondos__rubro = x[0]).aggregate(total = Sum('presupuesto'))['total']
+		ejecucion_total = Ejecucion.objects.filter(anioejecucion__presupuesto__homologacion_fondos__rubro = x[0]).aggregate(total = Sum('ejecucion'))['total']
+		presupuesto_dict[x[1]] = total,ejecucion_total
 	
 	#fuentes de financiamiento
 	fuente = HomologacionFondos.objects.values_list('presupuesto__fuente','presupuesto__fuente__nombre').distinct('presupuesto__fuente')
 	fuente_dict = {}
 	# for x in fuente:
 
-	#form = RubroForm
+	#Gráficos de barra de ejecución:
+	list_ejecucion = []
+	if request.method == 'POST':
+		form = RubroForm(request.POST)
+		if form.is_valid():
+			rubro = form.cleaned_data['rubro']
+			anio = form.cleaned_data['anio']
+
+			for mes in MESES_CHOICES:
+				ejecucion_mensual = Ejecucion.objects.filter(anioejecucion__presupuesto__homologacion_fondos__rubro__slug = rubro,
+																anioejecucion__anio = anio, mes = mes[0]).values_list('ejecucion',flat=True)
+				if ejecucion_mensual:
+					list_ejecucion.append(ejecucion_mensual[0])
+				else:
+					list_ejecucion.append(0)
+	else:
+		form = RubroForm
+	
+	#graf fuente finan
+	fuente_dict = {}
+	fuente = FuenteFinanciamiento.objects.distinct('nombre')
+	for x in fuente:
+		presup_fuente = Presupuesto.objects.filter(fuente = x).aggregate(total = Sum('presupuesto'))['total']
+		ejecucion_fuente = Ejecucion.objects.filter(anioejecucion__presupuesto__fuente = x).aggregate(total = Sum('ejecucion'))['total']
+		fuente_dict[x] = presup_fuente,ejecucion_fuente
+	
+	#link divulgación
+	divulgacion = Producto.objects.filter(rubro__nombre = 'Divulgación')
+
 	return render(request, template, locals())
-
-def ajax_rubro(request):
-	slug = request.GET.get('slug', '')
-	lista = []
-	fondos = HomologacionFondos.objects.filter(rubro__slug = slug)
-	presupuesto = fondos.aggregate(total = Sum('presupuesto__presupuesto'))['total']
-
-	return HttpResponse(simplejson.dumps(list(fondos)), content_type = 'application/json')
