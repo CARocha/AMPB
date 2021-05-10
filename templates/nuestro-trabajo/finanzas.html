@@ -218,7 +218,7 @@ Highcharts.chart('container2', {
     },
      {
         name: 'Ejecucion',
-        data: [{% for v in presupuesto_dict.values%}{{v.1}},{% endfor %}]
+        data: [{% for v in presupuesto_dict.values%}{% if v.1 == None %}0,{% else %}{{v.1}},{% endif %}{% endfor %}]
     }]
 });
 
@@ -248,7 +248,7 @@ Highcharts.chart('container3', {
     },
      {
         name: 'Ejecucion',
-        data: [{% for v in fuente_dict.values%}{{v.1|default:"0"}},{% endfor %}]
+        data: [{% for v in fuente_dict.values%}{% if v.1 == None %}0,{% else %}{{v.1|default:"0"}},{% endif %}{% endfor %}]
     }]
 });
 
