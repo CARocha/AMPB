@@ -21,6 +21,7 @@
 
 <section class="section-md bg-transparent nuecleos">
     <div class="container">
+    {% if user.is_authenticated %}
         <div class="row justify-content-md-center mb-5">
             <div class="col-md-6">
                 <div id="container1"></div>
@@ -37,23 +38,29 @@
         </div>
 
         <div class="row justify-content-md-center mb-5">
-            <div class="col-md-6" >
+            <div class="col-md-12" >
                 <div id="container2"></div>
             </div>
-            <div class="col-md-6" >
+        </div>
+        {% endif %}
+
+        <div class="row justify-content-md-center mb-5">
+            <div class="col-md-12" >
                 <div id="container"></div>
             </div>
         </div>
-
+       
+        {% if user.is_authenticated %}
         <div class="row justify-content-md-center mb-5">
             <div class="col-md-12" >
                 <div id="container3"></div>
             </div>
         </div>
+        {% endif %}
     </div>              
 </section>
 
-{% if divulgacion %}
+{% if divulgacion and user.is_authenticated%}
 <section class="section-md bg-transparent noticias">
     <div class="container">
         <div class="row row-30 justify-content-center">
@@ -95,6 +102,75 @@
     </div>
 </section>
 {% endif %}
+
+<div class="table-responsive" id="tabla">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+              <th scope="col">Rubro</th>
+              <th scope="col">Presupuesto</th>
+              <th scope="col">Fuente</th>
+              <th scope="col">Saldo</th>
+              <th scope="col">Año</th>
+              <th scope="col" colspan="12">Meses</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Ene</th>
+                <th>Feb</th>
+                <th>Mar</th>
+                <th>Abr</th>
+                <th>May</th>
+                <th>Jun</th>
+                <th>Jul</th>
+                <th>Ago</th>
+                <th>Sep</th>
+                <th>Oct</th>
+                <th>Nov</th>
+                <th>Dic</th>
+            </tr>
+          </thead>
+          <tbody>
+              {% for obj in tabla %}
+              <tr>
+                  <td rowspan="{{presupuesto.anioejecucion_set.count}}">{{obj.rubro}}</td>
+                  {% for presupuesto in obj.presupuesto_set.all|slice:"1" %}
+                    <td>{{presupuesto.presupuesto}}</td>
+                    <td>{{presupuesto.fuente}}</td>
+                    <td>{{presupuesto.saldo}}</td>
+                    {% for anio in presupuesto.anioejecucion_set.all|slice:"1" %}
+                    <td>{{anio.anio}}</td>
+                    {% for eje in anio.ejecucion_set.all %}
+                        <td>{{eje}}</td>
+                    {% endfor %}
+                    {% endfor %}
+                  {% endfor %}
+              </tr>
+               
+                {% for presupuesto in obj.presupuesto_set.all|slice:"1:" %}
+                <tr>
+                    <td rowspan="{{presupuesto.anioejecucion_set.count}}"></td>
+                    <td>{{presupuesto.presupuesto}}</td>
+                    <td>{{presupuesto.fuente}}</td>
+                    <td>{{presupuesto.saldo}}</td>
+                    {% for anio in presupuesto.anioejecucion_set.all %}
+                    <td>{{anio.anio}}</td>
+                    {% for eje in anio.ejecucion_set.all %}
+                        <td>{{eje}}</td>
+                    {% endfor %}
+                    {% endfor %}
+                </tr>
+              {% endfor %}
+               
+              
+              {% endfor %}
+          </tbody>
+    </table>
+</div>
 {% endblock content %}
 
 {% block extra_js %}
@@ -139,7 +215,7 @@ $(document).ready(function() {
 //             }
 //         });
 // });
-
+{% if user.is_authenticated %}
 Highcharts.chart('container1', {
     chart: {
         type: 'column'
@@ -252,6 +328,7 @@ Highcharts.chart('container3', {
     }]
 });
 
+{% endif %}
 Highcharts.chart('container', {
     chart: {
         plotBackgroundColor: null,
@@ -263,7 +340,7 @@ Highcharts.chart('container', {
         text: 'Ejecución según rubros'
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>$ {point.y:.1f} ({point.percentage:.1f} %) </b>'
+        pointFormat: '{series.name}: <b>$ {% if user.is_authenticated %}{point.y:.1f} ({point.percentage:.1f} %){% else %}{point.percentage:.1f} %{% endif %} </b>'
     },
     accessibility: {
         point: {
@@ -276,7 +353,7 @@ Highcharts.chart('container', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: $ {point.y:.1f} ({point.percentage:.1f} %)'
+                format: '<b>{point.name}</b>: {% if user.is_authenticated %}$ {point.y:.1f} ({point.percentage:.1f} %){% else %}{point.percentage:.1f} %{% endif %}'
             }
         }
     },

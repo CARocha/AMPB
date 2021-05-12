@@ -183,6 +183,7 @@ class Presupuesto(models.Model):
 	homologacion_fondos = models.ForeignKey(HomologacionFondos, on_delete=models.CASCADE)
 	presupuesto = models.FloatField()
 	fuente = models.ForeignKey(FuenteFinanciamiento, on_delete=models.CASCADE)
+	saldo = models.FloatField(default=0)
 
 	class Meta:
 		verbose_name_plural = "Presupuesto"

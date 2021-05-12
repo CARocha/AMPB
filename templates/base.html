@@ -113,7 +113,7 @@
                                     <li class="navbar-navigation-back">
                                     <button class="navbar-navigation-back-btn">Atras</button>
                                     </li>
-                                    <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'lista-noticias' %}">Acontecimientos</a>
+                                    <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'lista-noticias' %}">Noticias</a>
                                     </li>
                                     <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'lista-eventos' %}">Eventos</a>
                                 </ul>
@@ -138,9 +138,10 @@
                                     </li>
                                     <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'formadores' %}">Formadores</a>
                                     </li>
+                                    {% endif %}
                                     <li class="navbar-navigation-dropdown-item"><a class="navbar-navigation-dropdown-link" href="{% url 'finanzas' %}">Finanzas</a>
                                     </li>
-                                    {% endif %}
+                                    
                                 </ul>
                             </li>
                             <!--<li class="navbar-navigation-root-item"><a class="navbar-navigation-root-link" href="#">Monitoreo</a>
@@ -213,23 +214,24 @@
                         <h5 class="footer-title">Mantener contacto</h5>
                         <ul class="list list-icons">
                         <li class="list-item">
+                        {% load solo_tags %}
+                        {% get_solo 'configuracion.Contectenos' as contacto %}
                             <div class="list-icon custom-font-pin"></div><a class="link link-inherit" href="#">
-                                Reparto El Mirador Santo Domingo, del tanque de agua INAA 1C Norte, 1C Oeste, 19 vrs. Sur. Managua, Nicaragua.
+                                {{contacto.direccion}}
                             </a>
                         </li>
                         <br>
 
                         <li class="list-item">
-                            <div class="list-icon custom-font-email"></div><a class="link link-inherit" href="mailto:alianza@alianzamesoamericana.org">
-                                alianza@alianzamesoamericana.org
-
+                            <div class="list-icon custom-font-email"></div><a class="link link-inherit" href="mailto:{{contacto.correo}}">
+                                {{contacto.correo}}
                             </a>
                         </li>
                         <li class="list-item">
                             <div class="list-icon custom-font-phone"></div><span><span>Llámanos :
 
                             </span>
-                                <a class="link link-inherit" href="tel:50522936339">+505 2293 6339</a>
+                                <a class="link link-inherit" href="tel:{{contacto.telefono}}">{{contacto.telefono}}</a>
                             </span>
                         </li>
                         </ul>
@@ -250,9 +252,11 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="social-div text-right">
-                            <a href="https://facebook.com" class="icon-button facebook"><i class="fa fa-facebook-f"></i><span></span></a>
-                            <a href="https://twitter.com" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>
-                            <a href="https://www.instagram.com/" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>
+                        {% load solo_tags %}
+                        {% get_solo 'configuracion.Introduccion' as intro %}
+                        {% if intro.link_facebook %}<a href="{{intro.link_facebook}}" class="icon-button facebook"><i class="fa fa-facebook-f"></i><span></span></a>{% endif %}
+                        {% if intro.link_twitter %}<a href="{{intro.link_twitter}}" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>{% endif %}
+                        {% if intro.link_instagram %}<a href="{{intro.link_instagram}}" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>{% endif %}
                         </div>
                     </div>
                 </div>

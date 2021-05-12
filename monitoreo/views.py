@@ -87,4 +87,6 @@ def finanzas(request,template='nuestro-trabajo/finanzas.html'):
 	#link divulgación
 	divulgacion = Producto.objects.filter(rubro__nombre = 'Divulgación')
 
+	tabla = HomologacionFondos.objects.all()
+
 	return render(request, template, locals())

@@ -92,9 +92,9 @@
                         </div>
                         <div class="col-md-auto align-self-center">
                             <div class="social-div text-right">
-                                <a href="https://facebook.com" class="icon-button facebook"><i class="fa fa-facebook-f"></i><span></span></a>
-                                <a href="https://twitter.com" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>
-                                <a href="https://www.instagram.com/" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>
+                                {% if intro.link_facebook %}<a href="{{intro.link_facebook}}" class="icon-button facebook"><i class="fa fa-facebook-f"></i><span></span></a>{% endif %}
+                                {% if intro.link_twitter %}<a href="{{intro.link_twitter}}" class="icon-button twitter"><i class="fa fa-twitter"></i><span></span></a>{% endif %}
+                                {% if intro.link_instagram %}<a href="{{intro.link_instagram}}" class="icon-button instagram"><i class="fa fa-instagram"></i><span></span></a>{% endif %}
                             </div>
                         </div>
                     </div>
@@ -193,7 +193,7 @@
 <section class="section-md bg-white text-center">
 	<div class="container">
 		<div class="text-block text-block-1" data-animate='{"class":"fadeIn"}'>
-			<h3 class="text-primary">Acontecimientos</h3>
+			<h3 class="text-primary">Noticias</h3>
 			<h5 class="text-gris">Informáte de las últimas acciones de la Escuela Mesoamericana</h5>
 		</div>
 		<div class="owl-carousel owl-content-1 noticias" data-owl="{&quot;dots&quot;:true}" data-loop="false" data-items="1" data-sm-items="2" data-md-items="2" data-lg-items="3">

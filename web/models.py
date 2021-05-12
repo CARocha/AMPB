@@ -107,8 +107,8 @@ class Actualidad(models.Model):
 		return super(Actualidad, self).save(*args, **kwargs)
 
 	class Meta:
-		verbose_name_plural = "Acontecimientos"
-		verbose_name = "acontecimiento"
+		verbose_name_plural = "Noticias"
+		verbose_name = "noticia"
 
 	def __str__(self):
 		return self.titulo

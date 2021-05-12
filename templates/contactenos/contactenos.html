@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block extra_css %}
 {% endblock extra_css %}
+{% load solo_tags %}
 
 {% block content %}
 <style>
@@ -81,22 +82,23 @@
 
             </div>
             <div class="col-md-4">
+                {% get_solo 'configuracion.Contectenos' as contacto %}
                 <h5 class="text-primary">Antes de contactarnos</h5>
-                <p>Algun tipo de informacion importante como decir de donde son</p>
+                <p>{{contacto.antes_de_contactarnos}}</p>
                 <h5 class="text-primary">Información del contacto</h5>
                 <ul class="list list-icons">
                 <li class="list-item">
                     <div class="list-icon custom-font-pin"></div><a class="link link-inherit" href="#">
-                        Reparto El Mirador Santo Domingo, del tanque de agua INAA 1C Norte, 1C Oeste, 19 vrs. Sur. Managua, Nicaragua.
+                        {{contacto.direccion}}
                     </a>
                 </li>
                 <li class="list-item">
-                    <div class="list-icon custom-font-email"></div><a class="link link-inherit"href="mailto:alianza@alianzamesoamericana.org">
-                        alianza@alianzamesoamericana.org
+                    <div class="list-icon custom-font-email"></div><a class="link link-inherit"href="mailto:{{contacto.correo}}">
+                        {{contacto.correo}}
                     </a>
                 </li>
                 <li class="list-item">
-                    <div class="list-icon custom-font-phone"></div><span><span>Llámanos : </span><a class="link link-inherit" href="tel:50522936339">+505 2293 6339</a></span>
+                    <div class="list-icon custom-font-phone"></div><span><span>Llámanos : </span><a class="link link-inherit" href="tel:{{contacto.telefono}}">{{contacto.telefono}}</a></span>
                 </li>
                 </ul>
             </div>
