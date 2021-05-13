@@ -88,5 +88,19 @@ def finanzas(request,template='nuestro-trabajo/finanzas.html'):
 	divulgacion = Producto.objects.filter(rubro__nombre = 'Divulgación')
 
 	tabla = HomologacionFondos.objects.all()
+	list = {}
+	for	obj in tabla:
+		pre_list = {}
+		list[obj.rubro] = pre_list
+		for	pre in obj.presupuesto_set.all():
+			anio_dict = {}
+			pre_list[pre.presupuesto,pre.fuente.nombre,pre.saldo] = anio_dict	
+			for	anio in pre.anioejecucion_set.all():
+				anio_eje= {}
+				anio_dict[anio.anio] = anio_eje
+				for eje in anio.ejecucion_set.all():
+					anio_eje[eje.mes] = eje.ejecucion
+				
+	print(list)
 
 	return render(request, template, locals())

@@ -103,7 +103,7 @@
 </section>
 {% endif %}
 
-<div class="table-responsive" id="tabla">
+<!--<div class="table-responsive" id="tabla">
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -111,10 +111,10 @@
               <th scope="col">Presupuesto</th>
               <th scope="col">Fuente</th>
               <th scope="col">Saldo</th>
-              <th scope="col">Año</th>
-              <th scope="col" colspan="12">Meses</th>
+              <th scope="col">Detalle</th>
+              {% comment %}<th scope="col" colspan="12">Meses</th> {% endcomment %}
             </tr>
-            <tr>
+            {% comment %} <tr>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -132,45 +132,84 @@
                 <th>Oct</th>
                 <th>Nov</th>
                 <th>Dic</th>
-            </tr>
+            </tr> {% endcomment %}
           </thead>
           <tbody>
-              {% for obj in tabla %}
-              <tr>
-                  <td rowspan="{{presupuesto.anioejecucion_set.count}}">{{obj.rubro}}</td>
-                  {% for presupuesto in obj.presupuesto_set.all|slice:"1" %}
-                    <td>{{presupuesto.presupuesto}}</td>
-                    <td>{{presupuesto.fuente}}</td>
-                    <td>{{presupuesto.saldo}}</td>
-                    {% for anio in presupuesto.anioejecucion_set.all|slice:"1" %}
-                    <td>{{anio.anio}}</td>
-                    {% for eje in anio.ejecucion_set.all %}
-                        <td>{{eje}}</td>
-                    {% endfor %}
-                    {% endfor %}
-                  {% endfor %}
-              </tr>
+              {% for k,v in list.items %}
+               <tr>
+                <td>{{k}}</td>
+                {% for x,y in v.items %}
+                {% if forloop.first %}
+                    <td>{{x.0}}</td>
+                    <td>{{x.1}}</td>
+                    <td>{{x.2}}</td>
+                {% endif %}
+                
+                {% endfor %}
+                <td><a href=''>ver</a></td>
+               </tr>
+
+                {% for x,y in v.items %}
+                {% if not forloop.first %}
+               <tr>
+               <td>{{k}}</td>
+               <td>{{x.0}}</td>
+                <td>{{x.1}}</td>
+                <td>{{x.2}}</td>
+                <td><a href=''>ver</a></td>
+               </tr>
+               {% endif %}
                
-                {% for presupuesto in obj.presupuesto_set.all|slice:"1:" %}
-                <tr>
-                    <td rowspan="{{presupuesto.anioejecucion_set.count}}"></td>
-                    <td>{{presupuesto.presupuesto}}</td>
-                    <td>{{presupuesto.fuente}}</td>
-                    <td>{{presupuesto.saldo}}</td>
-                    {% for anio in presupuesto.anioejecucion_set.all %}
-                    <td>{{anio.anio}}</td>
-                    {% for eje in anio.ejecucion_set.all %}
-                        <td>{{eje}}</td>
-                    {% endfor %}
-                    {% endfor %}
-                </tr>
-              {% endfor %}
+                {% endfor %}
                
+
               
               {% endfor %}
           </tbody>
     </table>
 </div>
+
+<div class="accordion" id="accordionExample">
+{% for k,v in list.items %}
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{forloop.counter}}" aria-expanded="true" aria-controls="collapse{{forloop.counter}}">
+          {{k}}
+        </button>
+      </h2>
+    </div>
+    
+    <div id="collapse{{forloop.counter}}" class="collapse {% if forloop.first %}show{% endif %}" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+      
+        {% for x,y in v.items %}
+        <p>Presupuesto {{x.0}}, Fuente {{x.1}}, Saldo {{x.2}}</p>
+        {% for a,b in y.items %}
+            <p>Año: {{a}}</p>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Mes</th>
+                        <th>Ejecución</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for c,d in b.items %}
+                    <tr>
+                        <td>{{c}}</td>
+                        <td>{{d}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            
+        {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}-->
 {% endblock content %}
 
 {% block extra_js %}
@@ -185,7 +224,7 @@
 <script src="//cdn.rawgit.com/ashl1/datatables-rowsgroup/v1.0.0/dataTables.rowsGroup.js"></script>
 <script>
 $(document).ready(function() {
-    $('table').dataTable( {
+    $('#table_id').dataTable( {
         responsive: true,
         deferRender: true,
         scrollx: true,
