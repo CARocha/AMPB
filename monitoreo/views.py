@@ -6,6 +6,7 @@ from django.db.models import Sum
 from django.http import HttpResponse
 import json as simplejson
 from .forms import *
+import collections
 
 # Create your views here.
 def nucleos(request,template='nuestro-trabajo/nucleos.html'):
@@ -40,13 +41,13 @@ def participantes(request,template='nuestro-trabajo/participantes.html'):
 
 def finanzas(request,template='nuestro-trabajo/finanzas.html'):
 	#ejecucion x rubro
-	rubros = HomologacionFondos.objects.values_list('rubro','rubro__nombre').distinct('rubro')
+	rubros = HomologacionFondos.objects.values_list('rubro','rubro__nombre','rubro__descripcion').distinct('rubro')
 	total_presupuesto = HomologacionFondos.objects.aggregate(total = Sum('presupuesto__presupuesto'))['total']
 	rubro_dict = {}
 	presupuesto_dict = {}
 	for x in rubros:
 		ejecucion = Ejecucion.objects.filter(anioejecucion__presupuesto__homologacion_fondos__rubro = x[0]).aggregate(ejecucion = Sum('ejecucion'))['ejecucion']
-		rubro_dict[x[1]] = ejecucion
+		rubro_dict[x[1],x[2]] = ejecucion
 
 		#presupuesto vs ejecucion
 		total = Presupuesto.objects.filter(homologacion_fondos__rubro = x[0]).aggregate(total = Sum('presupuesto'))['total']
@@ -88,19 +89,18 @@ def finanzas(request,template='nuestro-trabajo/finanzas.html'):
 	divulgacion = Producto.objects.filter(rubro__nombre = 'Divulgación')
 
 	tabla = HomologacionFondos.objects.all()
-	list = {}
+	list = collections.OrderedDict()
 	for	obj in tabla:
-		pre_list = {}
+		pre_list = collections.OrderedDict()
 		list[obj.rubro] = pre_list
 		for	pre in obj.presupuesto_set.all():
-			anio_dict = {}
+			anio_dict = collections.OrderedDict()
 			pre_list[pre.presupuesto,pre.fuente.nombre,pre.saldo] = anio_dict	
 			for	anio in pre.anioejecucion_set.all():
-				anio_eje= {}
+				anio_eje= collections.OrderedDict()
 				anio_dict[anio.anio] = anio_eje
 				for eje in anio.ejecucion_set.all():
 					anio_eje[eje.mes] = eje.ejecucion
 				
-	print(list)
 
 	return render(request, template, locals())

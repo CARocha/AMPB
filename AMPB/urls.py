@@ -29,8 +29,8 @@ urlpatterns = [
     path('chaining/', include('smart_selects.urls')),
     # path('pages/', include('django.contrib.flatpages.urls')),
     path('aprende/', include('aprende.urls')),
-    path('',TemplateView.as_view(template_name='index-coming-soon.html')),
-    path('index/',index),
+    # path('',TemplateView.as_view(template_name='index-coming-soon.html')),
+    path('',index),
     path('', include('web.urls')),
     path('nuestro-trabajo/', include('monitoreo.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
