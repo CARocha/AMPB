@@ -41,9 +41,9 @@ class QuienesSomos(models.Model):
 
 class Contectenos(SingletonModel):
 	antes_de_contactarnos = models.TextField()
-	direccion = models.CharField(max_length = 250)
+	# direccion = models.CharField(max_length = 250,null=True,blank=True)
 	correo = models.URLField()
-	telefono = models.CharField(max_length = 250)
+	# telefono = models.CharField(max_length = 250,null=True,blank=True)
 
 	def __str__(self):
 		return "Contáctenos"
