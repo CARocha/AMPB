@@ -105,7 +105,7 @@ def contactenos(request,template='contactenos/contactenos.html'):
 
 				html_content = render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
 
-				msg = EmailMultiAlternatives(subject, text_content, from_email, ['comunicacion@escuelamesoamericana.org',])
+				msg = EmailMultiAlternatives(subject, text_content, from_email, ['comunicacion@escuelamesoamericana.org','erick@simas.org.ni'])
 				msg.attach_alternative(html_content, "text/html")
 				msg.send()
 
