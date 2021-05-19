@@ -99,21 +99,21 @@ def contactenos(request,template='contactenos/contactenos.html'):
 			asunto = form.cleaned_data['asunto']
 			mensaje = form.cleaned_data['mensaje']
 
-			try:
-				subject, from_email = asunto, 'comunicacion@escuelamesoamericana.org'
-				text_content =  render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
+			# try:
+			subject, from_email = asunto, 'comunicacion@escuelamesoamericana.org'
+			text_content =  render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
 
-				html_content = render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
+			html_content = render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
 
-				msg = EmailMultiAlternatives(subject, text_content, from_email, ['comunicacion@escuelamesoamericana.org','erick@simas.org.ni'])
-				msg.attach_alternative(html_content, "text/html")
-				msg.send()
+			msg = EmailMultiAlternatives(subject, text_content, from_email, ['comunicacion@escuelamesoamericana.org','erick@simas.org.ni'])
+			msg.attach_alternative(html_content, "text/html")
+			msg.send()
 
-				enviado = True
-				messages.success(request, 'Success!')
-				return HttpResponseRedirect(request.path)
-			except:
-				pass
+			enviado = True
+			messages.success(request, 'Success!')
+			return HttpResponseRedirect(request.path)
+			# except:
+			# 	pass
 	else:
 		form = ContactoForm()
 
