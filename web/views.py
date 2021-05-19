@@ -100,12 +100,12 @@ def contactenos(request,template='contactenos/contactenos.html'):
 			mensaje = form.cleaned_data['mensaje']
 
 			# try:
-			subject, from_email = asunto, 'ermurillo22@gmail.com' #'comunicacion@escuelamesoamericana.org'
+			subject, from_email = asunto, 'comunicacion@escuelamesoamericana.org'
 			text_content =  render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
 
 			html_content = render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
 
-			msg = EmailMultiAlternatives(subject, text_content, from_email, ['erick@simas.org.ni',])#'comunicacion@escuelamesoamericana.org',
+			msg = EmailMultiAlternatives(subject, text_content, from_email, ['comunicacion@escuelamesoamericana.org',])
 			msg.attach_alternative(html_content, "text/html")
 			msg.send()
 

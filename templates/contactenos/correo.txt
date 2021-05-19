@@ -1,5 +1,9 @@
-{{asunto}}
-{{mensaje}}
-{{nombre}}
-{{correo}}
-{{telefono}}
+<p>{{asunto}}</p>
+<p>{{nombre}}</p>
+<p>{{correo}}</p>
+<p>{{telefono}}</p>
+<p>{{mensaje}}</p>
+
+
+
+
