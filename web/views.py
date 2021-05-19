@@ -100,7 +100,7 @@ def contactenos(request,template='contactenos/contactenos.html'):
 			mensaje = form.cleaned_data['mensaje']
 
 			try:
-				subject, from_email = asunto, 'mail@gmail.com'
+				subject, from_email = asunto, 'comunicacion@escuelamesoamericana.org'
 				text_content =  render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
 
 				html_content = render_to_string('contactenos/correo.txt', {'nombre': nombre, 'correo':correo, 'telefono':telefono, 'asunto':asunto, 'mensaje':mensaje})
