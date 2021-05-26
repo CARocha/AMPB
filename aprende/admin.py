@@ -39,9 +39,12 @@ class TemasModulos(admin.ModelAdmin):#NestedModelAdmin
             curso = Cursos.objects.get(modulos = id_modulo)
             curso.fecha = now
             curso.save()
+            for obj in formset.deleted_objects:
+                obj.delete()
         else:
             formset.save()
-
+            for obj in formset.deleted_objects:
+                obj.delete()
 
 class CursosAdmin(NestedModelAdmin):
     list_display = ('titulo','fecha',)

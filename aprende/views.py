@@ -49,7 +49,7 @@ def detalle_contenido(request,slug=None,id=None,template='aprende/detalle.html')
     object = Cursos.objects.get(slug = slug)
     #contenidos
     contenido = Contenidos.objects.get(id = id)
-    todos_contenidos = Contenidos.objects.filter(modulo__curso = object).order_by('modulo','id')
+    todos_contenidos = Contenidos.objects.filter(modulo__curso = object).order_by('modulo','order')
     siguiente = next_in_order(contenido, qs = todos_contenidos)
     anterior = prev_in_order(contenido, qs = todos_contenidos)
 
