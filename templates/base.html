@@ -172,7 +172,15 @@
 							</div>
 						</div>
 					</div> -->
-                    <!--<div id="google_translate_element"></div>
+                    
+				</div>
+                <style>
+                #google_translate_element {
+                    right: 0;
+                    position: absolute;
+                    z-index:100;
+                }</style>
+                <div id="google_translate_element"></div>
                     <script type="text/javascript">
                         function googleTranslateElementInit() {
                             new google.translate.TranslateElement({
@@ -183,10 +191,9 @@
                                 );
                             }
                     </script>
-                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>-->
-				</div>
-                
+                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 			</nav>
+            
       	</header>
 		<!-- Swiper default-->
 		{% block content %}{% endblock content %}
