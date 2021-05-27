@@ -38,6 +38,7 @@ def lista_noticias(request,template='noticias/lista.html'):
 def filtro_noticias(request,slug=None,template='noticias/lista.html'):
 	objects_list = Actualidad.objects.filter(escuela__pais__slug = slug).order_by('-fecha')
 	paises = Actualidad.objects.values_list('escuela__pais__slug','escuela__pais__nombre').distinct('escuela__pais')
+	form = BuscadorForm
 	return render(request, template, locals())
 
 def detalle_noticia(request,slug=None,template='noticias/detalle.html'):
