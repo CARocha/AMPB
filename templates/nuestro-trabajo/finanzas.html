@@ -333,7 +333,7 @@ Highcharts.chart('container', {
         text: 'Ejecución según rubros'
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>$ {% if user.is_authenticated %}{point.y:.1f} ({point.percentage:.1f} %){% else %}{point.percentage:.1f} %{% endif %}</b> <br/>{point.description}'
+        pointFormat: '{series.name}: <b>{% if user.is_authenticated %}$ {point.y:.1f} ({point.percentage:.1f} %){% else %}{point.percentage:.1f} %{% endif %}</b> <br/>{point.description}'
     },
     accessibility: {
         point: {
