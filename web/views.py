@@ -15,7 +15,7 @@ from django.db.models import Sum
 # Create your views here.
 def index(request,template='index.html'):
 	banner = Banner.objects.order_by('-id')[:3]
-	actualidad = Actualidad.objects.order_by('-id')[:6]
+	actualidad = Actualidad.objects.order_by('-fecha')[:6]
 	hoy = datetime.date.today()
 	eventos = Evento.objects.filter(inicio__gte = hoy).order_by('inicio')[:3]
 	liderazgos = Liderazgo.objects.order_by('-id')[:4]
