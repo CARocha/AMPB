@@ -199,6 +199,7 @@ class ExperienciaLiderazgo(models.Model):
 	contenido = RichTextUploadingField()
 	foto = ImageField(upload_to='actualidad/',null=True,blank=True)
 	video = EmbedVideoField(null=True,blank=True)
+	escuela = models.ForeignKey(Escuela,on_delete=models.CASCADE, null=True, blank=True)
 	usuario = models.ForeignKey(User,on_delete=models.CASCADE)
 	slug = models.SlugField(max_length=300,editable=False)
 

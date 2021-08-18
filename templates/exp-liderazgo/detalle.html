@@ -72,14 +72,18 @@
                     <div class="post-meta-icon fa fa-calendar"></div>
                     <div class="post-date">{{object.fecha|date:'d F Y'}}</div>
                 </div>
-                {% comment %} <div class="post-meta-item">
+                {% if object.escuela.pais %}
+                 <div class="post-meta-item">
                     <div class="post-meta-icon fa fa-globe"></div>
                     <div class="post-comment">{{object.escuela.pais}}</div>
                 </div>
+                {% endif %}
+                {% if object.escuela %}
                 <div class="post-meta-item">
                     <div class="post-meta-icon fa fa-user"></div>
                     <div class="post-comment">{{object.escuela}}</div>
-                </div> {% endcomment %}
+                </div>
+                {% endif %}  
             </div>
             <div class="post-title h4">{{object.titulo}}</div>
             <div class="post-text">

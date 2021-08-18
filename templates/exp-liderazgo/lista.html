@@ -76,10 +76,12 @@
                             <div class="post-meta-icon fa fa-calendar"></div>
                             <div class="post-date">{{obj.fecha|date:'d F Y'}}</div>
                         </div>
+                        {% if obj.escuela.pais %}
                         <div class="post-meta-item">
                             <div class="post-meta-icon fa fa-globe"></div>
                             <div class="post-comment">{{obj.escuela.pais}}</div>
                         </div>
+                        {% endif %}  
                     </div>
                     <div class="post-title h6">
                         <a href="{% url 'detalle-exp' obj.slug %}" class="text-limit">
