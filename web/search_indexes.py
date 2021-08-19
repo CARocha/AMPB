@@ -29,9 +29,9 @@ class EventoIndex(indexes.SearchIndex, indexes.Indexable):
         return self.get_model().objects.filter(fin__lte=datetime.datetime.now())
 
 class BibliotecaIndex(indexes.SearchIndex, indexes.Indexable):
-    text = indexes.NgramField(document=True, use_template=True)
-    nombre = indexes.NgramField(model_attr='nombre')
-    descripcion = indexes.NgramField(model_attr='descripcion', null=True)
+    text = indexes.CharField(document=True, use_template=True)
+    nombre = indexes.CharField(model_attr='nombre')
+    descripcion = indexes.CharField(model_attr='descripcion', null=True)
 
     def get_model(self):
         return Biblioteca
@@ -40,9 +40,9 @@ class BibliotecaIndex(indexes.SearchIndex, indexes.Indexable):
         return self.get_model().objects.order_by('-id')
 
 class ExperienciaLiderazgoIndex(indexes.SearchIndex, indexes.Indexable):
-    text = indexes.NgramField(document=True, use_template=True)
-    titulo = indexes.NgramField(model_attr='titulo')
-    resumen = indexes.NgramField(model_attr='contenido', null=True)
+    text = indexes.CharField(document=True, use_template=True)
+    titulo = indexes.CharField(model_attr='titulo')
+    resumen = indexes.CharField(model_attr='contenido', null=True)
 
     def get_model(self):
         return ExperienciaLiderazgo
