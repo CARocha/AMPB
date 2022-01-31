@@ -54,7 +54,7 @@ class HomologacionFondosAdmin(NestedModelAdmin):
             for ej in ejecucion:
                 presupuesto = Presupuesto.objects.get(anioejecucion = ej.anioejecucion)
                 ejecucion_query = Ejecucion.objects.filter(anioejecucion__presupuesto = presupuesto).aggregate(total = Sum('ejecucion'))['total'] or 0
-                presupuesto.saldo = presupuesto.presupuesto - ej.ejecucion - ejecucion_query
+                presupuesto.saldo = presupuesto.presupuesto - ejecucion_query
                 presupuesto.save()
                 ej.save()
         return super(HomologacionFondosAdmin, self).save_formset(request, form, formset, change)
